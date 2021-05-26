@@ -31,6 +31,8 @@
 
         .topnav a:hover {
             border-bottom: 3px solid red;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         .topnav a.active {
