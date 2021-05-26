@@ -1,0 +1,128 @@
+.slider{
+    opacity: 0.8;
+    height: 600px;
+
+}
+.carousel-caption{
+    transform: translate(-50%, -50%);
+    color: black;
+    position: absolute;
+    /* text-align: center; */
+    top: 40%;
+    left: 50%;
+    color: white; 
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.header{
+    /* font-weight: bolder; */
+    font-size:60px;
+    color: peru;
+}
+.carousel .control-next.control-arrow, .carousel .control-next.control-arrow:hover{
+    background-color: transparent;
+    right: -146px;
+}
+.carousel .control-prev.control-arrow, .carousel .control-prev.control-arrow:hover {
+    background-color: transparent;
+    left: -146px;
+}
+
+.carousel .control-arrow, .carousel.carousel-slider .control-arrow{
+    opacity: 1;
+}
+.swiper-button-next {
+    background-color: peru;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+}
+.btn{
+	text-transform: uppercase;
+	padding: 19px 36px;
+}
+.btn{
+	display: inline-block;
+	font-weight: 600;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 2px solid transparent;
+	padding: 12px 30px;
+	font-size: 16px;
+	line-height: 1.5;
+	border-radius: .1875rem;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.btn-outline-new-white {
+    color: #fff;
+    background-color: transparent;
+    background-image: none;
+    border-color: #cfa671;
+}
+.btn-outline-new-white:hover {
+    color: #ffffff;
+    background-color: #cfa671;
+    border-color: #cfa671;
+}
+#map,#info{
+    padding: 70px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;   
+}
+#maptxt{
+    
+    /* width: 300px; */
+    height: 50px;
+    border: none;
+}
+
+.input-group-text{
+    background-color: transparent;
+    border: none;
+}
+.input-group{
+    border: 2px solid black;
+    border-radius: 5px;
+}
+#steps{
+    color: grey;
+}
+.card-header{
+    border: none;
+    
+}
+.card-title{
+    font-weight: bold;
+}
+.card{
+    border: none;
+}
+.num{
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.restcontainer,#restHead{
+    padding: 50px;
+    text-align: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.cardimg{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+.cityButtons{
+  margin-bottom: 10px;
+  padding: 5px;
+  
+}
