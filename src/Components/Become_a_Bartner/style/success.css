@@ -1,0 +1,145 @@
+.dummy-positioning {
+    width: 100%;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .success-icon {
+    display: inline-block;
+    width: 8em;
+    height: 8em;
+    font-size: 20px;
+    border-radius: 50%;
+    border: 6px solid #2ec620;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center;
+    -webkit-animation: showSuccess 180ms ease-in-out;
+            animation: showSuccess 180ms ease-in-out;
+    transform: scale(1);
+  }
+  
+  .success-icon__tip, .success-icon__long {
+    display: block;
+    position: absolute;
+    height: 6px;
+    background-color: #2ec620;
+    border-radius: 10px;
+  }
+  .success-icon__tip {
+    width: 2.4em;
+    top: 1.3em;
+    left: 1.4em;
+    transform: rotate(45deg);
+    -webkit-animation: tipInPlace 300ms ease-in-out;
+            animation: tipInPlace 500ms ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    -webkit-animation-delay: 380ms;
+            animation-delay: 380ms;
+    visibility: hidden;
+  }
+  .success-icon__long {
+    width: 4em;
+    transform: rotate(-45deg);
+    top: 3.7em;
+    left: 2.75em;
+    -webkit-animation: longInPlace 940ms ease-in-out;
+            animation: longInPlace 940ms ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    visibility: hidden;
+    -webkit-animation-delay: 540ms;
+            animation-delay: 540ms;
+  }
+  
+  @-webkit-keyframes showSuccess {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes showSuccess {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  @-webkit-keyframes tipInPlace {
+    from {
+      width: 0em;
+      top: 0em;
+      left: -1.6em;
+    }
+    to {
+      width: 2.4em;
+      top: 4.3em;
+      left: 1.4em;
+      visibility: visible;
+    }
+  }
+  @keyframes tipInPlace {
+    from {
+      width: 0em;
+      top: 0em;
+      left: -1.6em;
+    }
+    to {
+      width: 2.4em;
+      top: 4.3em;
+      left: 1.4em;
+      visibility: visible;
+    }
+  }
+  @-webkit-keyframes longInPlace {
+    from {
+      width: 0em;
+      top: 5.1em;
+      left: 3.2em;
+    }
+    to {
+      width: 4em;
+      top: 3.7em;
+      left: 2.75em;
+      visibility: visible;
+    }
+  }
+  @keyframes longInPlace {
+    from {
+      width: 0em;
+      top: 5.1em;
+      left: 3.2em;
+    }
+    to {
+      width: 4em;
+      top: 3.7em;
+      left: 2.75em;
+      visibility: visible;
+    }
+  }
+  #done{
+ 
+    position: absolute;
+    margin-top: 360px;
+    margin-left: 134px;
+    font-size: 60px;
+    color:#2ec620 ;
+    animation-delay: 1000ms;
+    animation: showSuccess 1000ms ease;
+   
+  }
+  #contact{
+    color: rgb(106, 196, 93);
+    margin-left: 40px;
+    font-size: 30px;
+    
+    text-align: justify;
+    text-align-last: center;
+  }
