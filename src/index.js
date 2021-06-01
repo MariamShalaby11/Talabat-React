@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Filters from './Components/Filters/Filter';
+//import Filters from './Components/Filters/Filter';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Partner from '../src/Components/Become_a_Bartner/files/partner'
-
+//import Home from './Components/Homepage/Homepage';
+import AppRouter from './Components/Router/AppRouter';
+// import MapContainer from './Components/Homepage/map';
+// import Header from './Components/Header';
+// import Filters from './Components/Filters/Filter'
+// import Faq from './Components/StaticPages/FAQ';
+// import Privacy from './Components/StaticPages/Privacy';
+// import Terms from './Components/StaticPages/Terms';
 ReactDOM.render(
   <React.StrictMode>
-    <Partner />
+    <AppRouter />
   </React.StrictMode>,
   document.getElementById('root')
 );

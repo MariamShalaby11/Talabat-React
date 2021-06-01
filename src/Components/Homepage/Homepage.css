@@ -7,19 +7,18 @@
     transform: translate(-50%, -50%);
     color: black;
     position: absolute;
-    /* text-align: center; */
     top: 40%;
     left: 50%;
-    color: white; 
+    color: #30526A; 
     font-family: 'Montserrat', sans-serif; 
 }
 
 .header{
     /* font-weight: bolder; */
     font-size:60px;
-    color: peru;
+    color:#D0A772;
 }
-.carousel .control-next.control-arrow, .carousel .control-next.control-arrow:hover{
+/* .carousel .control-next.control-arrow, .carousel .control-next.control-arrow:hover{
     background-color: transparent;
     right: -146px;
 }
@@ -36,6 +35,10 @@
     width: 50px;
     height: 50px;
     top: 50%;
+} */
+#mapbtn{
+    background-color: white;
+    border: none;
 }
 .btn{
 	text-transform: uppercase;

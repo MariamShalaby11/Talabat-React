@@ -1,23 +1,39 @@
 import React from 'react';
 import'./Homepage.css';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+//import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Carousel from 'react-bootstrap/Carousel';
-import slide1 from '../../images/slider-02.jpg';
+import slide1 from '../../images/food.jpg';
 import slide2 from '../../images/Delivery.jpg';
 import slide3 from '../../images/partner2.jpg';
-import slide4 from '../../images/2.jpg';
-import { FaHamburger, FaLocationArrow, FaMapMarkedAlt, FaMapMarkerAlt, FaTruckLoading} from "react-icons/fa";
+import slide4 from '../../images/burgers.jpg';
+import { FaFire, FaHamburger, FaLocationArrow, FaMapMarkedAlt, FaMapMarkerAlt, FaTruckLoading} from "react-icons/fa";
 import { HashLink } from 'react-router-hash-link';
 import{BrowserRouter as Router} from 'react-router-dom';
-
+import axios from 'axios';
 
 export default class Home extends React.Component{
     state={
+      Resturants:[],
+      Cities:[],
 
     }
+    async componentDidMount(){
+      await axios.get('http://localhost:52593/api/Cities').then(res=>{
+          this.setState({Cities:res.data})
+         console.log(res.data)
+           })
+          } 
+    // ResturantList=(i)=>{
+    //   await axios.get(`http://localhost:52593/api/Resturants/${i}`).then(res=>{
+    //     this.setState({Resturants:res.data})
+    //    console.log(res.data)
+    //      })
+    // }
+  
     render(){
         return(
  <>       
+
  <Carousel  id="carouselExampleIndicators" class="carousel slide carousel-slider" data-ride="carousel">
     
 
@@ -27,6 +43,7 @@ export default class Home extends React.Component{
                < Carousel.Caption class="carousel-caption  d-md-block">
                     <h1 class="m-b-20 header"><strong>Welcome To FoodAway </strong></h1>
                     <h6 class="m-b-40 ">Join Us now And Fullfill your cravings !</h6>
+                   
                     <p> 
                      <Router>
                       <HashLink class="btn btn-lg btn-circle btn-outline-new-white" smooth to='/Home/#map' > Order </HashLink>
@@ -56,7 +73,7 @@ export default class Home extends React.Component{
           <Carousel.Item class="carousel-item">
                 <img class="d-block w-100 slider" src={slide4} alt="Third slide"/>
                 <Carousel.Caption class="carousel-caption d-md-block">
-                    <h1 class="m-b-20 header"><strong>Welcome ToFoodAway </strong></h1>
+                    <h1 class="m-b-20 header"><strong>Welcome To FoodAway </strong></h1>
                     <p class="m-b-40">Explore variety of Resturants!</p>
                     <p><a class="btn btn-lg btn-circle btn-outline-new-white " href="#">All Resturants</a></p>
                 </Carousel.Caption>
@@ -68,9 +85,11 @@ export default class Home extends React.Component{
         
 </Carousel> 
 
+
                   {/* //-------------------------------------------map */}
       <div id="map">
-            <h1>Enter The City you want to Deliver To</h1>
+      
+            <h1>Enter The City you want to Deliver To  </h1>
             <div class="row justify-content-center ">
                 <div class="col-lg-4 col-12  input-group ">
                     <div class="input-group-prepend">
@@ -78,7 +97,8 @@ export default class Home extends React.Component{
                     </div>
                     <input class="form-control" id="maptxt" type="text" placeholder="Search for Area , street name or Landmark"></input>
                     <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon1"><FaLocationArrow/></span>
+                    {/* <Tooltip title="Get my Location"> */}
+                 <button id="mapbtn"> <span class="input-group-text" id="basic-addon1"><FaLocationArrow/></span> </button>
                     </div>
                 </div>
             
@@ -134,28 +154,37 @@ export default class Home extends React.Component{
       </div>
 {/* //-------------------------Resturants---------------------------------- */}
 
-<h1 id="restHead" >Most Popular Resturants</h1>
+<h1 id="restHead" > Most Popular Resturants <FaFire/> </h1>
 
 <div class="container  row  restcontainer ">
-            <div class="col-lg-3 col-12 ">
-                <button class="btn btn-light form-control cityButtons" > Cairo</button>
-                <button class="btn btn-light form-control cityButtons "> Alexandria</button>
-                <button class="btn btn-light form-control cityButtons"> El Mansoura</button>
-                <button class="btn btn-light form-control cityButtons"> Tanta</button>
-                <button class="btn btn-light form-control cityButtons"> Assuit</button>
-                <button class="btn btn-light form-control cityButtons"> Sohag</button>
-                <button class="btn btn-light form-control cityButtons"> Suez</button>
-                <button class="btn btn-light form-control cityButtons"> Portsaid</button>
-                <button class="btn btn-light form-control cityButtons"> Banha</button>
-                <button class="btn btn-light form-control cityButtons"> ElMahala ALkobra</button>
-                <button class="btn btn-light form-control cityButtons"> North coast</button>
-                <button class="btn btn-light form-control cityButtons"> Cairo</button>
-            </div>
-
+          
+{
+                 this.state.Cities.map((city)=>{
+                return(
+                    <div class="col-lg-3 col-12 ">
+                  
+                          <button class="btn btn-light form-control cityButtons" onClick={()=>this.ResturantList(city.city)}>{city.city}</button>
+                        
+                      </div>
+                 )
+                })
+            }
         <div class="col-lg-9">
             <div class=" row">
+            {/* {
+                 this.state.Resturants.map((Rest)=>{
+                return(
+                <div class="card col-lg-4 col-12 ">
 
-                <div class="card col-lg-4 col-12 ">
+                    <img class="card-img-top cardimg"  src={Rest.Image} alt="Card image cap"/>
+                    <div class="card-body">
+                        <h5 class="card-title">{Rest.RestaurantName}</h5>
+                    </div>
+                </div>
+                  )
+                })
+            } */}
+                {/* <div class="card col-lg-4 col-12 ">
                     <img class="card-img-top cardimg" src={slide4} alt="Card image cap"/>
                     <div class="card-body">
                         <h5 class="card-title">Foodies</h5>
@@ -166,13 +195,7 @@ export default class Home extends React.Component{
                     <div class="card-body">
                         <h5 class="card-title">Foodies</h5>
                     </div>
-                </div>
-                <div class="card col-lg-4 col-12 ">
-                    <img class="card-img-top cardimg" src={slide4} alt="Card image cap"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Foodies</h5>
-                    </div>
-                </div>
+                </div> */}
    
             </div>
         </div>
