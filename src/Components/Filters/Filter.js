@@ -6,13 +6,14 @@ import axios from 'axios'
 class Filters extends React.Component {
 
     state = {
-        Restaurant: [],SelectedTab: "tab1"
+        Restaurant: [],SelectedTab: "tab1",Cusin:[]
     }
     
 
     componentDidMount() {
         this.setState({SelectedTab:this.state.SelectedTab})
         this.firstcall()
+        this.secondcall()
     }
 
     firstcall() {
@@ -27,6 +28,34 @@ class Filters extends React.Component {
         )
         return this.state.Restaurant
     }
+    secondcall(){
+        axios.get(`http://localhost:58160/api/values/GetAllCusins`).then(
+
+            (res) => {
+                this.state.Cusin = res.data
+                this.setState({
+                    Cusin: this.state.Cusin
+                })
+            }
+        )
+        return this.state.Restaurant
+    }
+
+    cusinCall(e){
+
+        axios.get(`http://localhost:58160/api/values/Cusins?filter=${e.target.value}`).then(
+
+            (res) => {
+                this.state.Restaurant = res.data
+                this.setState({
+                    
+                    Restaurant: this.state.Restaurant
+                })
+            }
+        )
+    }
+
+    
 
    TabClick = (e,tab) => {
        
@@ -76,86 +105,42 @@ class Filters extends React.Component {
                                 }}
                             />
                         </div>
-                        <div class="card shadow-sm p-3 mb-2 bg-white rounded">
-                            <h5>Filter By</h5>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                <label class="form-check-label" for="flexCheckDefault">
-                                Online Payment Available
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                <label class="form-check-label" for="flexCheckDefault">
-                                Desserts
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                <label class="form-check-label" for="flexCheckDefault">
-                                Deals & Offers
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                <label class="form-check-label" for="flexCheckDefault">
-                                Use Voucher Here
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                <label class="form-check-label" for="flexCheckDefault">
-                                El Market
-                                </label>
-                            </div>
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                <label class="form-check-label" for="flexCheckDefault">
-                                Health & Beauty
-                                </label>
-                            </div>
-
-                        </div>
+                        
 
 
 
                         <div class="card shadow-sm p-3 mb-2 bg-white rounded">
 
-                            <h5>Category</h5>
+                            <h5>Cusin</h5>
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Fees Delivery
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Speed
-                                </label>
-                            </div>
+                            {
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Date
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Money
+                          this.state.Cusin.map((cus,i)=>{
+
+
+                            return(
+
+                                <div class="form-check">
+                                <input class="form-check-input" value={cus.CuisineName} type="radio" name="flexRadioDefault" id={cus.CuisineName}
+                                onClick={
+                                    (e)=>{
+                                       this.cusinCall(e); 
+                                    }
+                                }
+                                />
+                                <label class="form-check-label" for={cus.CuisineName}>
+                                    {cus.CuisineName}
                                 </label>
                             </div>
 
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Quality
-                                </label>
-                            </div>
+
+
+                            )
+                          })  
+                            
+
+                            }
+                               
                         </div>
                     </div>
 
@@ -164,8 +149,7 @@ class Filters extends React.Component {
                         <div class="topnav">
                             <a class=" h4 col-lg-2 col-md-3 active element" onClick={(e)=>this.TabClick(e,"tab1")} > Recommends</a>
                             <a class=" h4 col-lg-2 col-md-3 element" onClick={(e)=>this.TabClick(e,"tab2")} >A To Z</a>
-                            <a class=" h4 col-lg-2 col-md-3 element" >Newest</a>
-                            <a class=" h4 col-lg-2 col-md-3 element" >Rates</a>
+                            <a class=" h4 col-lg-2 col-md-3 element" onClick={(e)=>this.TabClick(e,"tab4")} >Rates</a>
                         </div>
                         <div class="container card">
 
