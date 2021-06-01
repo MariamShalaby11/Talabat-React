@@ -1,6 +1,6 @@
 import React from 'react';
 import FoodAway from '../images/FoodAway (8).png';
- 
+import {Link} from 'react-router-dom';
 export default class Header extends React.Component{
     render(){
         return(
@@ -18,7 +18,9 @@ export default class Header extends React.Component{
 					<ul class="navbar-nav ml-auto" id="items">
 						<li class="nav-item"><a class="nav-link" href="../Offers/Offers.html" id="links">Offers</a></li>
 						<li class="nav-item"><a class="nav-link" href="../Become a partner/second.html" id="links">Become a Partner</a></li>
-						<li class="nav-item "><a class="nav-link" href="All Restaraunts.html" id="links">All Restaurants</a></li>
+						<li class="nav-item">
+                            <Link class="nav-link active" to="/MariamShalaby11/Talabat-React/AllResturants" >All Resturants</Link>
+                       </li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">My Account</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">

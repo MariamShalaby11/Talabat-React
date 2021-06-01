@@ -18,17 +18,17 @@ export default class Home extends React.Component{
 
     }
     async componentDidMount(){
-      await axios.get('http://localhost:52593/api/Cities').then(res=>{
+      await axios.get('http://localhost:58160/Home/RestrauntAddresses').then(res=>{
           this.setState({Cities:res.data})
          console.log(res.data)
            })
           } 
-    // ResturantList=(i)=>{
-    //   await axios.get(`http://localhost:52593/api/Resturants/${i}`).then(res=>{
-    //     this.setState({Resturants:res.data})
-    //    console.log(res.data)
-    //      })
-    // }
+     ResturantList=(i)=>{
+       axios.get(`http://localhost:58160/Home/TopRatedRestaunt/${i}`).then(res=>{
+        this.setState({Resturants:res.data})
+       console.log(res.data)
+         })
+    }
   
     render(){
         return(
@@ -157,21 +157,19 @@ export default class Home extends React.Component{
 <h1 id="restHead" > Most Popular Resturants <FaFire/> </h1>
 
 <div class="container  row  restcontainer ">
-          
-{
-                 this.state.Cities.map((city)=>{
+<div class="col-lg-3 col-12 ">
+            {
+                 this.state.Cities.map((cty,i)=>{
                 return(
-                    <div class="col-lg-3 col-12 ">
+                          <button class="btn btn-light form-control cityButtons" >{cty.city}</button>
                   
-                          <button class="btn btn-light form-control cityButtons" onClick={()=>this.ResturantList(city.city)}>{city.city}</button>
-                        
-                      </div>
                  )
                 })
             }
+              </div>
         <div class="col-lg-9">
             <div class=" row">
-            {/* {
+            {
                  this.state.Resturants.map((Rest)=>{
                 return(
                 <div class="card col-lg-4 col-12 ">
@@ -183,8 +181,8 @@ export default class Home extends React.Component{
                 </div>
                   )
                 })
-            } */}
-                {/* <div class="card col-lg-4 col-12 ">
+            }  
+                 <div class="card col-lg-4 col-12 ">
                     <img class="card-img-top cardimg" src={slide4} alt="Card image cap"/>
                     <div class="card-body">
                         <h5 class="card-title">Foodies</h5>
@@ -195,7 +193,7 @@ export default class Home extends React.Component{
                     <div class="card-body">
                         <h5 class="card-title">Foodies</h5>
                     </div>
-                </div> */}
+                </div>
    
             </div>
         </div>
