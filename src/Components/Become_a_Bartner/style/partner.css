@@ -35,6 +35,11 @@
             margin-top: 28px;
         }
                 
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+          -webkit-appearance: none; 
+          margin: 0; 
+        }
           a:hover{
               text-decoration:none;
               cursor: pointer;
