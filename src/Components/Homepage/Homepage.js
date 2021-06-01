@@ -39,7 +39,7 @@ export default class Home extends React.Component{
 
        
           <Carousel.Item class="carousel-item active">
-                <img class="d-block w-100 slider" src={slide1} alt="First slide"/>
+                <img class="d-block w-100 slider " src={slide1} alt="First slide" />
                < Carousel.Caption class="carousel-caption  d-md-block">
                     <h1 class="m-b-20 header"><strong>Welcome To FoodAway </strong></h1>
                     <h6 class="m-b-40 ">Join Us now And Fullfill your cravings !</h6>
@@ -115,14 +115,14 @@ export default class Home extends React.Component{
       <div id="info">
 
         <div>
-        <h1>How it Works ! </h1>
+        <h1 style={{color:"black"}}>How it Works ! </h1>
         <p id="steps">Your favourite Meals in 3 steps</p>
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <div class="col-lg-4 col-12">
           <div class="card ">
             <div class="card-header bg-transparent "><span class="num">1</span></div>
-            <div class="card-body">
+            <div class="card-body bg-transparent">
               <h1><FaMapMarkedAlt/></h1>
               <h5 class="card-title">Search by Address</h5>
               <p class="card-text">Find all restaurants available in your zone.</p>
@@ -132,7 +132,7 @@ export default class Home extends React.Component{
           <div class="col-lg-4 col-12">
             <div class="card ">
               <div class="card-header bg-transparent "><span  class="num">2</span></div>
-              <div class="card-body">
+              <div class="card-body bg-transparent">
                 <h1><FaHamburger/></h1>
                 <h5 class="card-title">Choose your Meal</h5>
                 <p class="card-text">Choose your favourite meal from more than 120,000 meals in Egyptian Restaurants.</p>
@@ -142,7 +142,7 @@ export default class Home extends React.Component{
             <div class="col-lg-4 col-12">
               <div class="card ">
                 <div class="card-header bg-transparent "><span  class="num">3</span></div>
-                <div class="card-body">
+                <div class="card-body bg-transparent">
                   <h1><FaTruckLoading/></h1>
                   <h5 class="card-title">Enjoy your Food</h5>
                   <p class="card-text">Receive your favorite meal and pay on delivery.</p>
@@ -158,6 +158,7 @@ export default class Home extends React.Component{
 
 <div class="container  row  restcontainer ">
 <div class="col-lg-3 col-12 ">
+<button class="btn btn-light form-control cityButtons" >cairo</button>
             {
                  this.state.Cities.map((cty,i)=>{
                 return(
@@ -172,28 +173,36 @@ export default class Home extends React.Component{
             {
                  this.state.Resturants.map((Rest)=>{
                 return(
-                <div class="card col-lg-4 col-12 ">
+                <div class="card col-lg-4 col-12 shadow-none">
 
                     <img class="card-img-top cardimg"  src={Rest.Image} alt="Card image cap"/>
-                    <div class="card-body">
-                        <h5 class="card-title">{Rest.RestaurantName}</h5>
+                    <div class="card-body bg-transparent">
+                        <h5 class="card-title bg-transparent">{Rest.RestaurantName}</h5>
                     </div>
                 </div>
                   )
                 })
             }  
-                 <div class="card col-lg-4 col-12 ">
+                 <div class="card col-lg-4 col-12 shadow-none ">
                     <img class="card-img-top cardimg" src={slide4} alt="Card image cap"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Foodies</h5>
+                    <div class="card-body bg-transparent">
+                        <h5 class="card-title bg-transparent">Foodies</h5>
                     </div>
                 </div>
-                <div class="card col-lg-4 col-12 ">
+                <div class="card col-lg-4 col-12 shadow-none">
                     <img class="card-img-top cardimg" src={slide4} alt="Card image cap"/>
-                    <div class="card-body">
-                        <h5 class="card-title">Foodies</h5>
+                    <div class="card-body bg-transparent">
+                        <h5 class="card-title bg-transparent">Foodies</h5>
                     </div>
                 </div>
+                <div class="card col-lg-4 col-12 shadow-none">
+                    <img class="card-img-top cardimg" src={slide4} alt="Card image cap"/>
+                    <div class="card-body bg-transparent">
+                        <h5 class="card-title bg-transparent">Foodies</h5>
+                    </div>
+                </div>
+  
+                
    
             </div>
         </div>

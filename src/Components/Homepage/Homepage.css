@@ -1,8 +1,10 @@
 .slider{
     opacity: 0.8;
     height: 600px;
+    border-radius: 0px;
 
 }
+
 .carousel-caption{
     transform: translate(-50%, -50%);
     color: black;
@@ -18,24 +20,7 @@
     font-size:60px;
     color:#D0A772;
 }
-/* .carousel .control-next.control-arrow, .carousel .control-next.control-arrow:hover{
-    background-color: transparent;
-    right: -146px;
-}
-.carousel .control-prev.control-arrow, .carousel .control-prev.control-arrow:hover {
-    background-color: transparent;
-    left: -146px;
-}
 
-.carousel .control-arrow, .carousel.carousel-slider .control-arrow{
-    opacity: 1;
-}
-.swiper-button-next {
-    background-color: peru;
-    width: 50px;
-    height: 50px;
-    top: 50%;
-} */
 #mapbtn{
     background-color: white;
     border: none;
@@ -75,11 +60,10 @@
 #map,#info{
     padding: 70px;
     text-align: center;
-    font-family: 'Montserrat', sans-serif;   
+    font-family: 'Montserrat', sans-serif;
+    color: black;
 }
 #maptxt{
-    
-    /* width: 300px; */
     height: 50px;
     border: none;
 }
@@ -104,6 +88,8 @@
 }
 .card{
     border: none;
+    box-shadow: 0;
+    color: black;
 }
 .num{
     border: 1px solid black;
@@ -127,5 +113,9 @@
 .cityButtons{
   margin-bottom: 10px;
   padding: 5px;
-  
+  height: 50px;
+  font-weight: bold;
+}
+.card-title,.h5{
+    background-color: white;
 }

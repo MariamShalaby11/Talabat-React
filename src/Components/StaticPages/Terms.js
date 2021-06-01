@@ -9,7 +9,7 @@ export default class Terms extends React.Component{
         return(
 
            <>
-<div className="card card-body" id="con1">
+<div className="card card-body bg-transparent" id="con1">
     <h2> Terms and Conditions</h2>
     <hr/>
         <Accordion defaultActiveKey="0">

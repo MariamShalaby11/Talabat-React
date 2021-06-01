@@ -31,3 +31,8 @@
 .pagination{
     margin-left: 35%;
 }
+.img-fluid{
+    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+}

@@ -24,11 +24,11 @@ export default class AllRestaurants extends React.Component{
         return(
         <div class="container" id="div1">
             <div class="row">
-                <div class="card" id="card1">
+                <div class="card bg-transparent" id="card1">
                     <div class="card-header" style={{height: 50}}>
                       <h4>All Restaurants</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body bg-transparent">
                         <div class="form-inline my-2 my-lg-0">
                             <div class="input-group input-group" id="myDiv">
                                 <div class="input-group-prepend">
@@ -47,13 +47,14 @@ export default class AllRestaurants extends React.Component{
                                 <div class="col-lg-4 col-md-6">
                                     <div class="gallery-single fix">
                                         <img src={slide1} class="img-fluid" alt="Image"/>
-                                        <div class="why-text">
+                                        <div class="card-title">
                                             <h4>{AllRest.RestaurantName}</h4>
                                             <p>{AllRest.Description}</p>
                                         </div>
                                     </div>
                                 </div>   
-                                    )})}                                                                                     
+                                    )})}   
+                                                                                                        
                                 </div>                                                
                     </div>
 

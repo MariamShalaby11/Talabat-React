@@ -9,7 +9,7 @@ export default class Privacy extends React.Component{
         return(
 
            <>
-<div className="card card-body" id="con1">
+<div className="card card-body bg-transparent" id="con1">
     <h2> Privacy</h2>
     <hr/>
         <Accordion defaultActiveKey="0">

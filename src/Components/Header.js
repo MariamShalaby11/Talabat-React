@@ -5,21 +5,25 @@ export default class Header extends React.Component{
     render(){
         return(
             <>
-            <nav class="navbar navbar-expand-lg navbar-light" id="nav" style={{backgroundColor: "#F8F9FA"}}>
+            <nav class="navbar navbar-expand-lg navbar-light" style={{backgroundColor: "#F8F9FA"}}>
 			<div class="container">
-				<a class="navbar-brand" href="All Restaraunts.html">
-					
-                    <img src={FoodAway} alt="nh" style={{width:250, height:50}}/>
-				</a>
+				
+                <Link class="navbar-brand" to="/MariamShalaby11/Talabat-React/Home" > <img src={FoodAway} alt="nh" style={{width:250, height:50}}/></Link>	
+                   
+				
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto" id="items">
-						<li class="nav-item"><a class="nav-link" href="../Offers/Offers.html" id="links">Offers</a></li>
-						<li class="nav-item"><a class="nav-link" href="../Become a partner/second.html" id="links">Become a Partner</a></li>
+					   <li class="nav-item">
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants" >Offers</Link>
+                       </li>
+                       <li class="nav-item">
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants" >Become a partner</Link>
+                       </li>
 						<li class="nav-item">
-                            <Link class="nav-link active" to="/MariamShalaby11/Talabat-React/AllResturants" >All Resturants</Link>
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants" >All Resturants</Link>
                        </li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">My Account</a>
