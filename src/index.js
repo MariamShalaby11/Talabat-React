@@ -4,6 +4,7 @@ import './index.css';
 //import Filters from './Components/Filters/Filter';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+<<<<<<< Updated upstream
 //import Home from './Components/Homepage/Homepage';
 import AppRouter from './Components/Router/AppRouter';
 // import MapContainer from './Components/Homepage/map';
@@ -12,6 +13,13 @@ import AppRouter from './Components/Router/AppRouter';
 // import Faq from './Components/StaticPages/FAQ';
 // import Privacy from './Components/StaticPages/Privacy';
 // import Terms from './Components/StaticPages/Terms';
+=======
+import Home from './Components/Homepage/Homepage';
+import Menu from './Components/Menues/Menu';
+
+
+
+>>>>>>> Stashed changes
 ReactDOM.render(
   <React.StrictMode>
     <AppRouter />

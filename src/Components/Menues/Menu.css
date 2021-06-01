@@ -1,0 +1,154 @@
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+
+
+.topnav {
+    overflow: hidden;
+}
+
+    .topnav a {
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        border-bottom: 3px solid transparent;
+    }
+
+        .topnav a:hover {
+            border-bottom: 3px solid red;
+        }
+
+        .topnav a.active {
+            border-bottom: 3px solid red;
+        }
+
+.element {
+    font-family: Arial;
+}
+
+
+#footer {
+    background-color: #232325;
+    width: 100%;
+    height: 450px;
+}
+
+    #footer div:first-of-type div:first-of-type div:first-of-type h1 {
+        color: var(--defaultcolor);
+        font-family: 'Orelega One', cursive;
+        font-weight: bold;
+        letter-spacing: 3px;
+        font-size: 50px;
+    }
+
+    #footer h1, a {
+        color: white;
+    }
+
+    #footer h1 {
+        font-size: 16px;
+    }
+
+    #footer a {
+        display: block;
+        line-height: 36px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+        #footer a:hover, a:active {
+            text-decoration: underline;
+            color: white;
+        }
+
+    #footer hr {
+        opacity: .12;
+        background-color: #d5d4d4;
+        display: block;
+        margin-top: 1.5%;
+        width: 70%;
+        height: 1px;
+        clear: both;
+    }
+
+i {
+    font-size: 1.73em;
+}
+
+#a {
+    color: rgba(255, 255, 255, .6);
+    font-size: 14px;
+}
+
+
+
+
+#icontap{
+
+    font-size:25px;color:#FF5B33;margin:5px
+
+}
+
+#tabs{
+    font-size: 15px;
+}
+#iop{
+    color:orange;
+}
+
+#divcon{
+    margin-top:20px;
+}
+
+#divcon1{
+    padding:15px;margin:5px;
+}
+
+#divcon1im{
+
+    border-radius:10%;
+}
+#spanmedia{
+    font-family:Arial;color:#aaa;margin:10px;
+
+}
+
+#opendiv{
+    text-align:right;
+
+
+}
+
+#openp{
+    color:forestgreen;height:30px;
+}
+
+#divop{
+    text-align:right;
+}
+
+#iop{
+    font-size:23px;margin:2px;
+}
+
+#spop{
+    color: #aaa;
+
+}
