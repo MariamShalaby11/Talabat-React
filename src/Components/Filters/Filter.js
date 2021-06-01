@@ -55,7 +55,7 @@ class Filters extends React.Component {
                     <div class="col-lg-3 col-md-12" >
                         <div class="form-group has-search" style={{ marginTop: 10 }}>
                             <span class="fa fa-search form-control-feedback"></span>
-                            <input type="text" class="form-control" placeholder="Search Menue Item"
+                            <input type="text" class="form-control" placeholder="Search Menu Item"
 
                                 onChange={(e) => {
 

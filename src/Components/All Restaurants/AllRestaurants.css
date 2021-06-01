@@ -1,0 +1,33 @@
+
+.card-header{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    border-bottom: hidden;
+   
+}
+#myDiv{
+    border: none;
+}
+#card1{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 100%;
+}
+#icon{
+    margin-bottom: 15px;
+}
+#search{
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+#rest{
+    cursor: pointer;
+}
+.card-footer{
+    background: transparent;
+}
+.pagination{
+    margin-left: 35%;
+}
