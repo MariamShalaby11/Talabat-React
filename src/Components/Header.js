@@ -5,7 +5,7 @@ export default class Header extends React.Component{
     render(){
         return(
             <>
-            <nav class="navbar navbar-expand-lg navbar-light" style={{backgroundColor: "#F8F9FA"}}>
+            <nav class="navbar navbar-expand-lg navbar-light fix" style={{backgroundColor: "#F8F9FA"}}>
 			<div class="container">
 				
                 <Link class="navbar-brand" to="/MariamShalaby11/Talabat-React/Home" > <img src={FoodAway} alt="nh" style={{width:250, height:50}}/></Link>	

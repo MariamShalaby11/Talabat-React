@@ -8,7 +8,7 @@ import slide3 from '../../images/partner2.jpg';
 import slide4 from '../../images/burgers.jpg';
 import { FaFire, FaHamburger, FaLocationArrow, FaMapMarkedAlt, FaMapMarkerAlt, FaTruckLoading} from "react-icons/fa";
 import { HashLink } from 'react-router-hash-link';
-import{BrowserRouter as Router} from 'react-router-dom';
+import{BrowserRouter as Router,Link} from 'react-router-dom';
 import axios from 'axios';
 
 export default class Home extends React.Component{
@@ -46,7 +46,7 @@ export default class Home extends React.Component{
                    
                     <p> 
                      <Router>
-                      <HashLink class="btn btn-lg btn-circle btn-outline-new-white" smooth to='/Home/#map' > Order </HashLink>
+                      <HashLink class="btn btn-lg btn-circle btn-outline-new-white" smooth to='/MariamShalaby11/Talabat-React/Home/#map' > Order </HashLink>
                     </Router>
                    </p>  
                     {/* <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#map"> Order </a></p> */}
@@ -58,7 +58,7 @@ export default class Home extends React.Component{
                 <h1 class="m-b-20 header"><strong>Welcome To FoodAway </strong></h1>
                 <p class="m-b-40">And Enjoy the fastest Delivery For your Favourite food Right to your Door !</p>
                 <Router>
-                      <HashLink class="btn btn-lg btn-circle btn-outline-new-white" smooth to='/Home/#info' > Order </HashLink>
+                      <HashLink class="btn btn-lg btn-circle btn-outline-new-white" smooth to='/MariamShalaby11/Talabat-React/Home/#info' > Order </HashLink>
                 </Router>
               </Carousel.Caption>
           </Carousel.Item>
@@ -75,7 +75,7 @@ export default class Home extends React.Component{
                 <Carousel.Caption class="carousel-caption d-md-block">
                     <h1 class="m-b-20 header"><strong>Welcome To FoodAway </strong></h1>
                     <p class="m-b-40">Explore variety of Resturants!</p>
-                    <p><a class="btn btn-lg btn-circle btn-outline-new-white " href="#">All Resturants</a></p>
+                    <Router><Link class="btn btn-lg btn-circle btn-outline-new-white " to="/MariamShalaby11/Talabat-React/AllResturants">All Resturants</Link></Router>
                 </Carousel.Caption>
           </Carousel.Item>
       
@@ -89,21 +89,21 @@ export default class Home extends React.Component{
                   {/* //-------------------------------------------map */}
       <div id="map">
       
-            <h1>Enter The City you want to Deliver To  </h1>
+            <h1>Enter the city you want to deliver to  </h1>
             <div class="row justify-content-center ">
                 <div class="col-lg-4 col-12  input-group ">
                     <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"><FaMapMarkerAlt/></span>
+                    <span class="input-group-text" id="basic-addon1" ><FaMapMarkerAlt/></span>
                     </div>
                     <input class="form-control" id="maptxt" type="text" placeholder="Search for Area , street name or Landmark"></input>
                     <div class="input-group-append">
                     {/* <Tooltip title="Get my Location"> */}
-                 <button id="mapbtn"> <span class="input-group-text" id="basic-addon1"><FaLocationArrow/></span> </button>
+                 <button id="mapbtn"> <span class="input-group-text" id="basic-addon1" style={{color:"#cfa671"}}><FaLocationArrow/></span> </button>
                     </div>
                 </div>
             
                 <div class="col-lg-2 col-12 "> 
-                    <button class="btn btn-warning " >Let's go</button>
+                    <button class="btn btn-warning mapbtn" >Let's go</button>
                 </div>
             
             </div>
@@ -120,30 +120,30 @@ export default class Home extends React.Component{
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <div class="col-lg-4 col-12">
-          <div class="card ">
+          <div class="card shadow-none">
             <div class="card-header bg-transparent "><span class="num">1</span></div>
             <div class="card-body bg-transparent">
-              <h1><FaMapMarkedAlt/></h1>
+              <h1 className="icons"><FaMapMarkedAlt/></h1>
               <h5 class="card-title">Search by Address</h5>
               <p class="card-text">Find all restaurants available in your zone.</p>
             </div>
           </div>
           </div>
           <div class="col-lg-4 col-12">
-            <div class="card ">
+            <div class="card shadow-none">
               <div class="card-header bg-transparent "><span  class="num">2</span></div>
               <div class="card-body bg-transparent">
-                <h1><FaHamburger/></h1>
+                <h1 className="icons"><FaHamburger/></h1>
                 <h5 class="card-title">Choose your Meal</h5>
                 <p class="card-text">Choose your favourite meal from more than 120,000 meals in Egyptian Restaurants.</p>
               </div>
             </div>
             </div>
             <div class="col-lg-4 col-12">
-              <div class="card ">
+              <div class="card shadow-none">
                 <div class="card-header bg-transparent "><span  class="num">3</span></div>
                 <div class="card-body bg-transparent">
-                  <h1><FaTruckLoading/></h1>
+                  <h1 className="icons"><FaTruckLoading/></h1>
                   <h5 class="card-title">Enjoy your Food</h5>
                   <p class="card-text">Receive your favorite meal and pay on delivery.</p>
                 </div>
@@ -154,7 +154,7 @@ export default class Home extends React.Component{
       </div>
 {/* //-------------------------Resturants---------------------------------- */}
 
-<h1 id="restHead" > Most Popular Resturants <FaFire/> </h1>
+<h1 id="restHead" > Most Popular Resturants<span style={{color:"Red"}}> <FaFire/></span> </h1>
 
 <div class="container  row  restcontainer ">
 <div class="col-lg-3 col-12 ">
@@ -201,13 +201,12 @@ export default class Home extends React.Component{
                         <h5 class="card-title bg-transparent">Foodies</h5>
                     </div>
                 </div>
-  
+               
                 
    
             </div>
         </div>
-
-    
+      
     </div>
  
 </>

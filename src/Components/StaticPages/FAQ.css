@@ -12,6 +12,9 @@
       padding: 5px;
   }
   .crd{
-      border-bottom: 2px solid #EE2644;
+      border-bottom: 3px solid #cfa671;
       padding: 5px;
+  }
+  .card{
+      margin-top: 20px;
   }

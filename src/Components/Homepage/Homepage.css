@@ -67,6 +67,10 @@
     height: 50px;
     border: none;
 }
+.mapbtn{
+    background: #cfa671;
+    
+}
 
 .input-group-text{
     background-color: transparent;
@@ -78,6 +82,9 @@
 }
 #steps{
     color: grey;
+}
+.icons{
+    color: #cfa671;
 }
 .card-header{
     border: none;
