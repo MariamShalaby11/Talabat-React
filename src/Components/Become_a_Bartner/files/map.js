@@ -5,7 +5,7 @@ import MapGL, {Marker, NavigationControl,GeolocateControl} from 'react-map-gl';
 import Pin from './Pin.js'
 import ControlPanel from './ControlPanel.js' 
 import Geocoder from 'react-map-gl-geocoder'
-import { LngLat } from 'mapbox-gl';
+import * as mapboxgl from 'mapbox-gl';
  
 // Ways to set Mapbox token: https://uber.github.io/react-map-gl/#/Documentation/getting-started/about-mapbox-tokens
 const MAPBOX_TOKEN ='pk.eyJ1IjoibW9oYW1lZHNoZXJiZW55IiwiYSI6ImNrbjh3Z2YycjBtM2cydm1xY3p2bTIzeWcifQ.BR7UFEI1yfjrKRDxMNrRMQ';
@@ -101,7 +101,7 @@ const Map = (props) => {
        props.MapResult(res.result.place_name);
     }, []);
   return (
-    <div style={{ height: "74vh" }}>
+    <div style={{ height: "70vh" }}>
       <MapGL
        ref={mapRef}
        {...viewport}

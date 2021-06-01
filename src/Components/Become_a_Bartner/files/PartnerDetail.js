@@ -73,7 +73,7 @@ export default class PartnerDetail extends React.Component{
     }
     EmailPassed=(e)=>{
       const validEmail = new RegExp(
-          '^[a-zA-Z]{3,9}$'
+          '[a-zA-Z0-9_]*@[A-Za-z]+.[a-zA-Z]{2,4}'
        );
        if(!validEmail.test(e)){
            this.setState({Emailpassed:false,EmailError:true,Email:e})
@@ -192,8 +192,8 @@ export default class PartnerDetail extends React.Component{
                   <label class="d-inline">Email</label>
                   <span class="required">*</span>
                   <input type="text" class="input-group-text text-left bg-transparent input-group-append"
-                   placeholder="www.example.com" onChange={(e)=>{this.EmailError(this.state.Emailpassed);this.EmailPassed(e.target.value);}} value={this.state.Email}/>
-                   {this.state.EmailError&&<span class="error">Wrong Email Format</span>}
+                   placeholder="example@example.com" onChange={(e)=>{this.EmailError(this.state.Emailpassed);this.EmailPassed(e.target.value);}} value={this.state.Email}/>
+                   {this.state.EmailError&&<span class="error">please enter email as ****@****.***</span>}
 
                   
                 </div>
@@ -209,20 +209,21 @@ export default class PartnerDetail extends React.Component{
                   
                   <input type="text" class="input-group-text text-left bg-transparent input-group-append"
                    placeholder="Type your Password" onChange={(e)=>{this.PasswordError(this.state.PasswordPassed);this.PasswordPassed(e.target.value);}} value={this.state.Password}/>
+                 <i class="fa fa-user icon bg-danger"></i>
                   {this.state.PasswordError&&<span class="error">Password should be character with at least one number </span>}
                </div>
                <div>
                   <label class="d-inline">Confirm Password</label>
                   
-                  <input type="text" class="input-group-text text-left bg-transparent input-group-append"
+                  <input type="password" class="input-group-text text-left bg-transparent input-group-append"
                    placeholder="Password Confirmation" onChange={(e)=>{this.CPasswordError(this.state.CPasswordPassed);this.CPasswordPassed(e.target.value);}} value={this.state.CPassword}/>
                 {this.state.CPasswordError&&<span class="error">Password doesn't match</span>}
                </div>
                 <div>
                   <label class="d-inline">Mobile Number</label>
                   
-                  <input type="text" class="input-group-text text-left bg-transparent input-group-append"
-                   placeholder="(+201)123456789)" onChange={(e)=>{this.MobileError(this.state.MobilePassed);this.MobilePassed(e.target.value);}} value={this.state.Mobile}/>
+                  <input type="number" class="input-group-text text-left bg-transparent input-group-append"
+                   placeholder="Number Only" onChange={(e)=>{this.MobileError(this.state.MobilePassed);this.MobilePassed(e.target.value);}} value={this.state.Mobile}/>
                 {this.state.MobileError&&<span class="error">Mobile Format should be Like (01-123456789)</span>}
                </div>
               <div class="d-flex w-100 " >
