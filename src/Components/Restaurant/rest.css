@@ -4,7 +4,7 @@
 .nav{
     background-color: orange;
 }
-.card{
+.MyContainerCard{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     }
 #backimg{
@@ -42,27 +42,27 @@
 #flo{
     float: right;
 }
-#info{
+#infoo{
     text-align:center;
     color: white;
 }
-img{
+.MyImages{
     width: 200px;
     height: 200px;
     border-radius: 100px;
 }
-#Description,#part2{
+#Description{
     padding: 50px;
 }
 
 .checked {
     color: orange;
   }
-  .card-body{
+.card-body{
     background-color: #F8F8F8;
    
-  }
-  .reviewCard{
+}
+.reviewCard{
   border: hidden;
-  }
+}
   
