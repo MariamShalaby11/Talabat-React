@@ -1,6 +1,6 @@
 import React from 'react';
 import './HeaderStyle.css';
-import FoodAway from '../images/FoodAway (8).png';
+import FoodAway from '../images/FoodAway (4).png';
 import {Link} from 'react-router-dom';
 export default class Header extends React.Component{
     render(){
