@@ -9,7 +9,7 @@ export default class Faq extends React.Component{
 
            <>
 <div className="card card-body bg-transparent staticcard" id="con1">
-    <h2 class="staticheader"> Frequently Asked Questions (FAQ)</h2>
+    <h2 class="staticheader" id="Card-header"> Frequently Asked Questions (FAQ)</h2>
     <hr/>
         <Accordion defaultActiveKey="0">
             <div className="crd">

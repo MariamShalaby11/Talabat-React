@@ -12,9 +12,9 @@
       padding: 5px;
   }
   .crd{
-      border-bottom: 3px solid #cfa671;
+      border-bottom: 3px solid #810000;
       padding: 5px;
   }
-  .staticcard{
-      margin-top: 20px;
+  #Card-header{
+      margin-top: 90px;
   }

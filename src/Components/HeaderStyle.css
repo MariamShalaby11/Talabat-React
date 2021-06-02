@@ -1,0 +1,17 @@
+#Mynav{
+	background-color: #810000;
+	padding: 15px 0px;
+	position: fixed;
+	width: 100%;
+	border-radius: 0px 0px 100px 100px;
+	transition: height .3s ease-out, background .3s ease-out, box-shadow .3s ease-out;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	-webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
+	z-index: 100;
+}
+#Navlinks, #dropdown-a{
+    color: #eeebdd;
+    font: bolder;
+}

@@ -22,7 +22,7 @@ export default class AllRestaurants extends React.Component{
             }      
     render(){
         return(
-        <div class="container" id="div1">
+        <div class="container">
             <div class="row">
                 <div class="card bg-transparent" id="card1">
                     <div class="card-header" style={{height: 50}} id="TopCard">

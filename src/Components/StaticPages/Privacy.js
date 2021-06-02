@@ -10,7 +10,7 @@ export default class Privacy extends React.Component{
 
            <>
 <div className="card card-body bg-transparent staticcard" id="con1">
-    <h2 class="staticheader"> Privacy</h2>
+    <h2 class="staticheader" id="Card-header"> Privacy</h2>
     <hr/>
         <Accordion defaultActiveKey="0">
             <div className="crd">

@@ -4,7 +4,9 @@ import Carousel from 'react-bootstrap/Carousel';
 import slide1 from '../../images/food.jpg';
 import slide2 from '../../images/Delivery.jpg';
 import slide3 from '../../images/partner2.jpg';
-import slide4 from '../../images/burgers.jpg';
+import slide4 from '../../images/bread.jpg';
+import slide5 from '../../images/burgers.jpg';
+
 import { FaFire, FaHamburger, FaLocationArrow, FaMapMarkedAlt, FaMapMarkerAlt, FaTruckLoading} from "react-icons/fa";
 import { HashLink } from 'react-router-hash-link';
 import{BrowserRouter as Router,Link} from 'react-router-dom';
@@ -44,10 +46,7 @@ export default class Home extends React.Component{
         return(
  <>       
  
-
  <Carousel  id="carouselExampleIndicators" class="carousel slide carousel-slider" data-ride="carousel">
-    
-
        
           <Carousel.Item class="carousel-item active">
                 <img className="d-block w-100 slider " src={slide1} alt="First slide" />
@@ -57,14 +56,14 @@ export default class Home extends React.Component{
                    
                     <p> 
                      <Router>
-                      <HashLink className="btn btn-lg btn-circle btn-outline-new-white" smooth to='/MariamShalaby11/Talabat-React/Home/#map' > Order </HashLink>
+                      <HashLink className="btn btn-lg btn-circle btn-outline-new-white" smooth to='/MariamShalaby11/Talabat-React/Home/#map'> Order </HashLink>
                     </Router>
                    </p>  
                     {/* <p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#map"> Order </a></p> */}
                 </Carousel.Caption>
             </Carousel.Item>
           <Carousel.Item class="carousel-item">
-            <img class="d-block w-100 slider" src={slide2} alt="Second slide"/>
+            <img class="d-block w-100 slider" src={slide2} alt="Second slide" />
             <Carousel.Caption class="carousel-caption  d-md-block carouselword">
                 <h1 class="m-b-20 headerr"><strong>Welcome To FoodAway </strong></h1>
                 <p class="m-b-40">And Enjoy the fastest Delivery For your Favourite food Right to your Door !</p>
@@ -74,7 +73,7 @@ export default class Home extends React.Component{
               </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item class="carousel-item">
-            <img class="d-block w-100 slider" src={slide3} alt="Third slide"/>
+            <img class="d-block w-100 slider" src={slide3} alt="Third slide" />
             <Carousel.Caption class="carousel-caption d-md-block carouselword">
                 <h1 class="m-b-20 headerr"><strong>Welcome To FoodAway  </strong></h1>
                 <p class="m-b-40">Become Our partner and Reach New Customers And get more Sales !</p>
@@ -82,17 +81,13 @@ export default class Home extends React.Component{
               </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item class="carousel-item">
-                <img class="d-block w-100 slider" src={slide4} alt="Fourth slide"/>
+                <img class="d-block w-100 slider" src={slide4} alt="Fourth slide" />
                 <Carousel.Caption class="carousel-caption d-md-block carouselword">
                     <h1 class="m-b-20 headerr"><strong>Welcome To FoodAway </strong></h1>
                     <p class="m-b-40">Explore variety of Resturants!</p>
                     <Router><Link class="btn btn-lg btn-circle btn-outline-new-white " to="/MariamShalaby11/Talabat-React/AllResturants">All Resturants</Link></Router>
                 </Carousel.Caption>
-          </Carousel.Item>
-      
-    
-       
-      
+          </Carousel.Item>      
         
 </Carousel> 
 
@@ -109,12 +104,12 @@ export default class Home extends React.Component{
                     <input class="form-control" id="maptxt" type="text" placeholder="Search for Area , street name or Landmark"></input>
                     <div class="input-group-append">
              
-                 <button id="mapbtnn"> <span class="input-group-text bg-transparent iconstyle" style={{color:"#cfa671"}}><FaLocationArrow/></span> </button>
+                 <button id="mapbtnn"> <span class="input-group-text bg-transparent iconstyle" style={{color:"#810000"}}><FaLocationArrow/></span> </button>
                     </div>
                 </div>
             
                 <div class="col-lg-2 col-12 "> 
-                    <button class="btn btn-warning gobtn " style={{backgroundColor:"#cfa671"}} >Let's go</button>
+                    <button class="btn btn-warning" id="MyMapButton">Let's go</button>
                 </div>
             
             </div>
@@ -165,7 +160,7 @@ export default class Home extends React.Component{
       </div>
 {/* //-------------------------Resturants---------------------------------- */}
 
-<h1 id="restHead" > Most Popular Resturants<span style={{color:"Red"}}> <FaFire/></span> </h1>
+<h1 id="restHead" > Most Popular Resturants<span style={{color:"#810000"}}> <FaFire/></span> </h1>
 
  <div class="container  row" id="restcontainer">
     <div class="col-lg-3 col-12 ">
@@ -195,19 +190,19 @@ export default class Home extends React.Component{
                 })
             }  
                  <div class="card col-lg-4 col-12 shadow-none cardes">
-                    <img class="card-img-top cardimgs" src={slide4} alt="Card image cap"/>
+                    <img class="card-img-top cardimgs" src={slide5} alt="Card image cap"/>
                     <div class="card-body bg-transparent">
                         <h5 class="card-title bg-transparent">Foodies</h5>
                     </div>
                 </div>
                 <div class="card col-lg-4 col-12 shadow-none cardes">
-                    <img class="card-img-top cardimgs" src={slide4} alt="Card image cap"/>
+                    <img class="card-img-top cardimgs" src={slide5} alt="Card image cap"/>
                     <div class="card-body bg-transparent">
                         <h5 class="card-title bg-transparent">Foodies</h5>
                     </div>
                 </div>
                 <div class="card col-lg-4 col-12 shadow-none cardes">
-                    <img class="card-img-top cardimgs" src={slide4} alt="Card image cap"/>
+                    <img class="card-img-top cardimgs" src={slide5} alt="Card image cap"/>
                     <div class="card-body bg-transparent">
                         <h5 class="card-title bg-transparent">Foodies</h5>
                     </div>

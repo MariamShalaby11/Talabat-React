@@ -1,11 +1,12 @@
 import React from 'react';
+import './HeaderStyle.css';
 import FoodAway from '../images/FoodAway (8).png';
 import {Link} from 'react-router-dom';
 export default class Header extends React.Component{
     render(){
         return(
             <>
-            <nav class="navbar navbar-expand-lg navbar-light fix" style={{backgroundColor: "#F8F9FA"}}>
+            <nav class="navbar navbar-expand-lg navbar-light fix"  id="Mynav">
 			<div class="container">
 				
                 <Link class="navbar-brand" to="/MariamShalaby11/Talabat-React/Home" > <img src={FoodAway} alt="nh" style={{width:250, height:50}}/></Link>	
@@ -17,13 +18,13 @@ export default class Header extends React.Component{
                   <div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto" id="items">
 					   <li class="nav-item">
-                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants" >Offers</Link>
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants" id="Navlinks">Offers</Link>
                        </li>
                        <li class="nav-item">
-                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants" >Become a partner</Link>
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >Become a partner</Link>
                        </li>
 						<li class="nav-item">
-                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants" >All Resturants</Link>
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >All Resturants</Link>
                        </li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">My Account</a>

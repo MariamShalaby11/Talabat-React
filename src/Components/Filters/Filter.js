@@ -111,7 +111,7 @@ class Filters extends React.Component {
 
                         <div class="card shadow-sm p-3 mb-2 bg-white rounded">
 
-                            <h5>Cusin</h5>
+                            <h5>Cusine</h5>
 
                             {
 
@@ -155,7 +155,7 @@ class Filters extends React.Component {
 
                             <div style={{ padding: 10 }}>
 
-                               <div>
+                               <div> 
                                     {
                                         this.state.Restaurant.map((res, i) => {
                                             return (

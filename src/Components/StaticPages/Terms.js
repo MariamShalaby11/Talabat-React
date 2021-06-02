@@ -10,7 +10,7 @@ export default class Terms extends React.Component{
 
            <>
 <div className="card card-body bg-transparent staticcard" id="con1">
-    <h2  class="staticheader"> Terms and Conditions</h2>
+    <h2  class="staticheader" id="Card-header"> Terms and Conditions</h2>
     <hr/>
         <Accordion defaultActiveKey="0">
             <div className="crd">
