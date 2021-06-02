@@ -21,6 +21,7 @@ import order_placed from '../img/order_placed.svg'
 export default class BeniftOfBenigPartner extends React.Component{
     constructor(props) {
         super(props);
+        
       }
   render(){
       return(
