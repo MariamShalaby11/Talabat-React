@@ -8,8 +8,8 @@ export default class Faq extends React.Component{
         return(
 
            <>
-<div className="card card-body bg-transparent" id="con1">
-    <h2> Frequently Asked Questions (FAQ)</h2>
+<div className="card card-body bg-transparent staticcard" id="con1">
+    <h2 class="staticheader"> Frequently Asked Questions (FAQ)</h2>
     <hr/>
         <Accordion defaultActiveKey="0">
             <div className="crd">
