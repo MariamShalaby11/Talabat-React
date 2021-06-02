@@ -25,19 +25,19 @@ export default class AllRestaurants extends React.Component{
         <div class="container" id="div1">
             <div class="row">
                 <div class="card bg-transparent" id="card1">
-                    <div class="card-header" style={{height: 50}}>
+                    <div class="card-header" style={{height: 50}} id="TopCard">
                       <h4>All Restaurants</h4>
                     </div>
                     <div class="card-body bg-transparent">
                         <div class="form-inline my-2 my-lg-0">
                             <div class="input-group input-group" id="myDiv">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm" id="icon">
-                                        <FaSearch/>
-                                        </span>   
-                                        </div>                             
+                                    <div class="input-group-prepend ">
+                                        <span class="input-group-text bg-transparent" style={{borderRight:"none"}}  id="MySearchIcon">
+                                            <FaSearch/>
+                                            </span>   
+                                    </div>                             
                                 <input type="text" class="form-control" aria-label="Small"
-                                    aria-describedby="inputGroup-sizing-sm" placeholder="Search Restaurant" id="search" />                                                                                                                                      
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="Search Restaurant" id="MySearchBox"  style={{borderLeft:"none"}}/>                                                                                                                                      
                             </div>                          
                         </div>
 
@@ -46,7 +46,7 @@ export default class AllRestaurants extends React.Component{
                                     return(
                                 <div class="col-lg-4 col-md-6">
                                     <div class="gallery-single fix">
-                                        <img src={slide1} class="img-fluid" alt="Image"/>
+                                        <img src={slide1} class="img-fluid" alt="Image" id="RestImage"/>
                                         <div class="card-title">
                                             <h4>{AllRest.RestaurantName}</h4>
                                             <p>{AllRest.Description}</p>
@@ -60,9 +60,9 @@ export default class AllRestaurants extends React.Component{
 
            {/*  -----------------Pagination------------------------------ */}
 
-                    <div class="card-footer text-muted">
+                    <div class="card-footer text-muted" id="MyCardFooter">
                         <nav aria-label="Page navigation example">
-                            <ul class="pagination">
+                            <ul class="pagination" id="MyPagination">
                               <li class="page-item">
                                 <a class="page-link" href="#" aria-label="Previous">
                                   <span aria-hidden="true">&laquo;</span>
