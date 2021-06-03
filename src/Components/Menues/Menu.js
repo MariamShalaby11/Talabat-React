@@ -4,7 +4,6 @@ import './MenueContent.css'
 import im from '../../images/avatar.jpg'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle, faComment, faSmile, faAppleAlt, faAngleDown, faAngleUp, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-import { Popup } from "semantic-ui-react";
 
 class Menue extends React.Component {
 
@@ -120,9 +119,7 @@ class Menue extends React.Component {
                                     return (
                                       <>
                                         <div class="row" id="conMargin">
-                                          <div class="col-3"><Popup  trigger={<img width="80" height="80" src={im} />} position="top center" >
-                                         <div class="card" style={{padding:7}}><img src={im} width="100" height="100" /></div>
-                                            </Popup></div>
+                                          <div class="col-3"></div>
                                           <div class="col-5">
                                             <p>{con.name}</p>
                                           </div>

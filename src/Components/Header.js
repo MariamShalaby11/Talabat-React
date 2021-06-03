@@ -9,7 +9,7 @@ export default class Header extends React.Component{
             <nav class="navbar navbar-expand-lg navbar-light fix"  id="Mynav">
 			<div class="container">
 				
-                <Link class="navbar-brand" to="/MariamShalaby11/Talabat-React/Home" > <img src={FoodAway} alt="nh" style={{width:250, height:50}}/></Link>	
+                <Link class="navbar-brand" to="/MariamShalaby11/Talabat-React/" > <img src={FoodAway} alt="nh" style={{width:250, height:50}}/></Link>	
                    
 				
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +21,7 @@ export default class Header extends React.Component{
                             <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants" id="Navlinks">Offers</Link>
                        </li>
                        <li class="nav-item">
-                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >Become a partner</Link>
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/BecomePartner"id="Navlinks" >Become a partner</Link>
                        </li>
 						<li class="nav-item">
                             <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >All Resturants</Link>

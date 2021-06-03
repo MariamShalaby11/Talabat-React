@@ -9,25 +9,30 @@ import Terms from './../StaticPages/Terms';
 import AllRestaurants from './../All Restaurants/AllRestaurants';
 import Menue from './../Menues/Menu';
 import Restaurant from './../Restaurant/Restaurant';
+import partner from './../Become_a_Bartner/files/partner';
+
+
 export default class AppRouter extends React.Component{
 
     render(){
+        const StaticRoute="/MariamShalaby11/Talabat-React/";
         return(
             
             <Router>
                 
                 <Header/>
-                
-                <Route component={Home}  path="/MariamShalaby11/Talabat-React" exact ></Route>
-                <Route component={Home}  path="/MariamShalaby11/Talabat-React/Home" exact ></Route>
-                <Route component={Filters}   path="/MariamShalaby11/Talabat-React/Filters" exact ></Route>
-                <Route component={Faq} path="/MariamShalaby11/Talabat-React/Faq/" exact></Route>
-                <Route component={Privacy} path="/MariamShalaby11/Talabat-React/Privacy/" exact></Route>
-                <Route component={Terms} path="/MariamShalaby11/Talabat-React/Terms/" exact></Route>
-                <Route component={AllRestaurants} path="/MariamShalaby11/Talabat-React/AllResturants" exact></Route>
-                <Route component={Menue} path="/MariamShalaby11/Talabat-React/Menu" exact></Route>
-                <Route component={Restaurant} path="/MariamShalaby11/Talabat-React/Restaurant" exact></Route>
+                <switch>
+                <Route component={Home}  path={StaticRoute} exact ></Route>
+                <Route component={Filters}   path={`${StaticRoute}filters`}></Route>
+                <Route component={Faq} path={`${StaticRoute}FAQ`} ></Route>
+                <Route component={Privacy} path={`${StaticRoute}Privacy`} ></Route>
+                <Route component={Terms} path={`${StaticRoute}Terms`}></Route>
+                <Route component={AllRestaurants} path={`${StaticRoute}AllResturants`} ></Route>
+                <Route component={partner} path={`${StaticRoute}BecomePartner`}></Route>
 
+                <Route component={Menue} path={`${StaticRoute}Menu`} ></Route>
+                <Route component={Restaurant} path={`${StaticRoute}Restaurant`} ></Route>
+               </switch>
 
 
            
