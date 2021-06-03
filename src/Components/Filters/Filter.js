@@ -78,11 +78,11 @@ class Filters extends React.Component {
 
     render() {
         return (
-            <div class="container shadow p-3 mb-5 bg-white rounded" style={{ marginTop: 20 }}>
-                <h3>Restaurant in Cairo</h3>
+            <div class="container shadow p-3 mb-5 bg-white rounded" >
+                <h3 style={{marginTop:110}}>Restaurant in Cairo</h3>
                 <div class="row">
                     <div class="col-lg-3 col-md-12" >
-                        <div class="form-group has-search" style={{ marginTop: 10 }}>
+                        <div class="form-group has-search" style={{ marginTop: 20 }}>
                             <span class="fa fa-search form-control-feedback"></span>
                             <input type="text" class="form-control" placeholder="Search Menu Item"
 
