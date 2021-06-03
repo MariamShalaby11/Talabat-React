@@ -1,7 +1,6 @@
 import React, { Component } from 'react'; 
 import Success from '../files/Success.js'
 import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.css';
 import partner from'../../Become_a_Bartner/style/partner.css'
 import Map from '../files/map.js'
 import banner2 from '../img/banner2.jpg'
@@ -79,7 +78,7 @@ export default class BeniftOfBenigPartner extends React.Component{
             </div>
       
 
-      <figure class="d-flex justify-content-center mt-5 pt-3">
+       <figure class="d-flex justify-content-center mt-5 pt-3">
         
          <img  src={fleet_new} />
 

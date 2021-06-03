@@ -1,6 +1,5 @@
 import React, { Component } from 'react'; 
 
-import 'bootstrap/dist/css/bootstrap.css';
 
 export default class PartnerDetail extends React.Component{
     constructor(props){

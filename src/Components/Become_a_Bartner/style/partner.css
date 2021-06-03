@@ -11,8 +11,8 @@
         .activeCart{
             
             color: black;
-             border-bottom:3px solid var( --defaultcolor);
-             padding-bottom:8px;
+            border-bottom:3px solid var( --defaultcolor);
+            padding-bottom:8px;
             padding-left: 32px;
             padding-right: 25px;
     

@@ -1,20 +1,19 @@
 import React, { Component } from 'react'; 
 import Success from '../files/Success.js'
-import 'bootstrap/dist/css/bootstrap.css';
 import logo from '../img/logo.svg'
 
 import BeniftOfBenigPartner from '../files/BeniftOfBenigPartner'
 import PartnerDetail from '../files/PartnerDetail'
 import StoreDetail from '../files/StoreDetail'
 
-
-
 export default class Partner extends React.Component {
  
         constructor(props) {
           super(props);
         }
+  
         render() {
+          
          return(
                  <div id="container">
               
