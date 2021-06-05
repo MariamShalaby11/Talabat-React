@@ -6,27 +6,31 @@ import slide2 from '../../images/Delivery.jpg';
 import slide3 from '../../images/partner2.jpg';
 import slide4 from '../../images/bread.jpg';
 import slide5 from '../../images/burgers.jpg';
-
 import { FaFire, FaHamburger, FaLocationArrow, FaMapMarkedAlt, FaMapMarkerAlt, FaTruckLoading} from "react-icons/fa";
 import { HashLink } from 'react-router-hash-link';
 import{BrowserRouter as Router,Link} from 'react-router-dom';
 import axios from 'axios';
-//import Map from '../Become_a_Bartner/files/map';
+import Map from '../Become_a_Bartner/files/map';
+import Modal from 'react-bootstrap/Modal';
+import {Typeahead} from 'react-bootstrap-typeahead';
 
 export default class Home extends React.Component{
     state={
       Resturants:[],
-      Cities:[],
+      Cities:[],show:false,
+      lat:"",lang:"",mapResult:""
 
     }
     async componentDidMount(){
-      await axios.get('http://localhost:58160/Home/RestrauntAddresses').then(res=>{
+      await axios.get('http://localhost:58160/api/RestrauntAddresses').then(res=>{
           this.setState({Cities:res.data})
+          axios.get(`http://localhost:58160/api/TopRatedRestaunt/cairo`).then(res=>{
+            this.setState({Resturants:res.data})})
          console.log(res.data)
            })
           } 
      ResturantList=(i)=>{
-       axios.get(`http://localhost:58160/Home/TopRatedRestaunt/${i}`).then(res=>{
+       axios.get(`http://localhost:58160/api/TopRatedRestaunt/${i}`).then(res=>{
         this.setState({Resturants:res.data})
        console.log(res.data)
          })
@@ -38,20 +42,35 @@ export default class Home extends React.Component{
     }
     MapResult=(_mapResult)=>{
       this.setState({
-        mapResult:_mapResult
+        mapResult:_mapResult.split(",")[0]
+        
       })
+      console.log(_mapResult)
+     const res= _mapResult.split(",");
+      console.log( _mapResult.split(",")[0])
     }
+      handleClose = () =>{
+         this.setState({
+           show:false
+         })
+       };
+       handleshoww= () =>{
+        this.setState({
+          show:true
+        })
+      };
+    
+  
   
     render(){
         return(
  <>       
- 
+
  <Carousel  id="carouselExampleIndicators" class="carousel slide carousel-slider" data-ride="carousel">
-       
           <Carousel.Item class="carousel-item active">
                 <img className="d-block w-100 slider " src={slide1} alt="First slide" />
                < Carousel.Caption class="carousel-caption d-md-block carouselword">
-                    <h1 className="m-b-20 headerr"><strong>Welcome To FoodAway </strong></h1>
+                    <h1 className="m-b-20 headerr"><strong>Welcome <span></span> To FoodAway </strong></h1>
                     <h6 className="m-b-40  ">Join Us now And Fullfill your cravings !</h6>
                    
                     <p> 
@@ -77,46 +96,59 @@ export default class Home extends React.Component{
             <Carousel.Caption class="carousel-caption d-md-block carouselword">
                 <h1 class="m-b-20 headerr"><strong>Welcome To FoodAway  </strong></h1>
                 <p class="m-b-40">Become Our partner and Reach New Customers And get more Sales !</p>
-                <p><a class="btn btn-lg btn-circle btn-outline-new-white " href="#">Become A partner</a></p>
+                <Link class="btn btn-lg btn-circle btn-outline-new-white " to={{pathname:"/MariamShalaby11/Talabat-React/BecomePartner"}}>Become a partner</Link>
               </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item class="carousel-item">
-                <img class="d-block w-100 slider" src={slide4} alt="Fourth slide" />
+                <img class="d-block w-100 slider" src={slide4}  />
                 <Carousel.Caption class="carousel-caption d-md-block carouselword">
-                    <h1 class="m-b-20 headerr"><strong>Welcome To FoodAway </strong></h1>
+                <h1 class="m-b-20 headerr"><strong style={{color:"#810000",fontSize:60}}>Welcome To FoodAway  </strong></h1>
                     <p class="m-b-40">Explore variety of Resturants!</p>
-                    <Router><Link class="btn btn-lg btn-circle btn-outline-new-white " to="/MariamShalaby11/Talabat-React/AllResturants">All Resturants</Link></Router>
+                   <Link class="btn btn-lg btn-circle btn-outline-new-white " to={{pathname:"/MariamShalaby11/Talabat-React/AllResturants"}}>All Resturants</Link>
                 </Carousel.Caption>
-          </Carousel.Item>      
-        
+          </Carousel.Item>           
 </Carousel> 
 
 
-                  {/* //-------------------------------------------map */}
+                  {/* -------------------------------------------map---------------------------------------------------- */}
       <div id="map">
-      
-            <h1>Enter the city you want to deliver to  </h1>
+   
+       <h1>Enter the city you want to deliver to  </h1>
             <div class="row justify-content-center ">
-                <div class="col-lg-4 col-12  input-group" id="mapinput">
-                    <div class="input-group-prepend">
-                    <span class="input-group-text bg-transparent iconstyle" ><FaMapMarkerAlt/></span>
+              {/* <form  class="col-lg-7 col-12  row justify-content-center"> */}
+                    <div class="col-lg-4 col-12  input-group" id="mapinput">
+                  
+                        <div class="input-group-prepend">
+                        <span class="input-group-text bg-transparent iconstyle" ><FaMapMarkerAlt/></span>
+                        </div>
+                        <Typeahead  style={{width:340,margintop:6}}   options={this.state.Cities} class="form-control" id="maptxt"  placeholder="Search for your city"/>
+                        
+                        <div class="input-group-append">
+                  
+                          <button id="mapbtnn"  onClick={this.handleshoww}> <span class="input-group-text bg-transparent iconstyle" style={{color:"#810000"}}><FaLocationArrow/></span> </button>
+                          
+                            <Modal show={this.state.show} onHide={this.handleClose} >
+                      
+                                  <Modal.Body>   <Map address={this.MapData} MapResult={this.MapResult}/></Modal.Body>
+                                  <Modal.Footer>
+                                    <button class="btn btn-danger" variant="secondary" onClick={this.handleClose}>
+                                      back
+                                    </button>
+                                    <Link class="btn btn-success" variant="primary"  to={{pathname:`/MariamShalaby11/Talabat-React/filters/${this.state.mapResult}`,selectedCity:this.state.mapResult}}>
+                                    Go
+                                    </Link>
+                                  </Modal.Footer>
+                            </Modal>
+                        </div>
                     </div>
-                    <input class="form-control" id="maptxt" type="text" placeholder="Search for Area , street name or Landmark"></input>
-                    <div class="input-group-append">
-             
-                 <button id="mapbtnn"> <span class="input-group-text bg-transparent iconstyle" style={{color:"#810000"}}><FaLocationArrow/></span> </button>
-                    </div>
-                </div>
-            
-                <div class="col-lg-2 col-12 "> 
-                    <button class="btn btn-warning" id="MyMapButton">Let's go</button>
-                </div>
-            
+                        <div class="col-md-2  "> 
+                            <button class="btn btn-warning" id="MyMapButton" >Let's go</button>
+                        </div>
+              {/* </form> */}
             </div>
-            {/* <Map address={this.MapData} MapResult={this.MapResult}/> */}
-        </div>
+        </div> {/*endmap */}
 
-     {/* //how it works-------------------------------------------------------- */}
+     {/* -------------------------------------how it works-------------------------------------------------------- */}
 
       <div id="info">
 
@@ -157,18 +189,18 @@ export default class Home extends React.Component{
             </div>
 
         </div>
-      </div>
-{/* //-------------------------Resturants---------------------------------- */}
+      </div>  {/*End how it works*/}
+
+{/* --------------------------------------------Resturants-------------------------------------------------- */}
 
 <h1 id="restHead" > Most Popular Resturants<span style={{color:"#810000"}}> <FaFire/></span> </h1>
 
  <div class="container  row" id="restcontainer">
     <div class="col-lg-3 col-12 ">
-    <button class="btn btn-light form-control cityButtons" >cairo</button>
             {
                  this.state.Cities.map((cty,i)=>{
                 return(
-                          <button class="btn btn-light form-control cityButtons" >{cty.city}</button>
+                          <button class="btn btn-light form-control cityButtons"onClick={()=>this.ResturantList(cty.city)} >{cty.city}</button>
                   
                  )
                 })
@@ -181,7 +213,7 @@ export default class Home extends React.Component{
                 return(
                 <div class="card col-lg-4 col-12 shadow-none cardes">
 
-                    <img class="card-img-top cardimgs"  src={Rest.Image} alt="Card image cap"/>
+                    <img class="card-img-top cardimgs"  src={slide5} alt="Card image cap"/>
                     <div class="card-body bg-transparent">
                         <h5 class="card-title bg-transparent">{Rest.RestaurantName}</h5>
                     </div>
@@ -189,7 +221,7 @@ export default class Home extends React.Component{
                   )
                 })
             }  
-                 <div class="card col-lg-4 col-12 shadow-none cardes">
+                 {/* <div class="card col-lg-4 col-12 shadow-none cardes">
                     <img class="card-img-top cardimgs" src={slide5} alt="Card image cap"/>
                     <div class="card-body bg-transparent">
                         <h5 class="card-title bg-transparent">Foodies</h5>
@@ -202,12 +234,12 @@ export default class Home extends React.Component{
                     </div>
                 </div>
                 <div class="card col-lg-4 col-12 shadow-none cardes">
-                    <img class="card-img-top cardimgs" src={slide5} alt="Card image cap"/>
+                    <img class="card-img-top cardimgs " src={slide5} alt="Card image cap"/>
                     <div class="card-body bg-transparent">
                         <h5 class="card-title bg-transparent">Foodies</h5>
                     </div>
                 </div>
-               
+                */}
                 
    
             </div>
