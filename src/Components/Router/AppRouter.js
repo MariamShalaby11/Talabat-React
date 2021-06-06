@@ -10,7 +10,7 @@ import AllRestaurants from './../All Restaurants/AllRestaurants';
 import Menue from './../Menues/Menu';
 import Restaurant from './../Restaurant/Restaurant';
 import partner from './../Become_a_Bartner/files/partner';
-
+import Register from '../Register/Register'
 
 export default class AppRouter extends React.Component{
 
@@ -24,6 +24,8 @@ export default class AppRouter extends React.Component{
                 <switch>
                 <Route component={Home}  path={StaticRoute} exact ></Route>
                 <Route component={Filters}   path={`${StaticRoute}filters`}></Route>
+                <Route component={Register}   path={`${StaticRoute}Register`}></Route>
+
                 <Route component={Faq} path={`${StaticRoute}FAQ`} ></Route>
                 <Route component={Privacy} path={`${StaticRoute}Privacy`} ></Route>
                 <Route component={Terms} path={`${StaticRoute}Terms`}></Route>

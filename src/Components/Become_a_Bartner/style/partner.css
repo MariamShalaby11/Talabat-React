@@ -4,7 +4,7 @@
 
 
 :root {
-    --defaultcolor:#ff5a00;
+    --defaultcolor:#b51717;
    
      }
     
@@ -64,7 +64,7 @@
           #container>div:first-of-type{
               background-image: url(../img//banner2.jpg);
               background-size: cover;
-            height: 1040px;
+            height: 1090px;
             color: white;
           }
           
@@ -149,7 +149,7 @@
      
       
       #card #maincard button{
-        line-height: 40px;
+        line-height: 35px;
         color: #FFFFFF;
         cursor: pointer;
         font-size: 16px;

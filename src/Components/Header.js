@@ -17,14 +17,15 @@ export default class Header extends React.Component{
                   </button>
                   <div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto" id="items">
-					   <li class="nav-item">
-                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants" id="Navlinks">Offers</Link>
-                       </li>
+
                        <li class="nav-item">
                             <Link class="nav-link" to="/MariamShalaby11/Talabat-React/BecomePartner"id="Navlinks" >Become a partner</Link>
                        </li>
 						<li class="nav-item">
                             <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >All Resturants</Link>
+                       </li>
+                       <li class="nav-item">
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/Register" id="Navlinks">Register</Link>
                        </li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">My Account</a>
