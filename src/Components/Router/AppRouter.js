@@ -12,6 +12,10 @@ import Restaurant from './../Restaurant/Restaurant';
 import partner from './../Become_a_Bartner/files/partner';
 import Register from '../Register/Register'
 
+import Offers from './../Offers/Offers';
+
+
+
 export default class AppRouter extends React.Component{
 
     render(){
@@ -34,6 +38,7 @@ export default class AppRouter extends React.Component{
 
                 <Route component={Menue} path={`${StaticRoute}Menu`} ></Route>
                 <Route component={Restaurant} path={`${StaticRoute}Restaurant`} ></Route>
+                <Route component={Offers} path={`${StaticRoute}Offers`} ></Route>
                </switch>
 
 
