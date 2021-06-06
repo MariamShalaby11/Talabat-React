@@ -8,9 +8,10 @@ import axios from 'axios';
 
 export default class AllRestaurants extends React.Component{
     state={
-        AllRestaurants:[]
+        AllRestaurants:[],SearchTerm:""
 
     }
+  
     async componentDidMount(){
 
         await axios.get('http://localhost:58160/api/AllRestPage').then(res=>{
@@ -37,7 +38,23 @@ export default class AllRestaurants extends React.Component{
                                             </span>   
                                     </div>                             
                                 <input type="text" class="form-control" aria-label="Small"
-                                    aria-describedby="inputGroup-sizing-sm" placeholder="Search Restaurant" id="MySearchBox"  style={{borderLeft:"none"}}/>                                                                                                                                      
+                                    aria-describedby="inputGroup-sizing-sm" placeholder="Search Restaurant"   onChange={(e) => {
+
+                                        if (e.target.value != '') {
+                                            axios.get(`http://localhost:58160/api/search/${e.target.value}`).then(
+                                                (res) => {
+                                                    this.state.AllRestaurants = res.data
+                                                    this.setState({
+                                                        AllRestaurants: this.state.AllRestaurants
+                                                    })
+                                                }
+                                            )
+                                        }
+                                        else{
+                                            this.componentDidMount()
+                                        } 
+    
+                                    }}id="MySearchBox"  style={{borderLeft:"none"}}/>                                                                                                                                      
                             </div>                          
                         </div>
 
@@ -55,7 +72,8 @@ export default class AllRestaurants extends React.Component{
                                 </div>   
                                     )})}   
                                                                                                         
-                                </div>                                                
+                                </div>       
+
                     </div>
 
            {/*  -----------------Pagination------------------------------ */}

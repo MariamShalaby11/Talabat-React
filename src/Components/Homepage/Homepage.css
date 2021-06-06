@@ -39,6 +39,8 @@
 #mapbtn{
     background-color: white;
     border: none;
+    background: none;
+   
 }
 .btn{
 	text-transform: uppercase;
@@ -78,9 +80,7 @@
     font-family: 'Montserrat', sans-serif;   
 }
 #maptxt{
-    
-    /* width: 300px; */
-    height: 50px;
+    height: 90px;
     border: none;
 }
 
@@ -90,7 +90,8 @@
 }
 .input-group{
     border: 2px solid black;
-    border-radius: 5px;
+    border-radius: 10px;
+    
 }
 #steps{
     color: grey;
@@ -127,5 +128,15 @@
 .cityButtons{
   margin-bottom: 10px;
   padding: 5px;
-  
+  height: 50px;
+  font-weight: bold;
+}
+
+#MyMapButton{
+    background-color: #810000;
+    color: white;
+    border-radius: 10px;
+    text-transform: uppercase;
+	padding: 12px 30px;
+    
 }
