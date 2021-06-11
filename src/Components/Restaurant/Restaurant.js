@@ -15,7 +15,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 // import Restaurant from './Restaurant';
-import Map from "./../Become_a_Bartner/files/map";
 
 class Restaurant extends Component {
   state = {
