@@ -13,21 +13,26 @@ import axios from 'axios';
 import Map from '../Become_a_Bartner/files/map';
 import Modal from 'react-bootstrap/Modal';
 import {Typeahead} from 'react-bootstrap-typeahead';
+import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 export default class Home extends React.Component{
     state={
       Resturants:[],
       Cities:[],show:false,
       lat:"",lang:"",mapResult:""
+      ,City:"",selectedCity:""
 
     }
     async componentDidMount(){
       await axios.get('http://localhost:58160/api/RestrauntAddresses').then(res=>{
           this.setState({Cities:res.data})
-          axios.get(`http://localhost:58160/api/TopRatedRestaunt/cairo`).then(res=>{
-            this.setState({Resturants:res.data})})
+    
          console.log(res.data)
            })
+           axios.get(`http://localhost:58160/api/GetCities`).then(x=>{
+            this.setState({City:x.data})})
+           axios.get(`http://localhost:58160/api/TopRatedRestaunt/cairo`).then(res=>{
+            this.setState({Resturants:res.data})})
           } 
      ResturantList=(i)=>{
        axios.get(`http://localhost:58160/api/TopRatedRestaunt/${i}`).then(res=>{
@@ -59,6 +64,12 @@ export default class Home extends React.Component{
           show:true
         })
       };
+      handleselect=(x)=>{
+        this.setState({
+          selectedCity:x
+        })
+
+      }
     
   
   
@@ -97,6 +108,7 @@ export default class Home extends React.Component{
                 <h1 class="m-b-20 headerr"><strong>Welcome To FoodAway  </strong></h1>
                 <p class="m-b-40">Become Our partner and Reach New Customers And get more Sales !</p>
                 <Link class="btn btn-lg btn-circle btn-outline-new-white " to={{pathname:"/MariamShalaby11/Talabat-React/BecomePartner"}}>Become a partner</Link>
+             
               </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item class="carousel-item">
@@ -104,7 +116,9 @@ export default class Home extends React.Component{
                 <Carousel.Caption class="carousel-caption d-md-block carouselword">
                 <h1 class="m-b-20 headerr"><strong style={{color:"#810000",fontSize:60}}>Welcome To FoodAway  </strong></h1>
                     <p class="m-b-40">Explore variety of Resturants!</p>
+                    
                    <Link class="btn btn-lg btn-circle btn-outline-new-white " to={{pathname:"/MariamShalaby11/Talabat-React/AllResturants"}}>All Resturants</Link>
+                   
                 </Carousel.Caption>
           </Carousel.Item>           
 </Carousel> 
@@ -121,8 +135,10 @@ export default class Home extends React.Component{
                         <div class="input-group-prepend">
                         <span class="input-group-text bg-transparent iconstyle" ><FaMapMarkerAlt/></span>
                         </div>
-                        <Typeahead  style={{width:340,margintop:6}}   options={this.state.Cities} class="form-control" id="maptxt"  placeholder="Search for your city"/>
-                        
+                        <Typeahead    options={this.state.City} class="form-control" id="maptxt"  placeholder="Search for your city"  
+                        onChange={(selectedCity) => {this.setState({selectedCity});}}
+                         selected={this.state.selectedCity}/>
+                        {console.log(this.state.selectedCity)}
                         <div class="input-group-append">
                   
                           <button id="mapbtnn"  onClick={this.handleshoww}> <span class="input-group-text bg-transparent iconstyle" style={{color:"#810000"}}><FaLocationArrow/></span> </button>
@@ -134,15 +150,17 @@ export default class Home extends React.Component{
                                     <button class="btn btn-danger" variant="secondary" onClick={this.handleClose}>
                                       back
                                     </button>
+                                  
                                     <Link class="btn btn-success" variant="primary"  to={{pathname:`/MariamShalaby11/Talabat-React/filters/${this.state.mapResult}`,selectedCity:this.state.mapResult}}>
                                     Go
                                     </Link>
+                                 
                                   </Modal.Footer>
                             </Modal>
                         </div>
                     </div>
                         <div class="col-md-2  "> 
-                            <button class="btn btn-warning" id="MyMapButton" >Let's go</button>
+                            <Link class="btn btn-warning" id="MyMapButton" to={{pathname:`/MariamShalaby11/Talabat-React/filters/${this.state.selectedCity}`,selectedCity:this.state.selectedCity}} >Let's go</Link>
                         </div>
               {/* </form> */}
             </div>
@@ -200,7 +218,7 @@ export default class Home extends React.Component{
             {
                  this.state.Cities.map((cty,i)=>{
                 return(
-                          <button class="btn btn-light form-control cityButtons"onClick={()=>this.ResturantList(cty.city)} >{cty.city}</button>
+                          <button class="btn btn-light form-control cityButtons" onClick={()=>this.ResturantList(cty.city)}>{cty.city}</button>
                   
                  )
                 })
@@ -218,30 +236,13 @@ export default class Home extends React.Component{
                         <h5 class="card-title bg-transparent">{Rest.RestaurantName}</h5>
                     </div>
                 </div>
+                
                   )
                 })
             }  
-                 {/* <div class="card col-lg-4 col-12 shadow-none cardes">
-                    <img class="card-img-top cardimgs" src={slide5} alt="Card image cap"/>
-                    <div class="card-body bg-transparent">
-                        <h5 class="card-title bg-transparent">Foodies</h5>
-                    </div>
-                </div>
-                <div class="card col-lg-4 col-12 shadow-none cardes">
-                    <img class="card-img-top cardimgs" src={slide5} alt="Card image cap"/>
-                    <div class="card-body bg-transparent">
-                        <h5 class="card-title bg-transparent">Foodies</h5>
-                    </div>
-                </div>
-                <div class="card col-lg-4 col-12 shadow-none cardes">
-                    <img class="card-img-top cardimgs " src={slide5} alt="Card image cap"/>
-                    <div class="card-body bg-transparent">
-                        <h5 class="card-title bg-transparent">Foodies</h5>
-                    </div>
-                </div>
-                */}
+                 
                 
-   
+                
             </div>
         </div>
    </div>
