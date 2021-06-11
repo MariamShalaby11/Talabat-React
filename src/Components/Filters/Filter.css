@@ -1,4 +1,4 @@
-.has-search .form-control {
+.has-search .controle1 {
     padding-left: 2.375rem;
 }
 
@@ -14,11 +14,11 @@
     color: #aaa;
 }
 
-.topnav {
+.topnavs {
     overflow: hidden;
 }
 
-    .topnav a {
+    .topnavs a {
         float: left;
         display: block;
         color: black;
@@ -29,12 +29,12 @@
         border-bottom: 3px solid transparent;
     }
 
-        .topnav a:hover {
+        .topnavs a:hover {
             border-bottom: 3px solid red;
             text-decoration: none;
             cursor: pointer;
         }
 
-        .topnav a.active {
-            border-bottom: 3px solid red;
+        .topnavs a.active {
+            border-bottom: 3px solid #810008;
         }

@@ -2,6 +2,7 @@ import React from 'react'
 import './Filter.css'
 import im from '../../images/avatar.jpg'
 import axios from 'axios'
+import { FaSearch } from 'react-icons/fa'
 
 class Filters extends React.Component {
 
@@ -79,12 +80,14 @@ class Filters extends React.Component {
     render() {
         return (
             <div class="container shadow p-3 mb-5 bg-white rounded" >
-                <h3 style={{marginTop:110}}>Restaurant in Cairo</h3>
+                <h3 style={{marginTop:110}}>Restaurant in <span>{this.props.location.selectedCity}</span></h3>
                 <div class="row">
                     <div class="col-lg-3 col-md-12" >
                         <div class="form-group has-search" style={{ marginTop: 20 }}>
-                            <span class="fa fa-search form-control-feedback"></span>
-                            <input type="text" class="form-control" placeholder="Search Menu Item"
+                            <span class="fa fa-search form-control-feedback">
+                                <FaSearch/>
+                            </span>
+                            <input type="text" class="form-control controle1" placeholder="Search Menu Item"
 
                                 onChange={(e) => {
 
@@ -146,7 +149,7 @@ class Filters extends React.Component {
 
 
                     <div class="col-lg-9 col-md-12">
-                        <div class="topnav">
+                        <div class="topnavs">
                             <a class=" h4 col-lg-2 col-md-3 active element" onClick={(e)=>this.TabClick(e,"tab1")} > Recommends</a>
                             <a class=" h4 col-lg-2 col-md-3 element" onClick={(e)=>this.TabClick(e,"tab2")} >A To Z</a>
                             <a class=" h4 col-lg-2 col-md-3 element" onClick={(e)=>this.TabClick(e,"tab4")} >Rates</a>
