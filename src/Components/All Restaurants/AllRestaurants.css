@@ -1,4 +1,3 @@
-
 #TopCard{
     margin-top: 120px;
     margin-left: 20px;
@@ -6,6 +5,22 @@
     margin-bottom: 10px;
     border-bottom: hidden;
 }
+.searchBox .formCtrl {
+    padding-left: 2.375rem;
+}
+
+.searchBox .srchIcon {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
 #myDiv{
     border: none;
 }
@@ -14,13 +29,7 @@
     transition: 0.3s;
     width: 100%;
 }
-#MySearchIcon{
-    margin-bottom: 15px;
-}
-#MySearchBox{
-    margin-bottom: 15px;
-    border-radius: 5px;
-}
+
 #rest{
     cursor: pointer;
 }
