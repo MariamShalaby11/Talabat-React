@@ -60,7 +60,6 @@ export default class Offers extends React.Component{
                                         <img src={slide1} className="img-fluid" alt="Image" id="RestImage" />
                                         <div className="card-title">
                                             <h4>{Offers.RestaurantName}</h4>
-                                            <p>{Offers.RestaurantName}</p>
                                         </div>
                                     </div>
                                 </div>   

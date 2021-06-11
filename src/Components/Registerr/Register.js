@@ -112,7 +112,7 @@ export default class Home extends React.Component{
                         </form>
                         <div class="card-footer text-center" style={{background: "transparent", borderTop: "none"}}>
                             <div class="d-flex justify-content-center mt-3">
-                                <h6>Need an account?</h6>
+                                <h6>Aready have an account?</h6>
                                 <a href="" class="ml-2" id="signup">Login</a>  
                             </div>
                         </div>
