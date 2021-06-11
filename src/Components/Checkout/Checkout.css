@@ -1,0 +1,16 @@
+#paycontainer{
+    box-shadow: 0px 5px 5px 5px rgb(180, 179, 179);
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.cont{
+    margin-top: 2%;
+    
+}
+.cardsbtns{
+    text-align: center;
+}
+#down{
+    margin-top: 100px;
+}
