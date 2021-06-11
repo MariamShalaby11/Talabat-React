@@ -67,42 +67,25 @@ export default class StoreDetail extends React.Component{
          
          if(this.state.RestaurantNamePassed&&this.state.WebsitePassed){
           console.log("passed")
-         
-          var data = new FormData();
-          data.append("FirstName", this.props.data.FirstName);
-          data.append("LastName", this.props.data.LastName);
-
-          data.append("Email", this.props.data.Email);
-          data.append("Username", this.props.data.UserName);
-          data.append("Password", this.props.data.Password);
-          data.append("CPassword", this.props.data.CPassword);
-          
-
-          data.append("MobileNumber", this.props.data.Mobile);
-          data.append("RestaurantName", this.state.RestaurantName);
-          data.append("Website", this.state.Website);
-
-          data.append("latitude", this.state.latitude);
-          data.append("longtude", this.state.longtude);
-          data.append("FullAddress",this.state.mapResult)
-
+       
+     const dataa={
+      FirstName:this.props.data.FirstName,LastName:this.props.data.LastName,Email: this.props.data.Email,
+      Username: this.props.data.UserName,Password:this.props.data.Password,CPassword:this.props.data.CPassword,MobileNumber: this.props.data.Mobile,
+      RestaurantName:this.state.RestaurantName,Website:this.state.Website,latitude:this.state.latitude,
+      longtude: this.state.longtude,FullAddress:this.state.mapResult
+    }
           axios({
             
               method: 'post',
-              url: 'http://localhost:58160/BecomePartner/PartnerRegistration',
-              data: data,
+              url: 'http://localhost:58160/api/PartnerRegistration',
+              data: dataa,
           })
               .then((res) => {
-               
-                this.props.join(true,false);
-
-               })
+                console.log("okkkkkk")
+                 this.props.join(true,false);
+                })
               .catch((err) => { 
-                console.log(err)
-
-                if(err=="Request failed with status code 400"){
-                  console.log("fff")
-                }
+                
                 alert("Please Select Your Place and check your data correction");
                 
 

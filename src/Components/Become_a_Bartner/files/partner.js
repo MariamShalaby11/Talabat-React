@@ -16,7 +16,7 @@ export default class Partner extends React.Component {
           
          return(
                  <div id="container">
-              
+                   
                   <Joining/>
                   <BeniftOfBenigPartner/>
                  </div>
@@ -43,20 +43,19 @@ export default class Partner extends React.Component {
  
           return(
             <div class="col-12" id="BecomePartner">
-              <div id="header" class="d-flex justify-content-md-between container">
+              <div id="header" class="d-flex justify-content-md-between container  ">
                   <div class="ml-md-4">
-                      <img src={logo} class="w-50 "/>
-                  
+                     
                   </div>
-                  <div class="pt-3 pr-lg-3 mr-md-5 "><button class="col-12">Vendor Portal</button></div>
+                  <div class="pt-3 pr-lg-3  mt-5 "><button class="col-12 mt-3">Vendor Portal</button></div>
               </div>
             
               <div id="joining" class="d-md-flex justify-content-between container">
-                  <div id="joinText" class="col-md-5 pt-md-5">
-                      <h1 class="pt-md-4">Reach new customers, get more sales</h1>
-                      <h2 class="pt-md-4">Join Talabat, the Middle East's largest delivery platform.</h2>
+                  <div id="joinText" class="col-md-5">
+                      <h1 class="">Reach new customers, get more sales</h1>
+                      <h2 class="">Join Talabat, the Middle East's largest delivery platform.</h2>
                   </div>
-                  <div id="card" class="d-flex ">
+                   <div id="card" class="d-flex ">
                       <div id="maincard" class="d-flex flex-column mx-auto col-10"  >
                         {this.state.join? <Success/>:  <JoiningHeader Join={this.Join} />}
                     </div>
