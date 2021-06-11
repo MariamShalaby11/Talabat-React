@@ -1,6 +1,6 @@
 .slider{
     opacity: 0.8;
-    height: 600px;
+    height: 670px;
 
 }
 .carouselword{
@@ -45,10 +45,14 @@
     /* height: 90px; */
     border: none;
 }
+.iconss{
+    color: maroon;
+}
 
 .iconstyle{
     background-color: transparent;
     border: none;
+  
 }
 #mapinput{
     border: 2px solid black;
