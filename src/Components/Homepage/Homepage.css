@@ -3,7 +3,7 @@
     height: 600px;
 
 }
-.carousel-caption{
+.carouselword{
     transform: translate(-50%, -50%);
     color: black;
     position: absolute;
@@ -13,66 +13,28 @@
     font-family: 'Montserrat', sans-serif; 
 }
 
-.header{
+.headerr{
     /* font-weight: bolder; */
     font-size:60px;
-    color:#D0A772;
-}
-/* .carousel .control-next.control-arrow, .carousel .control-next.control-arrow:hover{
-    background-color: transparent;
-    right: -146px;
-}
-.carousel .control-prev.control-arrow, .carousel .control-prev.control-arrow:hover {
-    background-color: transparent;
-    left: -146px;
+    color:#810000;
 }
 
-.carousel .control-arrow, .carousel.carousel-slider .control-arrow{
-    opacity: 1;
-}
-.swiper-button-next {
-    background-color: peru;
-    width: 50px;
-    height: 50px;
-    top: 50%;
-} */
 #mapbtn{
     background-color: white;
     border: none;
     background: none;
    
 }
-.btn{
-	text-transform: uppercase;
-	padding: 19px 36px;
-}
-.btn{
-	display: inline-block;
-	font-weight: 600;
-	text-align: center;
-	white-space: nowrap;
-	vertical-align: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	border: 2px solid transparent;
-	padding: 12px 30px;
-	font-size: 16px;
-	line-height: 1.5;
-	border-radius: .1875rem;
-	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-}
 .btn-outline-new-white {
     color: #fff;
     background-color: transparent;
     background-image: none;
-    border-color: #cfa671;
+    border-color: #810000;
 }
 .btn-outline-new-white:hover {
     color: #ffffff;
-    background-color: #cfa671;
-    border-color: #cfa671;
+    background-color: #810000;
+    border-color: #810000;
 }
 #map,#info{
     padding: 70px;
@@ -84,27 +46,30 @@
     border: none;
 }
 
-.input-group-text{
+.iconstyle{
     background-color: transparent;
     border: none;
 }
-.input-group{
+#mapinput{
     border: 2px solid black;
     border-radius: 10px;
-    
+}
+#mapbtnn{
+    background-color: white;
+    border: none;
 }
 #steps{
     color: grey;
 }
-.card-header{
+.cardnumber{
     border: none;
     
 }
 .card-title{
     font-weight: bold;
 }
-.card{
-    border: none;
+.cardes{
+    border: none; 
 }
 .num{
     border: 1px solid black;
@@ -112,7 +77,7 @@
     padding: 10px;
 }
 
-.restcontainer,#restHead{
+#restcontainer,#restHead{
     padding: 50px;
     text-align: center;
     justify-content: center;
@@ -120,7 +85,7 @@
     margin-left: auto;
 }
 
-.cardimg{
+.cardimgs{
     width: 200px;
     height: 200px;
     border-radius: 10px;
@@ -130,6 +95,7 @@
   padding: 5px;
   height: 50px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 #MyMapButton{
