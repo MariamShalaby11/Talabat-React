@@ -2,6 +2,8 @@ import React from 'react';
 import './HeaderStyle.css';
 import FoodAway from '../images/FoodAway (4).png';
 import {Link} from 'react-router-dom';
+import { FaFire, FaHamburger, FaLocationArrow, FaMapMarkedAlt, FaMapMarkerAlt, FaShoppingCart, FaSignOutAlt, FaTruckLoading, FaUser} from "react-icons/fa";
+import Dropdown from 'react-bootstrap/Dropdown'
 export default class Header extends React.Component{
     render(){
         return(
@@ -18,7 +20,7 @@ export default class Header extends React.Component{
                   <div class="collapse navbar-collapse" id="navbars-rs-food">
 					<ul class="navbar-nav ml-auto" id="items">
 					   <li class="nav-item">
-                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants" id="Navlinks">Offers</Link>
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/Offers" id="Navlinks">Offers</Link>
                        </li>
                        <li class="nav-item">
                             <Link class="nav-link" to="/MariamShalaby11/Talabat-React/BecomePartner"id="Navlinks" >Become a partner</Link>
@@ -26,7 +28,23 @@ export default class Header extends React.Component{
 						<li class="nav-item">
                             <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >All Resturants</Link>
                        </li>
-						<li class="nav-item dropdown">
+                       <li class="nav-item">
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/Register"id="Navlinks" >Register</Link>
+                       </li>
+                       <li>
+                       <Dropdown>
+                            <Dropdown.Toggle  style={{backgroundColor:"#810000",border:"none",marginTop:2}} variant="danger" id="dropdown-basic">
+                                My Account
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item ><Link class="nav-link" to="/MariamShalaby11/Talabat-React/Accountinfo"id="Navlinks" style={{color:"black"}}><FaUser style={{color:"#810000"}}/> &nbsp; Account Info</Link></Dropdown.Item>
+                                <Dropdown.Item ><Link class="nav-link" to="/MariamShalaby11/Talabat-React/Accountinfo"id="Navlinks" style={{color:"black"}}> <FaShoppingCart style={{color:"#810000"}}/> &nbsp; My Orders</Link> </Dropdown.Item>
+                                <Dropdown.Item href="#/action-3"><FaSignOutAlt style={{color:"#810000"}}/> &nbsp; Log Out</Dropdown.Item>
+                            </Dropdown.Menu>
+                       </Dropdown>
+                       </li>
+						{/* <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">My Account</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
                                 <a class="dropdown-item" href="All Restaraunts.html">
@@ -44,7 +62,7 @@ export default class Header extends React.Component{
 								<a class="dropdown-item" href="All Restaraunts.html">
                                     <i class="fal fa-sign-out" id="icon"></i> Log Out</a>
 							</div>
-						</li>
+						</li> */}
 					</ul>
 				</div>
 			</div>

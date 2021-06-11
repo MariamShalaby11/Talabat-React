@@ -15,3 +15,15 @@
     color: white;
     font: bolder;
 }
+/*Responsive mobile or only mobile */
+
+@media (max-width: 767px) {
+    .navbar-light .navbar-brand{
+        margin-left: 45px;
+        margin-bottom: 10px;
+    }
+    .navbar-light .navbar-toggler{
+        margin-right: 35px;
+        border-radius: 0px;
+    }   
+}
