@@ -4,19 +4,47 @@ import './MenueContent.css'
 import im from '../../images/avatar.jpg'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle, faComment, faSmile, faAppleAlt, faAngleDown, faAngleUp, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { Popup } from "semantic-ui-react";
+import{BrowserRouter as Router,Link} from 'react-router-dom';
+import axios from 'axios';
 
 class Menue extends React.Component {
 
     state = {
   
-      product: [
-        { title: "type1", content: [{ id: 1, name: "meal", price: 23.75, quality: "Good" }, { id: 2, name: "fish", price: 57, quality: " Very Good" }] }
-        , { title: "type2", content: [{ id: 3, name: "drinks", price: 49, quality: "Good" }, { id: 4, name: "sweets", price: 39.5, quality: " Very Good" }] }
-        , { title: "type3", content: [{ id: 5, name: "meal", price: 25.5, quality: "Good" }, { id: 6, name: "fish", price: 14, quality: " Very Good" }] }],
-  
-      isActive: [false, false, false], SellingArray: [],TotalPrice:0
+      product: [],isActive:[], SellingArray: [],TotalPrice:0
     }
   
+
+
+
+    componentDidMount(){
+
+      axios.get(`http://localhost:58160/api/Category/All?id=${2}`).then(
+
+          (cat)=>{
+              console.log(cat.data)
+              this.state.product=cat.data
+              this.setState({
+                product:this.state.product
+              })
+              for(var i=0;i<this.state.product.length;i++)
+               this.state.isActive[i]=false;
+               this.setState({
+                 isActive:this.state.isActive
+               })
+          }
+      )
+
+    }
+
+    saveOrder=()=>{
+     console.log(this.state.SellingArray)
+     }
+
+
+
+
     render() {
       return (
         <>
@@ -40,17 +68,15 @@ class Menue extends React.Component {
               <div id="divop">
                 <FontAwesomeIcon id="iop" icon={faSmile} />
                 <span class="lead" id="spop">Very Good</span><br />
-                <img width="40" height="40" src="/visa-512.png" />
-                <img width="40" height="40" src="/card2.png" />
-                <img width="30" height="30" src="/money.png" />
+                <img width="50" height="30" src="https://km.visamiddleeast.com/dam/VCOM/blogs/visa-blue-gradient-800x450.jpg" />
+                <img width="40" height="30" src="https://www.osservatorioantitrust.eu/en/wp-content/uploads/2019/01/MasterCard_Logo_svg.png" />
+                <img width="40" height="30" src="https://w1.pngwing.com/pngs/961/314/png-transparent-green-leaf-logo-money-loan-bank-cash-money-bag-banknote-grant.png" />
               </div>
             </div>
           </div>
           <div class="container" id="contap">
             <div class="topnav">
-              <a id="tabs" class=" col-4 active element" ><FontAwesomeIcon id="icontap" icon={faAppleAlt} /> Menue</a>
-              <a id="tabs" class="col-4 element"><FontAwesomeIcon id="icontap" icon={faComment} />Reviews</a>
-              <a id="tabs" class="col-4 element"><FontAwesomeIcon id="icontap" icon={faInfoCircle} />Info</a>
+              <a id="tabs" class=" col-12 active element" ><FontAwesomeIcon id="icontap" icon={faAppleAlt} /> Menu</a>
             </div>
           </div>
   
@@ -72,9 +98,8 @@ class Menue extends React.Component {
                                 product:this.state.product
                               })
                             }
-                            }>{prod.title}</p>
+                            }>{prod.Name}</p>
                           )
-  
                       }
                     )
                   }
@@ -101,7 +126,7 @@ class Menue extends React.Component {
                           })
                         }}>
                           <div id="accorwrap" className="row">
-                            <h4 className="col-lg-8 col-md-7 col-sm-9" >{prod.title}</h4>
+                            <h4 className="col-lg-8 col-md-7 col-sm-9" >{prod.Name}</h4>
                             <div className=" arrow col-lg-3 col-md-4 col-sm-2">{this.state.isActive[i] ? <FontAwesomeIcon id="icontap" icon={faAngleDown} /> : <FontAwesomeIcon id="icontap" icon={faAngleUp} />}</div>
                           </div>
   
@@ -112,20 +137,22 @@ class Menue extends React.Component {
                             && <div className="accordion-content">
   
                               <div id="accordionBody">
-                                {prod.content.map(
+                                {prod.Meals.map(
   
-                                  (con, j) => {
+                                  (Mel, j) => {
   
                                     return (
                                       <>
                                         <div class="row" id="conMargin">
-                                          <div class="col-3"></div>
+                                          <div class="col-3"><Popup  trigger={<img width="80" height="80" src={im} />} position="top center" >
+                                         <div class="card" style={{padding:7}}><img src={im} width="100" height="100" /></div>
+                                            </Popup></div>
                                           <div class="col-5">
-                                            <p>{con.name}</p>
+                                            <p>{Mel.Mealname}</p>
                                           </div>
                                           <div class="col-3">
-                                            <p>{con.price} LE</p>
-                                            <p>{con.quality}</p>
+                                            <p>{Mel.MealPrice} LE</p>
+                                            <p>{"Very Good"}</p>
                                           </div>
                                           <div class="col-1" id="iconplusWraperPadding">
                                             <div>
@@ -133,19 +160,19 @@ class Menue extends React.Component {
                                                 onClick={() => {
   
                                                   if (this.state.SellingArray.length == 0) {
-                                                    this.state.SellingArray.push(con)
-                                                    con.count = 1
+                                                    this.state.SellingArray.push(Mel)
+                                                    Mel.count = 1
   
-                                                  } else if(!this.state.SellingArray.find(a => con.id == a.id)) {
+                                                  } else if(!this.state.SellingArray.find(a => Mel.MealId == a.MealId)) {
                                                     
-                                                      this.state.SellingArray.push(con)
-                                                      con.count = 1
+                                                      this.state.SellingArray.push(Mel)
+                                                      Mel.count = 1
                                                     }
                                                     else{
-                                                      con.count++;
+                                                      Mel.count++;
                                                       
                                                     }
-                                                  this.state.TotalPrice+=con.price
+                                                  this.state.TotalPrice+=Mel.MealPrice
                                                   this.setState({
                                                     SellingArray: this.state.SellingArray,
                                                     TotalPrice:this.state.TotalPrice
@@ -174,15 +201,15 @@ class Menue extends React.Component {
               </div>
             </div>
             <div class="col-lg-3 col-md-6">
-              <div id="CardContainer">
-                <h4 id="CardHeaderColor">Your Card</h4>
+              <div id="CardContainer" >
+                <h4 id="CardHeaderColor">Your Cart</h4>
               </div>
-              <div id="LockIconContainer">
+              <div id="LockIconContainer" >
                 {this.state.SellingArray.length == 0 && <div>
                   <svg xmlns="http://www.w3.org/2000/svg" id="svgProp" width="100" height="100" fill="#CDC6BF" class="bi bi-lock" viewBox="0 0 16 16">
                     <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
                   </svg>
-                  <h6 id="textnone">There are no Item in card</h6>
+                  <h6 id="textnone">There are no Item in cart</h6>
                 </div>}
                 {this.state.SellingArray.length != 0 && <div class="card" id="wraperContainerCard">
                   <div id='cardContent1'><span class='h6'>Om Hassan</span> - <span>Almaza</span></div>
@@ -191,14 +218,14 @@ class Menue extends React.Component {
   
                       (selling, x) => {
   
-                        return (<div id='cardContent2'>
-                          <div class="row">
+                        return (<div id='cardContent2' >
+                          <div class="row" style={{padding:10}}>
                             <div class='col-4'>
                               <div class="row">
                                 <div class="col-5" onClick={
                                   () => {
                                     selling.count++;
-                                    this.state.TotalPrice+=selling.price
+                                    this.state.TotalPrice+=selling.MealPrice
                                     this.setState({
                                       SellingArray: this.state.SellingArray,
                                       TotalPrice:this.state.TotalPrice
@@ -212,11 +239,11 @@ class Menue extends React.Component {
   
                                     if (selling.count == 1) {
                                       this.state.SellingArray.splice(x, 1);
-                                      this.state.TotalPrice-=selling.price;
+                                      this.state.TotalPrice-=selling.MealPrice;
                                     }
                                     else {
                                       selling.count--;
-                                      this.state.TotalPrice-=selling.price
+                                      this.state.TotalPrice-=selling.MealPrice
                                     }
                                     this.setState({
                                       SellingArray: this.state.SellingArray,
@@ -228,8 +255,8 @@ class Menue extends React.Component {
   
                               </div>
                             </div>
-                            <div class='col-4'>{selling.name}</div>
-                            <div class='col-4'><small>{selling.price*selling.count}</small></div>
+                            <div class='col-4'>{selling.Mealname}</div>
+                            <div class='col-4'><small>{selling.MealPrice*selling.count}</small></div>
                           </div>
                         </div>)
                       }
@@ -240,12 +267,15 @@ class Menue extends React.Component {
                     <div class="col-6" style={{padding:10}}>SubTotal</div>
                     <div class="col-6" style={{padding:10}}>{this.state.TotalPrice}</div>
                     <div class="col-6" style={{padding:10}}>Delivery Fee</div>
-                    <div class="col-6" style={{padding:10}}>{16}</div>
+                    <div class="col-6" style={{padding:10}}>{20}</div>
                     <div class="col-6" style={{padding:10}}>Total Amount</div>
-                    <div class="col-6" style={{padding:10}}>{this.state.TotalPrice+16}</div>
-                    <div class="col-12" style={{padding:10}}><button class="btn btn-success">Proceed to Checkout</button></div>
+                    <div class="col-6" style={{padding:10}}>{this.state.TotalPrice+20}</div>
+                    <div class="col-12" style={{padding:10}}>
+                    <Link class="btn btn-success" variant="primary"  to={{pathname:`/MariamShalaby11/Talabat-React/Checkout` ,selectedArray:this.state.SellingArray,subTotal:this.state.TotalPrice}}> Proceed to Checkout</Link>
+                    </div>
                   </div>
-                </div>}
+                </div>
+                }
               </div>
             </div>
           </div>
@@ -254,6 +284,8 @@ class Menue extends React.Component {
         </>
       )
     }
+   
+
   }
   
   export default Menue;

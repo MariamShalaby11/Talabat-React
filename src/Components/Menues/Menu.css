@@ -36,7 +36,7 @@
         }
 
         .topnav a.active {
-            border-bottom: 3px solid red;
+            border-bottom: 3px solid #810000;
         }
 
 .element {
@@ -102,7 +102,7 @@ i {
 
 #icontap{
 
-    font-size:25px;color:#FF5B33;margin:5px
+    font-size:25px;color:#810000;margin:5px
 
 }
 
