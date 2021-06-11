@@ -1,0 +1,44 @@
+
+#maincontainerr{
+  
+    font-size: 22px;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+   
+    border: 1px solid gainsboro;
+
+}
+
+#cardess{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 90%;
+    background: rgb(255, 255, 255);
+    font-size: 26px;
+   text-transform: capitalize;
+   color: rgb(117, 117, 117) ;
+   font-size: 15px;
+   font-weight: 400; 
+  
+  }
+  #cardess div:first-of-type{
+      color: black;
+  }
+  #cardess div:first-of-type::after{
+      content: "";
+      color: black;
+      line-height: 22px;
+  }
+    #cardess div:nth-of-type(3) h5,p{
+        color: rgba(0, 0, 0, 0.544);
+        font-weight: bold;
+    }
+ 
+    #needhelp{
+        color: black;
+       border-bottom:3px solid maroon;
+       padding-bottom:8px;
+      padding-left: 32px;
+      padding-right: 35px;
+      width: 330px;
+    
+    }
