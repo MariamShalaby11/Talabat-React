@@ -1,0 +1,110 @@
+#Mycard{
+    /* margin-top: 2em; */
+    padding: 2em;
+    border: 0;
+    overflow: hidden;
+    height: 750px;   
+}
+#MyRow{
+    height: 750px;
+    margin-top: 100px;
+}
+
+#divLeft{
+    background-image: url('./RegImg.jpg');
+    overflow: hidden;    
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* padding: 100px;
+    font-weight: bold; */
+}
+
+#card-header-text{
+    font-weight: 500 !important;
+}
+#signup{
+    color: #810000;
+}
+
+.MyFormGroup{
+    border-bottom: 1px solid #39498970;
+}
+
+.MyFormControl{
+    border: none;
+}
+
+#MyHeaderTxt{
+    font-family: 'Open Sans', sans-serif; 
+    color: #413c69;
+    text-shadow: 2px 2px #a7c5eb;
+    margin-bottom: 60px;
+}
+#googleImg{
+    width: 25px;
+    height:25px;
+    float: left;
+}
+#fb{
+    float: left;
+    margin-top: 4px;
+}
+.Mybutton{
+    border-radius: 3em;
+    font-family: 'Open Sans', sans-serif; 
+    border: none;
+}
+
+.MyTxt{
+    border: none;
+    background: transparent;
+}
+#check{
+    font-family: 'Open Sans', sans-serif; 
+}
+
+#Google{
+    background: #ffffff;
+    color: black;
+    border: 1px solid;
+    border-color: #E0E0E0;
+}
+#facebook{
+    background-color: #5777B9;
+}
+
+#login{
+    background-color: #810000;
+}
+
+.hhrr {
+    height:2px;
+    border:0;
+    background-color:lightgray;
+    line-height:20px;
+}
+
+.hhrr:before {
+  content: '';
+  display: block;
+  height: 1px;
+  background-color: lightgray;
+}
+
+.hhrr:after {
+    content: 'OR';
+    color:gray;
+    font-weight: bold;
+    display:block;
+    text-align:center;
+    width:60px;
+    margin-top:-10px;
+    position:absolute;
+    left:50%;
+    background-color: white;
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
+    transform: translate(-50%);  
+}
