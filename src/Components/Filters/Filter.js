@@ -18,7 +18,7 @@ class Filters extends React.Component {
     }
 
     firstcall() {
-        axios.get(`http://localhost:58160/api/values/${this.state.SelectedTab}`).then(
+        axios.get(`http://localhost:58160/api/values/${this.state.SelectedTab}?city=${this.props.location.selectedCity}`).then(
 
             (res) => {
                 this.state.Restaurant = res.data
@@ -44,7 +44,7 @@ class Filters extends React.Component {
 
     cusinCall(e){
 
-        axios.get(`http://localhost:58160/api/values/Cusins?filter=${e.target.value}`).then(
+        axios.get(`http://localhost:58160/api/values/Cusins?filter=${e.target.value}&city=${this.props.location.selectedCity}`).then(
 
             (res) => {
                 this.state.Restaurant = res.data
@@ -92,7 +92,7 @@ class Filters extends React.Component {
                                 onChange={(e) => {
 
                                     if (e.target.value != '') {
-                                        axios.get(`http://localhost:58160/api/values?character=${e.target.value}`).then(
+                                        axios.get(`http://localhost:58160/api/values?character=${e.target.value}&city=${this.props.location.selectedCity}`).then(
                                             (res) => {
                                                 this.state.Restaurant = res.data
                                                 this.setState({
