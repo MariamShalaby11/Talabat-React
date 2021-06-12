@@ -15,6 +15,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 // import Restaurant from './Restaurant';
+import Modal from 'react-bootstrap/Modal';
+import Map from '../Become_a_Bartner/files/map';
+import{Link} from 'react-router-dom';
+import { FaSadCry, FaSadTear } from "react-icons/fa";
+
 
 class Restaurant extends Component {
   state = {
@@ -23,6 +28,7 @@ class Restaurant extends Component {
     Rate: 2,
     Add: {},
     Customer:[]
+    ,lat:"",lang:"",mapResult:"",show:false,showspan:"none"
   };
 
   componentDidMount() {
@@ -65,6 +71,31 @@ class Restaurant extends Component {
     return this.state.Rate;
   }
 
+  MapData=(lat,lang)=>{
+    this.setState({
+      latitude:lat,longtude:lang
+    })
+  }
+  MapResult=(_mapResult)=>{
+    this.setState({
+      mapResult:_mapResult.split(",")[0]
+      
+    })
+    console.log(this.state.mapResult)
+   const res= _mapResult.split(",");
+    console.log( _mapResult.split(",")[0])
+  }
+  handleClose = () =>{
+    this.setState({
+      show:false,
+      showspan:"none"
+    })
+  };
+  handleshoww= () =>{
+   this.setState({
+     show:true
+   })
+ };
   render() {
     return (
       <div className="container ">
@@ -132,10 +163,39 @@ class Restaurant extends Component {
                 </div>
                 <div className="col-md-4 col-12">
                   <div className="p-4">
-                    <button className="btn btn-warning button__arrow--right">
+                    <button className="btn btn-warning button__arrow--right" onClick={this.handleshoww}>
                       {" "}
                       Show Menu <FontAwesomeIcon icon={faArrowRight} />
                     </button>
+                    <Modal show={this.state.show} onHide={this.handleClose} >
+                      
+                      <Modal.Body>   <Map address={this.MapData} MapResult={this.MapResult}/></Modal.Body>
+                      <Modal.Footer>
+                      <span  style={{display: this.state.showspan ,color:"maroon" }}> Sorry this Resturant doesn't Deliver here <FaSadTear/> </span>
+                        <button class="btn btn-danger" variant="secondary" onClick={this.handleClose}>
+                          back
+                        </button>
+                      
+                           <button class="btn btn-success" onClick={()=>{
+                                  if (this.state.Add.city == this.state.mapResult){
+                                    console.log("hiii");
+                                  this.props.history.push("/MariamShalaby11/Talabat-React/Menu")
+                                  }
+                                  else{
+                                  this.setState({
+                                    showspan:"block"
+                                  })
+                                
+                                }
+                                  
+                                }}>Go Order</button>
+                              
+                        {/* <Link class="btn btn-success" variant="primary"  to={{pathname:`/MariamShalaby11/Talabat-React/Menu/${this.state.Rest.RestID}`}}>
+                        Go
+                        </Link> */}
+                      </Modal.Footer>
+                </Modal>
+              
                   </div>
                 </div>
 
