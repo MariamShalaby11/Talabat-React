@@ -23,9 +23,9 @@ import { FaSadCry, FaSadTear } from "react-icons/fa";
 
 class Restaurant extends Component {
   state = {
-    RestID: 2,
+    RestID: 1,
     Rest: {},
-    Rate: 2,
+    Rate: 0,
     Add: {},
     Customer:[]
     ,lat:"",lang:"",mapResult:"",show:false,showspan:"none"
@@ -39,7 +39,7 @@ class Restaurant extends Component {
 
   getById() {
     axios
-      .get(`http://localhost:58160/api/Rest/${this.state.RestID}`)
+      .get(`https://localhost:44327/api/Rest/${this.state.RestID}`)
       .then((res) => {
         this.state.Rest = res.data;
         this.state.Add = res.data.Address;
@@ -50,19 +50,31 @@ class Restaurant extends Component {
         });
         console.log(this.state.Rest.Address.BuildingNo);
         console.log(this.state.Add.AddressId);
+        console.log(this.state.Add);
+        console.log(res.data);
       });
     return this.state.Rest;
   }
 
   getRate() {
     axios
-      .get(`http://localhost:58160/api/rate/${this.state.RestID}`)
+      .get(`https://localhost:44379/api/rate/${this.state.RestID}`)
       .then((res) => {
         console.log(res.data);
-        console.log(res.data[0].Customer);
-        this.state.Rate = res.data[0].Rate;
+        console.log(res.data["Rate"]);
+        //this.state.Rate = res.data[0].Rate;
         this.state.Customer = res.data;
-
+        res.data.forEach(element => {
+           this.state.Rate =this.state.Rate + element.Rate
+          
+           // console.log(x);
+            console.log(res.data.length);
+            console.log(this.state.Rate);
+        });
+        let AvgRate=0
+        AvgRate = this.state.Rate/res.data.length
+        this.state.Rate = Math.floor(AvgRate) 
+        console.log(AvgRate);
         this.setState({
           // RestID: this.state.RestID,
           Rate: this.state.Rate,
@@ -98,11 +110,11 @@ class Restaurant extends Component {
  };
   render() {
     return (
-      <div className="container ">
+      <div className="container " id="firstBigContainer">
         <div className="MyContainerCard text-left show ">
-          <div id="backimg">
-            <div id="innerbg">
-              <div id="infoo">
+          <div id="backimg" >
+            <div id="innerbg" >
+              <div id="infoo" >
                 <img src={img1} className="MyImages" />
                 <h3>{this.state.Rest.RestaurantName}</h3>
                 {/* untill access our real api */}
@@ -198,6 +210,7 @@ class Restaurant extends Component {
               
                   </div>
                 </div>
+             
 
                 {/* </div> */}
               </div>
