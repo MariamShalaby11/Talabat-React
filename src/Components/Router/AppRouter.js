@@ -17,8 +17,7 @@ import Accountinfo from './../AccountInfo/Accountinfo';
 import Login from './../Login/Login';
 import Footer from './../Footer';
 import contactus from './../StaticPages/Contactus';
-
-
+import login from '../Login/Login'
 export default class AppRouter extends React.Component{
 
     render(){
@@ -32,6 +31,8 @@ export default class AppRouter extends React.Component{
                 <Route component={Home}  path={StaticRoute} exact ></Route>
                 <Route component={Home}  path={`${StaticRoute}Home`}exact ></Route>
                 <Route component={Filters}   path={`${StaticRoute}filters`}></Route>
+                <Route component={login}   path={`${StaticRoute}Login`}></Route>
+
                 <Route component={Faq} path={`${StaticRoute}FAQ`} ></Route>
                 <Route component={Privacy} path={`${StaticRoute}Privacy`} ></Route>
                 <Route component={Terms} path={`${StaticRoute}Terms`}></Route>
@@ -43,7 +44,6 @@ export default class AppRouter extends React.Component{
                 <Route component={Offers} path={`${StaticRoute}Offers`} ></Route>
                 <Route component={Register} path={`${StaticRoute}Register`} ></Route>
                 <Route component={Accountinfo} path={`${StaticRoute}Accountinfo`} ></Route>
-                <Route component={Login} path={`${StaticRoute}Login`} ></Route>
                 <Route component={contactus}path={`${StaticRoute}contactus`}/>
 
 
