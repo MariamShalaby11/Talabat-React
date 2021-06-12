@@ -33,6 +33,9 @@ export default class Header extends React.Component{
                        <li class="nav-item">
                             <Link class="nav-link" to="/MariamShalaby11/Talabat-React/Register"id="Navlinks" >Register</Link>
                        </li>
+                       <li class="nav-item">
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/Login"id="Navlinks" >Login</Link>
+                       </li>
                        <li>
                        <Dropdown>
                             <Dropdown.Toggle  style={{backgroundColor:"#810000",border:"none",marginTop:2}} variant="danger" id="dropdown-basic">
