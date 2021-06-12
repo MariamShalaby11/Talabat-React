@@ -4,6 +4,8 @@ import './Register.css';
 import facebook from '../../images/fb.jpeg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faLock} from "@fortawesome/free-solid-svg-icons";
+import {Link} from 'react-router-dom';
+
 export default class Home extends React.Component{
 
     state={
@@ -113,7 +115,7 @@ export default class Home extends React.Component{
                         <div class="card-footer text-center" style={{background: "transparent", borderTop: "none"}}>
                             <div class="d-flex justify-content-center mt-3">
                                 <h6>Aready have an account?</h6>
-                                <a href="" class="ml-2" id="signup">Login</a>  
+                                <a href="/MariamShalaby11/Talabat-React/Login" class="ml-2" id="signup">Login</a>  
                             </div>
                         </div>
                     </div>

@@ -114,7 +114,7 @@ class Login extends Component {
                      <div class="card-footer text-center"  id="gotoregister">
                         <div class="d-flex justify-content-center mt-3">
                             <h6>Need an account?</h6>
-                            <a href="../Register/Register.html" class="ml-2" id="signup">Sign Up Now!</a>  
+                            <a href="/MariamShalaby11/Talabat-React/Register" class="ml-2" id="signup">Sign Up Now!</a>  
                         </div>
                     </div>
 
