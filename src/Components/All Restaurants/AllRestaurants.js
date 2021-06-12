@@ -13,7 +13,7 @@ export default class AllRestaurants extends React.Component{
 
     }
     ShowCusineNameHandler=(i)=>{
-        axios.get(`http://localhost:58160/api/cusine/${i}`).then(res=>{
+        axios.get(`http://localhost:44327/api/cusine/${i}`).then(res=>{
 
             this.setState({Cusine:res.data})
     
