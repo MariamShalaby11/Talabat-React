@@ -1,4 +1,7 @@
+
 import React, { Component } from 'react';
+import Loading from '../Registerr/loading'
+
 import "./Login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,7 +17,8 @@ class Login extends Component {
     state = {  
         Email:""
         ,Password:""
-        ,classMail:"invisible"
+        ,classMail:"invisible",
+        IsLoaded:false
     }
         handleEmailChange = (email)=>{
             this.setState({Email:email.target.value});
@@ -23,32 +27,58 @@ class Login extends Component {
             this.setState({Password:pass.target.value});
         }
         Login = (props) => {
+            this.setState({IsLoaded:true})
             const data = {
                 email:this.email,
                 password:this.password
+              
             }
+            const config = {
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                  'Accept':'*/*'
+                }
+              }
+              const configs = {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept':'*/*'
+                }
+              }
+              const params = new URLSearchParams()
+                params.append('username','Arwa98')
+                params.append('password', 'a@A123')
+                params.append('grant_type', 'password')
+                const param={'username':'Arwa@gmmail.com','password':'a@A123','grant_type':'password'}
 
-            axios.post(`https://localhost:44379/api/Login/${this.state.Email}/${this.state.Password}`).then(res=>{
+        let URL='https://localhost:44327/Token'
+            axios.post(URL, params, config).then(res=>{
                 console.log(res);
                // this.setState({AllRestaurants:res.data})
                 this.setState({classMail:"invisible"});
                 //this.history.pushState(null, 'Restaurant');
                 this.props.history.push('Restaurant')
                 console.log(this.props.history);
-  
+               
                 console.log(res.data)  
             }).catch(err=>{
-               // console.log(err); 
+               console.log(err); 
                this.setState({classMail:"visible"});
                // this.state.classMail="visible"
             }) ;
+            
         }
        
 
         
-    render() { 
+    render() {
+        if(this.state.IsLoaded){
+            return <Loading/>
+           
+        } else{
         return ( 
-            
+           
+         
     <div class="container">
         <div>
             <br />
@@ -114,7 +144,7 @@ class Login extends Component {
                      <div class="card-footer text-center"  id="gotoregister">
                         <div class="d-flex justify-content-center mt-3">
                             <h6>Need an account?</h6>
-                            <a href="../Register/Register.html" class="ml-2" id="signup">Sign Up Now!</a>  
+                            <a href="/MariamShalaby11/Talabat-React/Register" class="ml-2" id="signup">Sign Up Now!</a>  
                         </div>
                     </div>
 
@@ -125,6 +155,7 @@ class Login extends Component {
     </div>
          );
     }
+}
 }
  
 export default Login;

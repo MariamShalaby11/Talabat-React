@@ -15,9 +15,9 @@ export default class Header extends React.Component{
                    
 				
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon" ></span>
                   </button>
-                  <div class="collapse navbar-collapse" id="navbars-rs-food">
+                  <div class="collapse navbar-collapse" id="navbars-rs-food" style={{textAlign:'center'}}>
 					<ul class="navbar-nav ml-auto" id="items">
 
 					   <li class="nav-item">
@@ -32,6 +32,9 @@ export default class Header extends React.Component{
                        </li>
                        <li class="nav-item">
                             <Link class="nav-link" to="/MariamShalaby11/Talabat-React/Register"id="Navlinks" >Register</Link>
+                       </li>
+                       <li class="nav-item">
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/Login"id="Navlinks" >Login</Link>
                        </li>
                        <li>
                        <Dropdown>

@@ -13,7 +13,7 @@ export default class AllRestaurants extends React.Component{
 
     }
     ShowCusineNameHandler=(i)=>{
-        axios.get(`http://localhost:58160/api/cusine/${i}`).then(res=>{
+        axios.get(`http://localhost:44327/api/cusine/${i}`).then(res=>{
 
             this.setState({Cusine:res.data})
     
@@ -22,9 +22,21 @@ export default class AllRestaurants extends React.Component{
             }) 
     }
   
+   // async componentDidMount(){
+
+      //  await axios.get(`http://localhost:58160/api/AllRestPage`).then(res=>{
+
+    // getCusines(id){
+    //       axios.get(`https://localhost:44379/api/cusine/${id}`).then(res=>{
+  
+    //         this.setState({cusines:res.data})
+  
+    //        console.log(res.data);  
+    //          }) ;
+    // }
     async componentDidMount(){
 
-        await axios.get(`http://localhost:58160/api/AllRestPage`).then(res=>{
+        await axios.get(`https://localhost:44327/api/AllRestPage`).then(res=>{
   
             this.setState({AllRestaurants:res.data})
   
@@ -43,8 +55,11 @@ export default class AllRestaurants extends React.Component{
       
             //    console.log(res.data)  
             //     }) 
-            }     
+            // }     
              
+            //  }) ;
+
+            }      
     render(){
         return(
         <div className="container">
@@ -62,7 +77,7 @@ export default class AllRestaurants extends React.Component{
                                 onChange={(e) => {
 
                                     if (e.target.value != '') {
-                                        axios.get(`http://localhost:58160/api/search/${e.target.value}`).then(
+                                        axios.get(`http://localhost:44327/api/search/${e.target.value}`).then(
                                             (res) => {
                                                 this.state.AllRestaurants = res.data
                                                 this.setState({
@@ -83,7 +98,7 @@ export default class AllRestaurants extends React.Component{
                     <div className="card-body bg-transparent">                                              
                             <div className="row special-list" id="rest">
                                 {this.state.AllRestaurants.map((AllRest)=>{
-                                    // {this.setState({RestId:AllRest.RestaurantId})}
+                                    console.log(AllRest.restaurantCusines);
                                     return(
                                 <div className="col-lg-4 col-md-6">
                                     <div className="gallery-single fix">
@@ -96,14 +111,24 @@ export default class AllRestaurants extends React.Component{
                                                 <p>{cusObj.CuisineName}</p>
                                             )
                                         })}
+                                            {AllRest.restaurantCusines.map((c)=>{
+                                                console.log(c);
+                                                
+                                                return( <span>{c.Cuisine.CuisineName} , </span>)
+                                               
+                                            })}
+
+                                            {/* <p>{this.getCusines(AllRest.RestaurantId)}</p> */}
                                         </div>
                                     </div>
                                 </div>   
-                                    )})}   
+                                    )})}  
+                                   
                                                                                                         
                                 </div>       
 
                     </div>
+
 
            {/*  -----------------Pagination------------------------------ */}
 

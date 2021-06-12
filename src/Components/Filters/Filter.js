@@ -18,7 +18,11 @@ class Filters extends React.Component {
     }
 
     firstcall() {
+<<<<<<< HEAD
         axios.get(`http://localhost:58160/api/values/${this.state.SelectedTab}?city=${this.props.location.selectedCity}`).then(
+=======
+        axios.get(`http://localhost:44327/api/values/${this.state.SelectedTab}`).then(
+>>>>>>> 733686ce306a52fb81f1b985c31e046ed0b18025
 
             (res) => {
                 this.state.Restaurant = res.data
@@ -30,7 +34,7 @@ class Filters extends React.Component {
         return this.state.Restaurant
     }
     secondcall(){
-        axios.get(`http://localhost:58160/api/values/GetAllCusins`).then(
+        axios.get(`http://localhost:44327/api/values/GetAllCusins`).then(
 
             (res) => {
                 this.state.Cusin = res.data
@@ -44,7 +48,11 @@ class Filters extends React.Component {
 
     cusinCall(e){
 
+<<<<<<< HEAD
         axios.get(`http://localhost:58160/api/values/Cusins?filter=${e.target.value}&city=${this.props.location.selectedCity}`).then(
+=======
+        axios.get(`http://localhost:44327/api/values/Cusins?filter=${e.target.value}`).then(
+>>>>>>> 733686ce306a52fb81f1b985c31e046ed0b18025
 
             (res) => {
                 this.state.Restaurant = res.data
@@ -92,7 +100,11 @@ class Filters extends React.Component {
                                 onChange={(e) => {
 
                                     if (e.target.value != '') {
+<<<<<<< HEAD
                                         axios.get(`http://localhost:58160/api/values?character=${e.target.value}&city=${this.props.location.selectedCity}`).then(
+=======
+                                        axios.get(`http://localhost:44327/api/values?character=${e.target.value}`).then(
+>>>>>>> 733686ce306a52fb81f1b985c31e046ed0b18025
                                             (res) => {
                                                 this.state.Restaurant = res.data
                                                 this.setState({

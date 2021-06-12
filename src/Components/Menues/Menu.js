@@ -20,7 +20,7 @@ class Menue extends React.Component {
 
     componentDidMount(){
 
-      axios.get(`http://localhost:58160/api/Category/All?id=${2}`).then(
+      axios.get(`http://localhost:44327/api/Category/All?id=${2}`).then(
 
           (cat)=>{
               console.log(cat.data)
