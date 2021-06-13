@@ -2,7 +2,7 @@ import React from 'react';
 import './HeaderStyle.css';
 import FoodAway from '../images/FoodAway (4).png';
 import {Link} from 'react-router-dom';
-import { FaFire, FaHamburger, FaLocationArrow, FaMapMarkedAlt, FaMapMarkerAlt, FaShoppingCart, FaSignOutAlt, FaTruckLoading, FaUser} from "react-icons/fa";
+import {  FaShoppingCart, FaSignOutAlt, FaUser} from "react-icons/fa";
 import Dropdown from 'react-bootstrap/Dropdown'
 export default class Header extends React.Component{
     render(){

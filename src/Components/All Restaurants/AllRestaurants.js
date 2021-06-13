@@ -3,6 +3,7 @@ import './AllRestaurants.css';
 import slide1 from '../../images/slider-02.jpg';
 import { FaSearch} from "react-icons/fa";
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 
 
@@ -12,28 +13,6 @@ export default class AllRestaurants extends React.Component{
         Cusine:[]
 
     }
-    ShowCusineNameHandler=(i)=>{
-        axios.get(`http://localhost:44327/api/cusine/${i}`).then(res=>{
-
-            this.setState({Cusine:res.data})
-    
-            console.log(res.data); 
-             
-            }) 
-    }
-  
-   // async componentDidMount(){
-
-      //  await axios.get(`http://localhost:58160/api/AllRestPage`).then(res=>{
-
-    // getCusines(id){
-    //       axios.get(`https://localhost:44379/api/cusine/${id}`).then(res=>{
-  
-    //         this.setState({cusines:res.data})
-  
-    //        console.log(res.data);  
-    //          }) ;
-    // }
     async componentDidMount(){
 
         await axios.get(`https://localhost:44327/api/AllRestPage`).then(res=>{
@@ -43,21 +22,6 @@ export default class AllRestaurants extends React.Component{
            console.log(res.data)  
              })
 
-
-            //  this.ShowCusineNameHandler();
-             {this.state.AllRestaurants.map((AllRest)=>{
-                this.ShowCusineNameHandler(AllRest.RestaurantId)
-             })}
-
-            //  await axios.get(`http://localhost:58160/api/cusine/${this.state.RestId}`).then(res=>{
-  
-            //     this.setState({Cusine:res.data})
-      
-            //    console.log(res.data)  
-            //     }) 
-            // }     
-             
-            //  }) ;
 
             }      
     render(){
@@ -77,7 +41,7 @@ export default class AllRestaurants extends React.Component{
                                 onChange={(e) => {
 
                                     if (e.target.value != '') {
-                                        axios.get(`http://localhost:44327/api/search/${e.target.value}`).then(
+                                        axios.get(`https://localhost:44327/api/search/${e.target.value}`).then(
                                             (res) => {
                                                 this.state.AllRestaurants = res.data
                                                 this.setState({
@@ -104,21 +68,13 @@ export default class AllRestaurants extends React.Component{
                                     <div className="gallery-single fix">
                                         <img src={slide1} className="img-fluid" alt="Image" id="RestImage"/>
                                         <div className="card-title">
-                                            <h4>{AllRest.RestaurantName}</h4>
-                                            {this.state.Cusine.map((cusObj)=>{
-                                                console.log(cusObj);
-                                            return(
-                                                <p>{cusObj.CuisineName}</p>
-                                            )
-                                        })}
+                                        <Link style={{color:"maroon",fontSize:25,textAlign:"center"}} to={{pathname:`/MariamShalaby11/Talabat-React/Restaurant/${AllRest.RestaurantId}`,Resutantid:AllRest.RestaurantId}}>{AllRest.RestaurantName}</Link>
                                             {AllRest.restaurantCusines.map((c)=>{
                                                 console.log(c);
                                                 
-                                                return( <span>{c.Cuisine.CuisineName} , </span>)
+                                                return( <div>{c.Cuisine.CuisineName}</div>)
                                                
                                             })}
-
-                                            {/* <p>{this.getCusines(AllRest.RestaurantId)}</p> */}
                                         </div>
                                     </div>
                                 </div>   

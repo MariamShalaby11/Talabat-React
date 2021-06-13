@@ -3,7 +3,7 @@ import './Menu.css'
 import './MenueContent.css'
 import im from '../../images/avatar.jpg'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle, faComment, faSmile, faAppleAlt, faAngleDown, faAngleUp, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { faSmile, faAngleDown, faAngleUp, faPlus, faMinus, faUtensils } from "@fortawesome/free-solid-svg-icons";
 import { Popup } from "semantic-ui-react";
 import{BrowserRouter as Router,Link} from 'react-router-dom';
 import axios from 'axios';
@@ -20,7 +20,7 @@ class Menue extends React.Component {
 
     componentDidMount(){
 
-      axios.get(`http://localhost:44327/api/Category/All?id=${2}`).then(
+      axios.get(`https://localhost:44327/api/Category/All?id=${1}`).then(
 
           (cat)=>{
               console.log(cat.data)
@@ -76,7 +76,7 @@ class Menue extends React.Component {
           </div>
           <div class="container" id="contap">
             <div class="topnav">
-              <a id="tabs" class=" col-12 active element" ><FontAwesomeIcon id="icontap" icon={faAppleAlt} /> Menu</a>
+              <a id="tabs" class=" col-12 active element" >  <h4><FontAwesomeIcon id="icontap" icon={faUtensils} />Menu</h4></a>
             </div>
           </div>
   

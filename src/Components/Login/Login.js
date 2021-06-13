@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import Loading from '../Registerr/loading'
-
 import "./Login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

@@ -3,13 +3,13 @@ import './Checkout.css';
 import Modal from 'react-bootstrap/Modal';
 import CreditCardForm from './CreditCardForm';
 import { FaCreditCard, FaMoneyBillWave } from "react-icons/fa";
-
+import axios from 'axios';
 export default class Checkout extends React.Component{
 
     state={
         show:false,floorno:"",Landmark:"",street:"",buildingno:"",City:"",Mobile:"",District:"",paymentmethod:"",
         ShowCard:"none",
-        Subtotal:this.props.location.subTotal
+        Subtotal:this.props.location.subTotal,CustomerId:1
      
     }
     handleClose = () =>{
@@ -76,7 +76,71 @@ export default class Checkout extends React.Component{
         this.setState({
             ShowCard:"none"
         })
-    
+    }
+    handleAddOrder=()=>{
+        let newOrder={
+            Custmoreid:this.state.CustomerId,
+            
+        }
+        const config = {
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept':'*/*'
+            }
+          }
+        const params = new URLSearchParams()
+                    params.append('UserName','Hanya98')
+                    params.append('password', 'Hanya@97')
+                   
+
+        let URL="https://localhost:44327/api/Orders"
+        axios.post(URL,params,config).then(res=>{
+            console.log(res)
+        }).catch(error=>{
+         console.log(error)
+        })
+        
+        // this.props.history.push("/Departments/");
+
+    }
+
+    handleAddAdress=()=>{
+        console.log("hiii")
+        let newAddress={
+            BuildingNo:this.state.buildingno,
+            Street: this.state.street,
+            floorNo: this.state.floorno,
+            LandMark: this.state.Landmark,
+            city: this.state.City,
+            District: this.state.District,
+            Lat:1.3,
+            Lang:134.23
+        }
+        const config = {
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept':'*/*'
+            }
+          }
+        const params = new URLSearchParams()
+                    params.append( 'BuildingNo',this.state.buildingno)
+                    params.append('Street', this.state.street)
+                    params.append( 'floorNo', this.state.floorno)
+                    params.append( 'LandMark', this.state.Landmark)
+                    params.append('city', this.state.City)
+                    params.append('District', this.state.District)
+                    params.append('Lat', 1.5)
+                    params.append('Lang', 1.6)
+                   
+
+        let URL="https://localhost:44327/api/AddAddress"
+        axios.post(URL,newAddress,config).then(res=>{
+            console.log(res)
+            
+        }).catch(error=>{
+         console.log(error)
+        })
+        this.props.history.push('Home')
 
     }
 
@@ -102,8 +166,6 @@ export default class Checkout extends React.Component{
                                 </thead>
                                 <tbody>
                                     {this.props.location.selectedArray.map((meals)=>{
-
-                                   { console.log(meals)}
                                    return(
                                     <tr>
                                         <th scope="row">{meals.Mealname}</th>
@@ -164,18 +226,18 @@ export default class Checkout extends React.Component{
                                                     <div class="form-row">
                                                         <div class="form-group col-md-12">
                                                         <label for="Cityinput">Additional information</label>
-                                                        <input type="text" class="form-control" id="Cityinput" placeholder="Ex:Cairo" value={this.state.Landmark} onChange={this.handleLandmark}/>
+                                                        <input type="text" class="form-control" id="Landmark" placeholder="Ex:Cairo" value={this.state.Landmark} onChange={this.handleLandmark}/>
                                                         </div>
                                                       
                                                         
                                                     </div>
                                                    
-                                                    <button type="submit" class="btn btn-success">Save Address</button>
+                                                    <button type="submit" class="btn btn-success" onClick={this.handleAddAdress}>Save Address</button>
                                                </form>
                                     
                                             </Modal.Body>
                                           <Modal.Footer>
-                                            <button class="btn btn-danger" variant="secondary" onClick={this.handleClose}>
+                                            <button class="btn btn-danger" variant="secondary" onClick={this.handleClose} >
                                             back
                                             </button>
                                         </Modal.Footer>
@@ -260,7 +322,9 @@ export default class Checkout extends React.Component{
                                             </tr>
                                             <tr >
                                             <td className="col-12" colSpan="2">
-                                               <button className="btn btn-success btn-block ">Place order</button>
+                                               <button className="btn btn-success btn-block" onClick={this.handleAddOrder=()=>{
+
+                                               }}>Place order</button>
                                             </td>
                                             </tr>
                                             

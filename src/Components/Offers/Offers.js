@@ -22,7 +22,7 @@ export default class Offers extends React.Component{
     GetMealsOffersHandler=(id)=>{
       this.handleShow();
       
-       axios.get(`http://localhost:44327/api/MealOffers/${id}`).then(res=>{
+       axios.get(`https://localhost:44327/api/MealOffers/${id}`).then(res=>{
   
         this.setState({MealsOffer:res.data})
 
@@ -33,7 +33,7 @@ export default class Offers extends React.Component{
 
     async componentDidMount(){
 
-        await axios.get('http://localhost:44327/api/RestOffers').then(res=>{
+        await axios.get('https://localhost:44327/api/RestOffers').then(res=>{
   
             this.setState({RestaurantsWithOffers:res.data})
   

@@ -24,18 +24,18 @@ export default class Home extends React.Component{
 
     }
     async componentDidMount(){
-      await axios.get('http://localhost:44327/api/RestrauntAddresses').then(res=>{
+      await axios.get('https://localhost:44327/api/RestrauntAddresses').then(res=>{
           this.setState({Cities:res.data})
     
          console.log(res.data)
            })
-           axios.get(`http://localhost:44327/api/GetCities`).then(x=>{
+           axios.get(`https://localhost:44327/api/GetCities`).then(x=>{
             this.setState({City:x.data})})
-           axios.get(`http://localhost:44327/api/TopRatedRestaunt/cairo`).then(res=>{
+           axios.get(`https://localhost:44327/api/TopRatedRestaunt/cairo`).then(res=>{
             this.setState({Resturants:res.data})})
           } 
      ResturantList=(i)=>{
-       axios.get(`http://localhost:44327/api/TopRatedRestaunt/${i}`).then(res=>{
+       axios.get(`https://localhost:44327/api/TopRatedRestaunt/${i}`).then(res=>{
         this.setState({Resturants:res.data})
        console.log(res.data)
          })

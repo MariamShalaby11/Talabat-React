@@ -1,7 +1,7 @@
 
 import React from 'react';
 import './FooterStyle.css';
-import FoodAway from '../images/FoodAway (4).png';
+import FoodAway from '../images/FoodAway (5).png';
 import { Link } from 'react-router-dom';
 
 
@@ -15,7 +15,7 @@ render(){
         <div class="mt mt-5 " id="footer">
         <div class="container d-flex justify-content-between pt-4">
             <div >
-                    <div class=" "><img src={FoodAway} id="logos"/>
+                    <div class=" "><img src={FoodAway} style={{width:300,height:50}} id="logos"/>
                     </div>
       
                     </div>

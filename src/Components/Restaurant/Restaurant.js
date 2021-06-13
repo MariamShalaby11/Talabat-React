@@ -23,11 +23,13 @@ import { FaSadCry, FaSadTear } from "react-icons/fa";
 
 class Restaurant extends Component {
   state = {
-    RestID: 1,
-    Rest: {},
-    Rate: 0,
+    RestID: this.props.location.Resutantid,
+    Rest: [],
+    Rate: 5,
     Add: {},
-    Customer:[]
+    Customer:[],
+    Cusine:[]
+
     ,lat:"",lang:"",mapResult:"",show:false,showspan:"none"
   };
 
@@ -35,6 +37,7 @@ class Restaurant extends Component {
     //this.setState({Rest:this.state.Rest})
     this.getById();
     this.getRate();
+    this.getCusin();
   }
 
   getById() {
@@ -47,7 +50,11 @@ class Restaurant extends Component {
         this.setState({
           // RestID: this.state.RestID,
           Rest: this.state.Rest,
+         
         });
+        // this.setState({
+        //   Cusine:this.state.Rest.restaurantCusines.Cuisine
+        // })
         console.log(this.state.Rest.Address.BuildingNo);
         console.log(this.state.Add.AddressId);
         console.log(this.state.Add);
@@ -55,10 +62,21 @@ class Restaurant extends Component {
       });
     return this.state.Rest;
   }
+  getCusin(){
+     axios.get(`https://localhost:44327/api/cusine/${this.props.location.Resutantid}`).then(res=>{
+
+      this.setState({Cusine:res.data})
+     console.log(res.data,"hello")  
+      }) 
+  }   
+   
+ 
+        
+     
 
   getRate() {
     axios
-      .get(`https://localhost:44379/api/rate/${this.state.RestID}`)
+      .get(`https://localhost:44327/api/Rate/${this.state.RestID}`)
       .then((res) => {
         console.log(res.data);
         console.log(res.data["Rate"]);
@@ -117,8 +135,15 @@ class Restaurant extends Component {
               <div id="infoo" >
                 <img src={img1} className="MyImages" />
                 <h3>{this.state.Rest.RestaurantName}</h3>
+              {
+                    this.state.Cusine.map((c)=>{
+                                      console.log(c);
+                                      return( <h6>{c.Cuisine.CuisineName}</h6>)
+                                                })
+                                          }
+            
                 {/* untill access our real api */}
-                <h6>Burgers</h6>
+              
                 <h6>
                   <i className="fas fa-map-marker-alt"></i>
                   {this.state.Add.LandMark} - {this.state.Add.Street} -{" "}
