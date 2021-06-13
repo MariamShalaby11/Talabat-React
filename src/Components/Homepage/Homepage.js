@@ -127,7 +127,7 @@ export default class Home extends React.Component{
                   {/* -------------------------------------------map---------------------------------------------------- */}
       <div id="map">
    
-       <h1>Enter the city you want to deliver to  </h1>
+       <h1>Order food online in Egypt</h1>
             <div class="row justify-content-center ">
               {/* <form  class="col-lg-7 col-12  row justify-content-center"> */}
                     <div class="col-lg-4 col-12  input-group" id="mapinput">
@@ -135,7 +135,7 @@ export default class Home extends React.Component{
                         <div class="input-group-prepend">
                         <span class="input-group-text bg-transparent iconstyle" ><FaMapMarkerAlt/></span>
                         </div>
-                        <Typeahead    options={this.state.City} class="form-control" id="maptxt"  placeholder="Search for your city"  
+                        <Typeahead options={this.state.City} class="form-control" id="maptxt"  placeholder="Search for your city"  
                         onChange={(selectedCity) => {this.setState({selectedCity});}}
                          selected={this.state.selectedCity}/>
                         {console.log(this.state.selectedCity)}
@@ -207,7 +207,7 @@ export default class Home extends React.Component{
             </div>
 
         </div>
-      </div>  {/*End how it works*/}
+      </div>  
 
 {/* --------------------------------------------Resturants-------------------------------------------------- */}
 

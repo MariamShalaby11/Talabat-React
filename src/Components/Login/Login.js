@@ -78,13 +78,13 @@ class Login extends Component {
         return ( 
            
          
-    <div class="container">
+    <div class="container ">
         <div>
             <br />
             <br />
             <br />
         </div>
-        <div class="row justify-content-center">
+        <div class="classRow row justify-content-center">
             <div class="col-lg-5">
                 <div class="card shadow-lg border-0 rounded-lg mt-5" id="cardd">
                     <div class="card-header " id="card-header">

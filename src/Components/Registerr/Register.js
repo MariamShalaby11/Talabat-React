@@ -7,7 +7,6 @@ import './Register.css';
 import facebook from '../../images/fb.jpeg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faLock} from "@fortawesome/free-solid-svg-icons";
-import {Link} from 'react-router-dom';
 
 export default class Home extends React.Component{
 
@@ -144,7 +143,7 @@ export default class Home extends React.Component{
       
  
 
-      let URL='https://localhost:44365/api/Account/Register'
+      let URL='https://localhost:44327/api/Account/Register'
       const{Email,UserName,Password,CPassword,FirstName,LastName}=this.state;
       console.log(this.state)
       const params = new URLSearchParams()
@@ -186,7 +185,7 @@ export default class Home extends React.Component{
     
                     </div>
     
-                    <div class="col-12 col-lg-4">
+                    <div class="col-12 col-lg-5">
                         <h2 class="text-center" id="MyHeaderTxt">Create Account</h2>
                         <form action="" method="POST" role="form">   
                                 
@@ -206,7 +205,7 @@ export default class Home extends React.Component{
                                                 </div>
                                                 <input type="text" class="MyFormControl form-control" aria-label="Small"
                                                     aria-describedby="inputGroup-sizing-sm" placeholder="First Name"
-                                                    onChange={(e)=>{this.FirstNameError(this.state.FirstNamePassed);this.FirstNamePassed(e.target.value);}} />
+                                                    onChange={(e)=>{this.FirstNameError(this.state.FirstNamePassed);this.FirstNamePassed(e.target.value);}} required />
                                                     {this.state.FirstNameError&&<span class="error">First Name sould be character only with Length between(3-9)</span>}
 
                                             </div>
@@ -221,7 +220,7 @@ export default class Home extends React.Component{
                                                 </div>
                                                 <input type="text" class="MyFormControl form-control" aria-label="Small"
                                                     aria-describedby="inputGroup-sizing-sm" placeholder="Last Name"
-                                                    onChange={(e)=>{this.LastNameError(this.state.LastNamePassed);this.LastNamePassed(e.target.value);}} value={this.state.LastName}/>
+                                                    onChange={(e)=>{this.LastNameError(this.state.LastNamePassed);this.LastNamePassed(e.target.value);}} value={this.state.LastName} required/>
                                                    {this.state.LastNameError&&<span class="error">Last Name sould be character only with Length between(3-9)</span>}
 
                                                     
@@ -239,7 +238,7 @@ export default class Home extends React.Component{
                                     </div>
                                     <input type="text" class="MyFormControl form-control" aria-label="Small"
                                         aria-describedby="inputGroup-sizing-sm" placeholder="Username"
-                                        onChange={(e)=>{this.UserNameError(this.state.UserNamePassed);this.UserNamePassed(e.target.value);}} value={this.state.UserName}/>
+                                        onChange={(e)=>{this.UserNameError(this.state.UserNamePassed);this.UserNamePassed(e.target.value);}} value={this.state.UserName} required/>
                                       {this.state.UserNameError&&<span class="error">UserName Required,with charcter only </span>}
                                         
                                 </div>
@@ -252,7 +251,7 @@ export default class Home extends React.Component{
                                            <FaEnvelope/></span>
                                     </div>
                                         <input type="email" class="MyFormControl form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="email" placeholder="Enter your E-mail"
-                                        onChange={(e)=>{this.EmailError(this.state.Emailpassed);this.EmailPassed(e.target.value);}} value={this.state.Email}/>
+                                        onChange={(e)=>{this.EmailError(this.state.Emailpassed);this.EmailPassed(e.target.value);}} value={this.state.Email} required/>
                                         {this.state.EmailError&&<span class="error">please enter email as ****@****.***</span>}
                      
                                 </div>
@@ -266,9 +265,9 @@ export default class Home extends React.Component{
                                     </div>
                                     <input type="password" class="MyFormControl form-control" aria-label="Small"
                                         aria-describedby="inputGroup-sizing-sm" placeholder="Password"
-                                        onChange={(e)=>{this.PasswordError(this.state.PasswordPassed);this.PasswordPassed(e.target.value);}} value={this.state.Password}/>
+                                        onChange={(e)=>{this.PasswordError(this.state.PasswordPassed);this.PasswordPassed(e.target.value);}} value={this.state.Password} required/>
                                         <i class="fa fa-user icon bg-danger"></i>
-                                         {this.state.PasswordError&&<span class="error">Password should be character with at least one number </span>}
+                                         {this.state.PasswordError&&<span class="error">character with at least one number allowed only </span>}
                                       
                                         <div class="input-group-prepend">
                                             <span class="MyTxt input-group-text" id="inputGroup-sizing-sm">
@@ -284,7 +283,7 @@ export default class Home extends React.Component{
                                     </div>
                                     <input type="password" class="MyFormControl form-control" aria-label="Small"
                                         aria-describedby="inputGroup-sizing-sm" placeholder="Confirm Password"
-                                        onChange={(e)=>{this.CPasswordError(this.state.CPasswordPassed);this.CPasswordPassed(e.target.value);}} value={this.state.CPassword}/>
+                                        onChange={(e)=>{this.CPasswordError(this.state.CPasswordPassed);this.CPasswordPassed(e.target.value);}} value={this.state.CPassword} required/>
                                         {this.state.CPasswordError&&<span class="error">Password doesn't match</span>}
                                         
                                         <div class="input-group-prepend">

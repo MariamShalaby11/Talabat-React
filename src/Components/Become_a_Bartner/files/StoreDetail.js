@@ -77,7 +77,7 @@ export default class StoreDetail extends React.Component{
           axios({
             
               method: 'post',
-              url: 'http://localhost:44327/api/PartnerRegistration',
+              url: 'https://localhost:44327/api/PartnerRegistration',
               data: dataa,
           })
               .then((res) => {

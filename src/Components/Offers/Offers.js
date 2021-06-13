@@ -40,6 +40,18 @@ export default class Offers extends React.Component{
            console.log(res.data)  
              }) 
             }
+
+          GetMealsOffersHandler=(id)=>{
+            this.handleShow();
+            
+              axios.get(`https://localhost:44327/api/MealOffers/${id}`).then(res=>{
+        
+              this.setState({MealsOffer:res.data})
+      
+              console.log(res.data)  
+              
+                }) 
+          }
             
     render(){
         return(

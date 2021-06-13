@@ -20,7 +20,7 @@ class Accountinfo extends React.Component {
     }
 
     customerinfo() {
-        axios.get(`http://localhost:44327/api/cust/${1}`).then(
+        axios.get(`https://localhost:44327/api/cust/${1}`).then(
 
             (res) => {
                 this.state.customer = res.data
@@ -34,7 +34,7 @@ class Accountinfo extends React.Component {
     }
 
     getorder() {
-        axios.get(`http://localhost:44327/api/custOrders/${1}`).then(
+        axios.get(`https://localhost:44327/api/custOrders/${1}`).then(
 
             (res) => {
                 this.state.ordermeal = res.data
@@ -109,7 +109,7 @@ class Accountinfo extends React.Component {
 
       customEdit=(i)=>{
 
-        axios.post(`http://localhost:44327/api/editAcc/`+i, 
+        axios.post(`https://localhost:44327/api/editAcc/`+i, 
         {
 
             CustomerId:this.state.customer.CustomerId,
