@@ -9,6 +9,7 @@ import facebook from './../images/fb.jpeg';
 import { FaEyeSlash } from 'react-icons/fa';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock,faEnvelope,} from "@fortawesome/free-solid-svg-icons";
+import Login from './Login/Login';
 
 
 export default class Header extends React.Component{
@@ -77,67 +78,16 @@ export default class Header extends React.Component{
         {/* -------------------Login Modal----------------------------- */}
         <Modal show={this.state.setShow}
                       aria-labelledby="contained-modal-title-vcenter"
-                      centered                     
+                      centered
                      >
                         <Modal.Header style={{border:'none'}} >                        
                         <button className="close" onClick={this.handleClose} aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                         </button>
                         </Modal.Header>
-
                         <Modal.Body>
-                        <div class="card-header " id="card-header">
-                        <h1 class="text-center font-weight-light my-4" id="card-header-text">Login</h1>
-                        </div>
-                        <div class="card-body bg-transparent">
-                        <form action="" method="POST" role="form">
-                             <button type="button" id="Google" class="mybtn btn btn-block form-control formcntrl">
-                                <img src="https://img.icons8.com/fluent/50/000000/google-logo.png" id="googleImg"/> &#160;&#160; Continue with Google</button>
-                            <button type="button" id="facebook" class="mybtn btn btn-primary btn-block form-control formcntrl">
-                                <img src={facebook} id="googleImg" style={{borderRadius:10}}/> 
-
-                                 &#160;&#160; Continue with Facebook</button>
-                                <hr className="hhrr"/>
-                            <div class="form-group formgrps mt-3 ">
-                                <div class="input-group input-group">
-                                     <div class="input-group-prepend">
-                                         <span class="input-group-text inptxt" id="inputGroup-sizing-sm">
-                                             <FontAwesomeIcon icon={faEnvelope} /></span>
-                                     </div>
-                                 <input type="email" class="form-control formcntrl" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="email" placeholder="Enter your E-mail" required />
-                                </div>
-                            </div>
-                             <div class="form-group formgrps">
-                                <div class="input-group input-group">
-                                    <div class="input-group-prepend bg-transparent">
-                                        <span class="input-group-text inptxt" id="inputGroup-sizing-sm">
-                                             <FontAwesomeIcon icon={faLock} /></span>
-                                    </div>
-                                    <input type="password" class="form-control formcntrl" aria-label="Small"
-                                        aria-describedby="inputGroup-sizing-sm" placeholder="Password" required
-                                        id="pass"/>
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text inptxt" id="inputGroup-sizing-sm">  
-                                                <FaEyeSlash style={{cursor: "pointer"}}/>
-                                                </span>
-                                        </div>
-                                </div>
-                            </div> 
-                             <div class="form-check mt-4 ml-1">
-                                <label class="form-check-label" />
-                                    <input type="checkbox" class="form-check-input" name="" id="check" value="checkedValue" />
-                                 Remember Me
-                            </div>                           
-                            <button type="button" id="login" class="mybtn btn btn-primary btn-block mt-3 form-control formcntrl">Login</button>
-                        </form>
-                    </div>
-                     <div class="card-footer text-center"  id="gotoregister">
-                        <div class="d-flex justify-content-center mt-3">
-                            <h6>Need an account?</h6>
-                            <a href="/MariamShalaby11/Talabat-React/Register" class="ml-2" id="signup">Sign Up Now!</a>  
-                        </div>
-                    </div>
-                        </Modal.Body>         
+                            <Login />
+                        </Modal.Body>   
         </Modal>
         </>
         )
