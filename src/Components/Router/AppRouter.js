@@ -14,7 +14,6 @@ import Checkout from './../Checkout/Checkout';
 import Offers from './../Offers/Offers';
 import Register from './../Registerr/Register';
 import Accountinfo from './../AccountInfo/Accountinfo';
-import Login from './../Login/Login';
 import Footer from './../Footer';
 import contactus from './../StaticPages/Contactus';
 import login from '../Login/Login'
@@ -37,7 +36,7 @@ export default class AppRouter extends React.Component{
                 <Route component={Privacy} path={`${StaticRoute}Privacy`} ></Route>
                 <Route component={Terms} path={`${StaticRoute}Terms`}></Route>
                 <Route component={AllRestaurants} path={`${StaticRoute}AllResturants`} ></Route>
-                 <Route component={partner} path={`${StaticRoute}BecomePartner`}></Route>
+                <Route component={partner} path={`${StaticRoute}BecomePartner`}></Route>
                 <Route component={Menue} path={`${StaticRoute}Menu`} ></Route>
                 <Route component={Restaurant} path={`${StaticRoute}Restaurant`} ></Route>
                 <Route component={Checkout} path={`${StaticRoute}Checkout`} ></Route>
