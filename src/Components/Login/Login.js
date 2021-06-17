@@ -17,7 +17,8 @@ class Login extends Component {
         Email:""
         ,Password:""
         ,classMail:"invisible",
-        IsLoaded:false
+        IsLoaded:false,
+        Customer:""
     }
         handleEmailChange = (email)=>{
             this.setState({Email:email.target.value});
@@ -45,29 +46,41 @@ class Login extends Component {
                 }
               }
               const params = new URLSearchParams()
-                params.append('username','Arwa98')
-                params.append('password', 'a@A123')
+                params.append('username',this.state.Email)
+                params.append('password',this.state.Password)
                 params.append('grant_type', 'password')
-                const param={'username':'Arwa@gmmail.com','password':'a@A123','grant_type':'password'}
+              
 
         let URL='https://localhost:44327/Token'
             axios.post(URL, params, config).then(res=>{
                 console.log(res);
+                localStorage.setItem('access_token',res.data.access_token);
                // this.setState({AllRestaurants:res.data})
                 this.setState({classMail:"invisible"});
                 //this.history.pushState(null, 'Restaurant');
-                this.props.history.push('Restaurant')
+                this.props.history.push('Home')
                 console.log(this.props.history);
                
                 console.log(res.data)  
+
             }).catch(err=>{
                console.log(err); 
                this.setState({classMail:"visible"});
                // this.state.classMail="visible"
             }) ;
-            
+            this.GetCutomerID();
         }
-       
+       GetCutomerID=()=>{
+           axios.get(`https://localhost:44327/api/customer/${this.state.Email}`).then(res=>{
+               console.log(res.data)
+               this.setState({
+                   Customer:res.data.CustomerId
+               })
+               localStorage.setItem('Customer',JSON.stringify(res.data));
+               
+
+           })
+       }
 
         
     render() {
