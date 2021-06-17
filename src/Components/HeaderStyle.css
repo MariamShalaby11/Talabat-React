@@ -3,7 +3,6 @@
 	padding: 15px 0px;
 	position: fixed;
 	width: 100%;
-    height: 80px;
 	border-radius: 0px 0px 100px 100px;
 	transition: height .3s ease-out, background .3s ease-out, box-shadow .3s ease-out;
 	-webkit-transform: translate3d(0, 0, 0);
@@ -26,117 +25,13 @@
 @media (max-width: 767px) {
     .navbar-light .navbar-brand{
         margin-left: 45px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
     .navbar-light .navbar-toggler{
-        margin-right: 35px;
+        margin-right: 60px;
+        margin-bottom: 10px;
         border-radius: 0px;
-    }   
-}
-/* ---------------Login Modal Css--------------------- */
-/* #cardd{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    width: 100%;
-}
-#card-header{
-    background: transparent;
-    border-bottom: none;
-}
-#card-header-text{
-	margin-top: 0;
-    font-weight: 500 !important;
-}
+    }  
 
-#icon, #signup{
-    color: #810000;
-}
-#links, #dropdown-a{
-    color: white;
-    font: bolder;
-}
- .formgrps{
-    border-bottom: 1px solid #39498970;
-}
 
-.formcntrl{
-    border: none;
-} 
-
-#h2{
-    font-family: 'Open Sans', sans-serif; 
-    color: #413c69;
-    text-shadow: 2px 2px #a7c5eb;
 }
-#googleImg{
-    width: 25px;
-    height:25px;
-    float: left;
-}
-#fb{
-    float: left;
-    margin-top: 4px;
-}
-.mybtn{
-    border-radius: 3em;
-    font-family: 'Open Sans', sans-serif; 
-    border: none;
-    /* padding: 0.6ex; */
-/* } */
-/*.inptxt{
-    border: none;
-    background: transparent;
-}
-#check{
-    font-family: 'Open Sans', sans-serif; 
-}
-
-#Google{
-    background: #ffffff;
-    color: black;
-    border: 1px solid;
-    border-color: #E0E0E0;
-}
-#facebook{
-    background-color: #5777B9;
-}
-
-#login{
-    background-color: #810000;
-}
-#gotoregister{
-    border-top: none;
-    background: transparent;
-}
-
-.hhrr {
-    height:2px;
-    border:0;
-    background-color:lightgray;
-    line-height:20px;
-}
-
-.hhrr:before {
-  content: '';
-  display: block;
-  height: 1px;
-  background-color: lightgray;
-}
-
-.hhrr:after {
-    content: 'OR';
-    color:gray;
-    font-weight: bold;
-    display:block;
-    text-align:center;
-    width:60px;
-    margin-top:-10px;
-    position:absolute;
-    left:50%;
-    background-color: white;
-    -webkit-transform: translate(-50%);
-    -moz-transform: translate(-50%);
-    -ms-transform: translate(-50%);
-    -o-transform: translate(-50%);
-    transform: translate(-50%);  
-} */
