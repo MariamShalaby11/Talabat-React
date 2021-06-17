@@ -216,7 +216,7 @@ class Restaurant extends Component {
                            <button class="btn btn-success" onClick={()=>{
                                   if (this.state.Add.city == this.state.mapResult){
                                     console.log("hiii");
-                                  this.props.history.push("/MariamShalaby11/Talabat-React/Menu")
+                                  this.props.history.push({pathname:`/MariamShalaby11/Talabat-React/Menu/${this.state.RestID}`,RestID:this.state.RestID})
                                   }
                                   else{
                                   this.setState({
