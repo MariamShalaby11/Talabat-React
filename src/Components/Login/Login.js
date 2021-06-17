@@ -58,7 +58,9 @@ class Login extends Component {
                // this.setState({AllRestaurants:res.data})
                 this.setState({classMail:"invisible"});
                 //this.history.pushState(null, 'Restaurant');
+               
                 this.props.history.push('Home')
+                window.location.reload(false);
                 console.log(this.props.history);
                
                 console.log(res.data)  
@@ -91,14 +93,14 @@ class Login extends Component {
         return ( 
            
          
-    <div class="container ">
-        <div class="classRow row justify-content-center">
+    <div class="container">
+        <div class="classRow row justify-content-center ">
             <div>
                 <div class="card shadow-lg border-0 rounded-lg mt-5" id="cardd">
-                    <div class="card-header " id="card-header">
-                        <h1 class="text-center font-weight-light my-4" id="card-header-text">Login</h1>
-                    </div>
                     <div class="card-body bg-transparent">
+                    <div class="card-header " id="card-header">
+                    <h1 class="text-center font-weight-light my-4" id="card-header-text">Login</h1>
+                    </div>
                         <form action="" method="POST" role="form">
                              <button type="button" id="Google" class="mybtn btn btn-block form-control formcntrl">
                                 <img src="https://img.icons8.com/fluent/50/000000/google-logo.png" id="googleImg"/> &#160;&#160; Continue with Google</button>
