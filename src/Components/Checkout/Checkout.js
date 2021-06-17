@@ -4,12 +4,16 @@ import Modal from 'react-bootstrap/Modal';
 import CreditCardForm from './CreditCardForm';
 import { FaCreditCard, FaMoneyBillWave } from "react-icons/fa";
 import axios from 'axios';
+import Paypal from './Paypal';
 export default class Checkout extends React.Component{
 
     state={
         show:false,floorno:"",Landmark:"",street:"",buildingno:"",City:"",Mobile:"",District:"",paymentmethod:"",
         ShowCard:"none",
-        Subtotal:this.props.location.subTotal,CustomerId:1
+        Subtotal:this.props.location.subTotal,CustomerId:JSON.parse(localStorage.getItem('Customer')).CustomerId,AddressID:"",Orderid:"",
+        RestId:1,
+        meals:[],MealsArray:[this.props.location.selectedArray]
+
      
     }
     handleClose = () =>{
@@ -20,127 +24,202 @@ export default class Checkout extends React.Component{
       handleshow= () =>{
        this.setState({
          show:true
-         
        })
      };
 
      handleMobile=(e)=>{
+         this.state.Mobile=e.target.value
         this.setState({
-            Mobile:e.target.value
+            Mobile:this.state.Mobile
         })
+        console.log(this.state.Mobile)
     }
     handlefloorno=(e)=>{
+        this.state.floorno=e.target.value 
         this.setState({
-            floorno:e.target.value
+            floorno:this.state.floorno
         })
+        console.log(this.state.floorno)
     }
     handleLandmark=(e)=>{
+        this.state.Landmark=e.target.value
         this.setState({
-            Landmark:e.target.value
+            Landmark:this.state.Landmark
         })
+        console.log(this.state.Landmark)
     }
     handlebuilding=(e)=>{
+        this.state.buildingno=e.target.value
         this.setState({
-            buildingno:e.target.value
+            buildingno:this.state.buildingno
         })
+        console.log(this.state.buildingno)
     }
     handlecity=(e)=>{
+        this.state.City=e.target.value
         this.setState({
-            City:e.target.value
+            City:this.state.City
         })
+        console.log(this.state.City)
     }
     handleDistrict=(e)=>{
+        this.state.District=e.target.value
         this.setState({
-        District:e.target.value
+        District:this.state.District
         })
+        console.log(this.state.District)
     }
     handlestreet=(e)=>{
+        this.state.street=e.target.value
         this.setState({
-        street:e.target.value
+        street:this.state.street
         })
+        console.log(this.state.street)
     }
     handleCredit=(e)=>{
+        this.state.paymentmethod=e.target.value
         this.setState({
-            paymentmethod:e.target.value
+            paymentmethod:this.state.paymentmethod
         })
+        console.log(this.state.paymentmethod)
         this.setState({
             ShowCard:"block"
         })
-    
-
     }
+
     handleCash=(e)=>{
+
+       this.state.paymentmethod=e.target.value
         this.setState({
-            paymentmethod:e.target.value
+            paymentmethod:this.state.paymentmethod
         })
+        console.log(this.state.paymentmethod)
         this.setState({
             ShowCard:"none"
         })
     }
+
     handleAddOrder=()=>{
-        let newOrder={
-            Custmoreid:this.state.CustomerId,
-            
-        }
+      
+       
         const config = {
             headers: {
-              'Content-Type': 'application/json',
-              'Accept':'*/*'
+              'Content-Type':'application/x-www-form-urlencoded',
+              'Accept':'*/*',
             }
+            
           }
+           ///-----------------------------------------------------------Addresss------------------------------------
+           const paramss = new URLSearchParams()
+           paramss.append( 'BuildingNo',this.state.buildingno)
+           paramss.append('Street', this.state.street)
+           paramss.append( 'floorNo', this.state.floorno)
+           paramss.append( 'LandMark', this.state.Landmark)
+           paramss.append('city', this.state.City)
+           paramss.append('District', this.state.District)
+         
+
+    let URLLl="https://localhost:44327/api/AddAddress"
+    axios.post(URLLl,paramss,config).then(res=>{
+    console.log(res)
+
+        //   this.state.AddressID=res.data
+        //    this.setState({
+        //        AddressID: this.state.AddressID
+
+        //    })
+
+ 
         const params = new URLSearchParams()
-                    params.append('UserName','Hanya98')
-                    params.append('password', 'Hanya@97')
-                   
+                    params.append('CustomerId',this.state.CustomerId)
+                    params.append('OrderTime', '12pm')
+                    params.append('PaymentMethod', this.state.paymentmethod)
+                    params.append('EstimatedTime', '12pm')
+                    params.append('SubTotal',this.state.Subtotal)
+                    params.append('DeliveryFee', 20)
+                    params.append('RestId',this.state.RestId)
+                    params.append('Add_Id', res.data)
+
 
         let URL="https://localhost:44327/api/Orders"
         axios.post(URL,params,config).then(res=>{
             console.log(res)
+            // this.state.Orderid=res.data
+            // this.setState({
+            //     Orderid: res.data
+            // })
+            const paramz = new URLSearchParams()
+            paramz.append('meals', this.state.meals)
+            ///---------------------------MealOrder--------------------------------
+            let URLL=`https://localhost:44327/api/AddMealOrderr?orderid=${res.data}`
+            axios.post(URLL,paramz,config).then(res=>{
+    
+                console.log(res)
+                
+            }).catch(error=>{
+             console.log(error)
+            })
+            console.log(this.state.Orderid)
         }).catch(error=>{
          console.log(error)
         })
+
+    console.log(this.state.AddressID)
+    }).catch(error=>{
+    console.log(error)
+    })
         
-        // this.props.history.push("/Departments/");
+        // const params = new URLSearchParams()
+        //             params.append('CustomerId',this.state.CustomerId)
+        //             params.append('OrderTime', '12pm')
+        //             params.append('PaymentMethod', this.state.paymentmethod)
+        //             params.append('EstimatedTime', '12pm')
+        //             params.append('SubTotal',this.state.Subtotal)
+        //             params.append('DeliveryFee', 20)
+        //             params.append('RestId',this.state.RestId)
+        //             params.append('Add_Id', this.state.AddressID)
+
+
+        // let URL="https://localhost:44327/api/Orders"
+        // axios.post(URL,params,config).then(res=>{
+        //     console.log(res)
+        //     // this.state.Orderid=res.data
+        //     this.setState({
+        //         Orderid: res.data
+        //     })
+        //     console.log(this.state.Orderid)
+        // }).catch(error=>{
+        //  console.log(error)
+        // })
+           ///-----------------------------------------------------------Meal Order------------------------------------
+
+        // let URLL=`https://localhost:44327/api/AddMealOrderr?orderid=${this.state.Orderid}`
+        // axios.post(URLL,this.state.Meals,config).then(res=>{
+
+        //     console.log(res)
+            
+        // }).catch(error=>{
+        //  console.log(error)
+        // })
+      
+            this.props.history.push('Home')
+            alert("Your Order is in progress")
 
     }
 
-    handleAddAdress=()=>{
-        console.log("hiii")
-        let newAddress={
-            BuildingNo:this.state.buildingno,
-            Street: this.state.street,
-            floorNo: this.state.floorno,
-            LandMark: this.state.Landmark,
-            city: this.state.City,
-            District: this.state.District,
-            Lat:1.3,
-            Lang:134.23
-        }
-        const config = {
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept':'*/*'
-            }
-          }
-        const params = new URLSearchParams()
-                    params.append( 'BuildingNo',this.state.buildingno)
-                    params.append('Street', this.state.street)
-                    params.append( 'floorNo', this.state.floorno)
-                    params.append( 'LandMark', this.state.Landmark)
-                    params.append('city', this.state.City)
-                    params.append('District', this.state.District)
-                    params.append('Lat', 1.5)
-                    params.append('Lang', 1.6)
-                   
 
-        let URL="https://localhost:44327/api/AddAddress"
-        axios.post(URL,newAddress,config).then(res=>{
-            console.log(res)
-            
-        }).catch(error=>{
-         console.log(error)
-        })
-        this.props.history.push('Home')
+    
+    async componentDidMount(){
+    
+        const tokenStr = localStorage.getItem('access_token')
+        if(tokenStr==null){
+         this.props.history.push('Login')
+        }
+       await this.props.location.selectedArray.forEach(element => {
+            this.state.meals.push({MealId:element.MealId,Quantity:element.count})   
+        });
+        console.log(this.state.meals)
+      
 
     }
 
@@ -166,6 +245,7 @@ export default class Checkout extends React.Component{
                                 </thead>
                                 <tbody>
                                     {this.props.location.selectedArray.map((meals)=>{
+                                        console.log(meals)
                                    return(
                                     <tr>
                                         <th scope="row">{meals.Mealname}</th>
@@ -192,18 +272,18 @@ export default class Checkout extends React.Component{
                                                     <div class="form-row">
                                                         <div class="form-group col-md-12">
                                                         <label for="Mobileinput">Mobile number</label>
-                                                        <input type="number" class="form-control" id="Mobileinput" placeholder="01-2347474" value={this.state.Mobile} onChange={this.handleMobile}/>
+                                                        <input type="number" class="form-control" id="Mobileinput" placeholder="01-2347474"  onChange={this.handleMobile}/>
                                                         </div>
                                                        
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                         <label for="Cityinput">City</label>
-                                                        <input type="text" class="form-control" id="Cityinput" placeholder="Ex:Cairo" value={this.state.City} onChange={this.handlecity}/>
+                                                        <input type="text" class="form-control" id="Cityinput" placeholder="Ex:Cairo" value={this.state.City} onChange={this.handlecity} required/>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                         <label for="Districtinput">District</label>
-                                                        <input type="text" class="form-control" id="Districtinput" placeholder="Ex:Zamalik" value={this.state.District} onChange={this.handleDistrict}/>
+                                                        <input type="text" class="form-control" id="Districtinput" placeholder="Ex:Zamalik" value={this.state.District} onChange={this.handleDistrict} required/>
                                                         </div>
 
                                                     </div>
@@ -211,34 +291,34 @@ export default class Checkout extends React.Component{
                                                     <div class="form-row">
                                                         <div class="form-group col-md-4">
                                                         <label for="Streetno">Street</label>
-                                                        <input type="text" class="form-control" id="Streetno" placeholder="ex:abu bakr" value={this.state.street} onChange={this.handlestreet}/>
+                                                        <input type="text" class="form-control" id="Streetno" placeholder="ex:abu bakr" value={this.state.street} onChange={this.handlestreet} required/>
                                                         </div>
                                                         <div class="form-group col-md-4">
                                                         <label for="Building">Building Number</label>
-                                                        <input type="text" class="form-control" id="Building" placeholder="Building No"  value={this.state.buildingno} onChange={this.handlebuilding} />
+                                                        <input type="number" class="form-control" id="Building" placeholder="Building No"  value={this.state.buildingno} onChange={this.handlebuilding} />
                                                         </div>
                                                         <div class="form-group col-md-3">
                                                         <label for="Floor">Floor Number</label>
-                                                        <input type="text" class="form-control" id="Floor" placeholder="Floor No"  value={this.state.floorno} onChange={this.handlefloorno}/>
+                                                        <input type="number" class="form-control" id="Floor" placeholder="Floor No"  value={this.state.floorno} onChange={this.handlefloorno}/>
                                                         </div>
                                                       
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-12">
                                                         <label for="Cityinput">Additional information</label>
-                                                        <input type="text" class="form-control" id="Landmark" placeholder="Ex:Cairo" value={this.state.Landmark} onChange={this.handleLandmark}/>
+                                                        <input type="text" class="form-control" id="Landmark" placeholder="Ex:Nady Elgzira" value={this.state.Landmark} onChange={this.handleLandmark}/>
                                                         </div>
                                                       
                                                         
                                                     </div>
                                                    
-                                                    <button type="submit" class="btn btn-success" onClick={this.handleAddAdress}>Save Address</button>
+                                                    {/* <button type="submit" class="btn btn-success" onClick={this.handleAddAdress}>Save Address</button> */}
                                                </form>
                                     
                                             </Modal.Body>
                                           <Modal.Footer>
                                             <button class="btn btn-danger" variant="secondary" onClick={this.handleClose} >
-                                            back
+                                            Save Address
                                             </button>
                                         </Modal.Footer>
                                     </Modal>
@@ -276,14 +356,15 @@ export default class Checkout extends React.Component{
                             <div className="card">
                                 <div className="card-header bg-transparent">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Visa"    onChange={this.handleCredit}/>
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="1"    onChange={this.handleCredit}/>
                                             <label class="form-check-label" for="exampleRadios1">
                                              <FaCreditCard style={{color:"red"}}/>   Debit/Credit Card
                                             </label>
                                         </div>
                                 </div>
                                 <div className="card-body bg-transparent" id="paymentmethodCont" style={{display: this.state.ShowCard }}>
-                                <CreditCardForm />    
+                                <CreditCardForm />  
+                                <Paypal/>  
                                 </div>
 
                             </div>
@@ -291,7 +372,7 @@ export default class Checkout extends React.Component{
                             <div className="card">
                                 <div className="card-header bg-transparent">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Cash"   onChange={this.handleCash}/>
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="2"   onChange={this.handleCash}/>
                                             <label class="form-check-label" for="exampleRadios2">
                                            <FaMoneyBillWave style={{color:"green"}}/> Cash
                                             </label>
@@ -322,9 +403,7 @@ export default class Checkout extends React.Component{
                                             </tr>
                                             <tr >
                                             <td className="col-12" colSpan="2">
-                                               <button className="btn btn-success btn-block" onClick={this.handleAddOrder=()=>{
-
-                                               }}>Place order</button>
+                                               <button className="btn btn-success btn-block" onClick={this.handleAddOrder}>Place order</button>
                                             </td>
                                             </tr>
                                             
