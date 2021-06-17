@@ -7,7 +7,7 @@ import { FaSearch } from 'react-icons/fa'
 class Filters extends React.Component {
 
     state = {
-        Restaurant: [],SelectedTab: "tab1",Cusin:[]
+        Restaurant: [],SelectedTab: "tab1",Cusin:[],Resturantcusine:[]
     }
     
 
@@ -165,15 +165,23 @@ class Filters extends React.Component {
                                         this.state.Restaurant.map((res, i) => {
                                             return (
                                                 <>
-                                                    <div class="row">
-                                                        <div class="col-lg-2 col-md-3 col-sm-5">
+                                                    <div class="row" style={{cursor:'pointer'}} onClick={()=>{
+                                                                this.props.history.push({pathname:`/MariamShalaby11/Talabat-React/Restaurant/${res.RestaurantId}`,Resutantid:res.RestaurantId})
+                                                            }}>
+                                                        <div class="col-lg-2 col-md-3 col-sm-5" >
                                                             <img class="card shadow-sm p-2 mb-2 bg-white rounded" height="60" width="60" src={im} />
                                                         </div>
                                                         <div class="col-lg-10 col-md-9 col-sm-7" style={{ marginBottom: 10 }}>
-                                                            <span class="h5">{res.RestaurantName}</span><br />
-                                                            <span class="h6" style={{ color: '#aaa' }}>Charity</span><br />
-                                                            <span class="h6" style={{ color: '#aaa' }}>Very Good</span><br />
-                                                            <span class="h6" style={{ color: '#aaa' }}>With {res.MaxDeliveryTime} Min Service 4.00 Mix 15.00</span>
+                                                            <span class="h5" >{res.RestaurantName}</span><br />
+                                                            {/* <span class="h6" style={{ color: '#aaa' }}>{res.Description}</span><br /> */}
+                                                            {res.restaurantCusines.map((cus)=>{
+                
+                                                                    return( <span class="h6" style={{ color: '#aaa' }}>
+                                                                    {cus.Cuisine.CuisineName} </span>)
+                                                                
+                                                                })}
+                                                                            <br />
+                                                            <span class="h6" style={{ color: '#aaa' }}>Deliver Within {res.MaxDeliveryTime} mins </span>
                                                         </div>
                                                     </div>
 
