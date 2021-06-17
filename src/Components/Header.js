@@ -98,18 +98,17 @@ export default class Header extends React.Component{
 		</nav>
 
         {/* -------------------Login Modal----------------------------- */}
-        <Modal show={this.state.setShow}
-                      aria-labelledby="contained-modal-title-vcenter"
-                      centered
-                     >
-                        <Modal.Header style={{border:'none'}} >                        
-                        <button className="close" onClick={this.handleClose} aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                        </button>
-                        </Modal.Header>
+        <Modal 
+                show={this.state.setShow}
+                aria-labelledby="contained-modal-title-vcenter"
+                centered >
                         <Modal.Body>
+                        <button className="close" onClick={this.handleClose} aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                             <Login />
                         </Modal.Body>   
+                      
         </Modal>
         </>
         )

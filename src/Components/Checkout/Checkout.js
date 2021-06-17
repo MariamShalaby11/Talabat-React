@@ -213,6 +213,7 @@ export default class Checkout extends React.Component{
     
         const tokenStr = localStorage.getItem('access_token')
         if(tokenStr==null){
+            alert("You're not Logined ,Please Login First")
          this.props.history.push('Login')
         }
        await this.props.location.selectedArray.forEach(element => {
