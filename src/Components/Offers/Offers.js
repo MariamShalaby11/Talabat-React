@@ -68,7 +68,7 @@ export default class Offers extends React.Component{
                                     <div className="gallery-single fix">
                                         <img src={slide1} className="img-fluid" alt="Image" id="RestImage" />
                                         <div className="card-title">
-                                            <h4 style={{color:'#810000',textAlign:'center', marginTop:3}}>{Offers.RestaurantName}</h4>
+                                            <h4 style={{color:'#810000', marginTop:3,fontWeight:"bold"}}>{Offers.RestaurantName}</h4>
                                         </div>
                                     </div>
                                 </div>   

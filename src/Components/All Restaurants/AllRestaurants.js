@@ -72,11 +72,11 @@ export default class AllRestaurants extends React.Component{
                                     <div className="gallery-single fix">
                                         <img src={slide1} className="img-fluid" alt="Image" id="RestImage"/>
                                         <div className="card-title">
-                                            <h4 style={{color:'#810000',textAlign:'center', marginTop:3}}>{AllRest.RestaurantName}</h4>
+                                            <h3 style={{color:'#810000', marginTop:3,fontWeight:"bolder"}}>{AllRest.RestaurantName}</h3>
                                             {AllRest.restaurantCusines.map((c)=>{
                                                 console.log(c);
                                                 
-                                                return( <div style={{textAlign:'center', marginTop:2}}>{c.Cuisine.CuisineName}</div>)
+                                                return( <div>{c.Cuisine.CuisineName}</div>)
                                                
                                             })}
                                         </div>
