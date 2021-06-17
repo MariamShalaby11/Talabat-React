@@ -58,7 +58,9 @@ class Login extends Component {
                // this.setState({AllRestaurants:res.data})
                 this.setState({classMail:"invisible"});
                 //this.history.pushState(null, 'Restaurant');
+               
                 this.props.history.push('Home')
+                window.location.reload(false);
                 console.log(this.props.history);
                
                 console.log(res.data)  
