@@ -25,7 +25,7 @@ class Restaurant extends Component {
   state = {
     RestID: this.props.location.Resutantid,
     Rest: [],
-    Rate: "",
+    Rate: 0,
     Add: {},
     Customer:[],
     Cusine:[]

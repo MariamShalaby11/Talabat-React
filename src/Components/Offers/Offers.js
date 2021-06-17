@@ -4,12 +4,16 @@ import slide1 from '../../images/slider-02.jpg';
 import slide2 from '../../images/slider-03.jpg';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
+import {Link} from 'react-router-dom';
+
 
 export default class Offers extends React.Component{
     state={
         RestaurantsWithOffers:[],
         MealsOffer:[],
-        setShow:false
+        setShow:false,
+        RestName:"",
+        RestId:""
     }
 
     handleShow=()=>{
@@ -19,17 +23,6 @@ export default class Offers extends React.Component{
       this.setState({setShow:false});
     }
 
-    GetMealsOffersHandler=(id)=>{
-      this.handleShow();
-      
-       axios.get(`https://localhost:44327/api/MealOffers/${id}`).then(res=>{
-  
-        this.setState({MealsOffer:res.data})
-
-       console.log(res.data)  
-       
-         }) 
-    }
 
     async componentDidMount(){
 
@@ -41,9 +34,12 @@ export default class Offers extends React.Component{
              }) 
             }
 
-          GetMealsOffersHandler=(id)=>{
+          GetMealsOffersHandler=(id,name)=>{
+
+            this.state.RestName = name;
+            this.state.RestId = id;
             this.handleShow();
-            
+            console.log(Offers.RestaurantName);
               axios.get(`https://localhost:44327/api/MealOffers/${id}`).then(res=>{
         
               this.setState({MealsOffer:res.data})
@@ -65,13 +61,14 @@ export default class Offers extends React.Component{
                     <div className="card-body bg-transparent" >
 
                             <div className="row special-list" style={{cursor:'pointer'}}>
+
                                 {this.state.RestaurantsWithOffers.map((Offers)=>{
                                     return(
-                                <div className="col-lg-4 col-md-6" onClick={()=>this.GetMealsOffersHandler(Offers.RestaurantId)}>
+                                <div className="col-lg-4 col-md-6" onClick={()=>this.GetMealsOffersHandler(Offers.RestaurantId, Offers.RestaurantName)}>
                                     <div className="gallery-single fix">
                                         <img src={slide1} className="img-fluid" alt="Image" id="RestImage" />
                                         <div className="card-title">
-                                            <h4>{Offers.RestaurantName}</h4>
+                                            <h4 style={{color:'#810000',textAlign:'center', marginTop:3}}>{Offers.RestaurantName}</h4>
                                         </div>
                                     </div>
                                 </div>   
@@ -88,33 +85,39 @@ export default class Offers extends React.Component{
                      >
                       <Modal.Header>
 
-                        <h5 style={{color:'#810000'}}>Offers from{this.state.RestaurantsWithOffers.RestaurantName}</h5>
-                        
+                        <h5 style={{color:'#810000'}}>Offers from {this.state.RestName}</h5>
+
                         <button className="close" onClick={this.handleClose} aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                       </Modal.Header>
-                      <Modal.Body style={{cursor:'pointer'}}>
+                      <Modal.Body >
 
                         {this.state.MealsOffer.map((meals)=>{
-                      <div className="card mb-3">
+                          return(
+                      <div className="card mb-3" style={{cursor:'pointer'}}
+                      onClick={()=>
+                        this.props.history.push({pathname:`/MariamShalaby11/Talabat-React/Restaurant/${this.state.RestId}`,Resutantid:this.state.RestId.RestaurantId})
+                      }>
                       <div className="row">
                         <div className="col-md-4">
                         <img src={slide1} className="img-fluid" alt="Image" id="MyRestImage"/>
                       </div>
                         <div className="col-md-8">
                           <div className="card-body bg-transparent">
-                            <h5 className="card-title">{meals.Mealname}</h5>
+                            <h4>{meals.Mealname}</h4>
+
+                            {/* <h5 className="card-title">{meals.Mealname}</h5> */}
                             <p className="card-text">{meals.MealDescription}</p>
-                            <p className="card-text text-right"><small style={{color:'#810000'}}>{meals.MealPrice}</small></p>
+                            <p className="card-text text-right"><small style={{color:'#810000'}}>{meals.MealPrice} L.E</small></p>
                           </div>
                         </div>
                       </div>
                     </div>
-                        })}
+                        )})}
 
 
-                      <div className="card mb-3">
+                      {/* <div className="card mb-3">
                         <div className="row">
                           <div className="col-md-4">
                           <img src={slide2} className="img-fluid" alt="Image" id="RestImage"/>
@@ -127,7 +130,7 @@ export default class Offers extends React.Component{
                             </div>
                           </div>
                         </div>
-                      </div>                      
+                      </div>                       */}
 
                       </Modal.Body>
                       <Modal.Footer style={{border:'none'}}></Modal.Footer>

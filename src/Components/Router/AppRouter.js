@@ -14,7 +14,6 @@ import Checkout from './../Checkout/Checkout';
 import Offers from './../Offers/Offers';
 import Register from './../Registerr/Register';
 import Accountinfo from './../AccountInfo/Accountinfo';
-import Login from './../Login/Login';
 import Footer from './../Footer';
 import contactus from './../StaticPages/Contactus';
 import login from '../Login/Login'

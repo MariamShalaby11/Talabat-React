@@ -3,6 +3,10 @@ import React from 'react';
 import './FooterStyle.css';
 import FoodAway from '../images/FoodAway (5).png';
 import { Link } from 'react-router-dom';
+import googlePlay from './../images/google_play.svg';
+import appstore from './../images/appstore.svg';
+
+
 
 
 
@@ -39,8 +43,9 @@ render(){
                     </div> 
                 </div>
                 <div id="download" class=" d-md-flex  justify-content-between mt-3 ">
-                    <a class="btn  "><img src="images/google_play.svg"/></a>
-                    <a class="btn"><img src="images/appstore.svg"/></a> 
+                    <img src={googlePlay} className="img-fluid mr-2" alt="Image" id="googlePlay"/>
+                    <img src={appstore} className="img-fluid" alt="Image" id="appstore"/>
+
                 </div>
            </div>
            <hr style={{color:"rgb(0, 255, 8)"}}/>

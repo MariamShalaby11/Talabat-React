@@ -92,13 +92,8 @@ class Login extends Component {
            
          
     <div class="container ">
-        <div>
-            <br />
-            <br />
-            <br />
-        </div>
         <div class="classRow row justify-content-center">
-            <div class="col-lg-5">
+            <div>
                 <div class="card shadow-lg border-0 rounded-lg mt-5" id="cardd">
                     <div class="card-header " id="card-header">
                         <h1 class="text-center font-weight-light my-4" id="card-header-text">Login</h1>

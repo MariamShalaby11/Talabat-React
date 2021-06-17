@@ -64,15 +64,19 @@ export default class AllRestaurants extends React.Component{
                                 {this.state.AllRestaurants.map((AllRest)=>{
                                     console.log(AllRest.restaurantCusines);
                                     return(
-                                <div className="col-lg-4 col-md-6">
+                                <div className="col-lg-4 col-md-6"
+                                onClick={()=>
+                                    this.props.history.push({pathname:`/MariamShalaby11/Talabat-React/Restaurant/${AllRest.RestaurantId}`,Resutantid:AllRest.RestaurantId})
+                                    }>
+
                                     <div className="gallery-single fix">
                                         <img src={slide1} className="img-fluid" alt="Image" id="RestImage"/>
                                         <div className="card-title">
-                                        <Link style={{color:"maroon",fontSize:25,textAlign:"center"}} to={{pathname:`/MariamShalaby11/Talabat-React/Restaurant/${AllRest.RestaurantId}`,Resutantid:AllRest.RestaurantId}}>{AllRest.RestaurantName}</Link>
+                                            <h4 style={{color:'#810000',textAlign:'center', marginTop:3}}>{AllRest.RestaurantName}</h4>
                                             {AllRest.restaurantCusines.map((c)=>{
                                                 console.log(c);
                                                 
-                                                return( <div>{c.Cuisine.CuisineName}</div>)
+                                                return( <div style={{textAlign:'center', marginTop:2}}>{c.Cuisine.CuisineName}</div>)
                                                
                                             })}
                                         </div>
