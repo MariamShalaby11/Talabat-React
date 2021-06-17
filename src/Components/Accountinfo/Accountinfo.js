@@ -7,9 +7,9 @@ class Accountinfo extends React.Component {
     state = {
         
         selectedflag:"tab1",
-        customer:{},CustomerId:"",
+        customer:{},CustomerId:JSON.parse(localStorage.getItem('Customer')).CustomerId,
         FirstName:"",LastName:"",Username:"",Email:"",Password:"",CPassword:"",
-      ordermeal:[],SellingArray:[],
+      ordermeal:[],SellingArray:[]
 
     }
     
@@ -20,7 +20,9 @@ class Accountinfo extends React.Component {
     }
 
     customerinfo() {
-        axios.get(`https://localhost:44327/api/cust/${1}`).then(
+
+        axios.get(`https://localhost:44327/api/cust/${this.state.CustomerId}`
+            ).then(
 
             (res) => {
                 this.state.customer = res.data
@@ -32,6 +34,7 @@ class Accountinfo extends React.Component {
  
         );
     }
+    
 
     getorder() {
         axios.get(`https://localhost:44327/api/custOrders/${1}`).then(
