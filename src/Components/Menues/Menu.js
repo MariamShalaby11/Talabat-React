@@ -12,7 +12,7 @@ class Menue extends React.Component {
 
     state = {
   
-      product: [],isActive:[], SellingArray: [],TotalPrice:0
+      product: [],isActive:[], SellingArray: [],TotalPrice:0,RestId:this.props.location.RestID
     }
   
 
@@ -20,7 +20,7 @@ class Menue extends React.Component {
 
     componentDidMount(){
 
-      axios.get(`https://localhost:44327/api/Category/All?id=${1}`).then(
+      axios.get(`https://localhost:44327/api/Category/All?id=${this.state.RestId}`).then(
 
           (cat)=>{
               console.log(cat.data)
@@ -271,7 +271,9 @@ class Menue extends React.Component {
                     <div class="col-6" style={{padding:10}}>Total Amount</div>
                     <div class="col-6" style={{padding:10}}>{this.state.TotalPrice+20}</div>
                     <div class="col-12" style={{padding:10}}>
-                    <Link class="btn btn-success" variant="primary"  to={{pathname:`/MariamShalaby11/Talabat-React/Checkout` ,selectedArray:this.state.SellingArray,subTotal:this.state.TotalPrice}}> Proceed to Checkout</Link>
+                      
+
+                    <Link class="btn btn-success" variant="primary" to={{pathname:`/MariamShalaby11/Talabat-React/Checkout` ,selectedArray:this.state.SellingArray,subTotal:this.state.TotalPrice,RestuarantId:this.state.RestId}}> Proceed to Checkout</Link>
                     </div>
                   </div>
                 </div>
