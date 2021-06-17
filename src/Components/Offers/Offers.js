@@ -97,7 +97,7 @@ export default class Offers extends React.Component{
                           return(
                       <div className="card mb-3" style={{cursor:'pointer'}}
                       onClick={()=>
-                        this.props.history.push({pathname:`/MariamShalaby11/Talabat-React/Restaurant/${this.state.RestId}`,Resutantid:this.state.RestId.RestaurantId})
+                        this.props.history.push({pathname:`/MariamShalaby11/Talabat-React/Restaurant/${this.state.RestId}`,Resutantid:this.state.RestId})
                       }>
                       <div className="row">
                         <div className="col-md-4">
