@@ -14,7 +14,7 @@ import { faLock,faEnvelope,} from "@fortawesome/free-solid-svg-icons";
 export default class Header extends React.Component{
 
     state={
-        setShow:false
+        setShow:false,showMyAccount:"none",ShowLogin:"block"
     }
 
     handleShow=()=>{
@@ -22,6 +22,22 @@ export default class Header extends React.Component{
       }
       handleClose=()=>{
         this.setState({setShow:false});
+    }
+    async componentDidMount(){
+        const tokenStr = localStorage.getItem('access_token')
+        if(tokenStr==null){
+          this.setState({
+            showMyAccount:"none",
+              ShowLogin:"block"
+          })
+        }else{
+            this.setState({
+                showMyAccount:"block",
+                ShowLogin:"none"
+
+            })
+        }
+
     }
 
     render(){
@@ -51,7 +67,9 @@ export default class Header extends React.Component{
                             <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >All Resturants</Link>
                        </li>
 
-                       <li>
+                       <li style={{display:this.state.showMyAccount}}>
+                           
+                           
                        <Dropdown>
                             <Dropdown.Toggle  style={{backgroundColor:"#810000",border:"none",marginTop:2}} variant="danger" id="dropdown-basic">
                                 My Account
@@ -60,12 +78,15 @@ export default class Header extends React.Component{
                             <Dropdown.Menu>
                                 <Dropdown.Item ><Link class="nav-link" to="/MariamShalaby11/Talabat-React/Accountinfo"id="Navlinks" style={{color:"black"}}><FaUser style={{color:"#810000"}}/> &nbsp; Account Info</Link></Dropdown.Item>
                                 <Dropdown.Item ><Link class="nav-link" to="/MariamShalaby11/Talabat-React/Accountinfo"id="Navlinks" style={{color:"black"}}> <FaShoppingCart style={{color:"#810000"}}/> &nbsp; My Orders</Link> </Dropdown.Item>
-                                <Dropdown.Item href="#/action-3"><FaSignOutAlt style={{color:"#810000"}}/> &nbsp; Log Out</Dropdown.Item>
+                                <Dropdown.Item onClick={()=>{
+                                    localStorage.removeItem('access_token')
+                                    // this.props.history.push('Home')
+                                }}><FaSignOutAlt style={{color:"#810000"}} /> &nbsp; Log Out</Dropdown.Item>
                             </Dropdown.Menu>
                        </Dropdown>
                        </li>
 
-                       <li class="nav-item">
+                       <li class="nav-item" style={{display:this.state.ShowLogin}}>
                             <button class="btn btn-default" id="Navlinks" onClick={this.handleShow} id="LoginBtn">Login</button>
                        </li>
 

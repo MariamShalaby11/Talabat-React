@@ -51,12 +51,12 @@ render(){
              
                 <div class="col-3 d-flex justify-content-between mr-4 " style={{color:"white"}}>
                     {/* <FaFacebook/> */}
-                    <faTwitter/>
+                    {/* <faTwitter/>
                     <faInstagram/>
                     <i class="fab fa-facebook-f"></i>
                     <i class="fab fa-twitter"></i>
                     <i class="fab fa-instagram"></i>
-                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-linkedin"></i> */}
                 </div>
                </div>  
            </div>
