@@ -68,7 +68,7 @@ export default class Offers extends React.Component{
                                     <div className="gallery-single fix">
                                         <img src={slide1} className="img-fluid" alt="Image" id="RestImage" />
                                         <div className="card-title">
-                                            <h4 style={{color:'#810000', marginTop:2}}>{Offers.RestaurantName}</h4>
+                                            <h4 style={{color:'#810000',textAlign:'center', marginTop:3}}>{Offers.RestaurantName}</h4>
                                         </div>
                                     </div>
                                 </div>   
@@ -95,14 +95,17 @@ export default class Offers extends React.Component{
 
                         {this.state.MealsOffer.map((meals)=>{
                           return(
-                      <div className="card mb-3" style={{cursor:'pointer'}}>
+                      <div className="card mb-3" style={{cursor:'pointer'}}
+                      onClick={()=>
+                        this.props.history.push({pathname:`/MariamShalaby11/Talabat-React/Restaurant/${this.state.RestId}`,Resutantid:this.state.RestId.RestaurantId})
+                      }>
                       <div className="row">
                         <div className="col-md-4">
                         <img src={slide1} className="img-fluid" alt="Image" id="MyRestImage"/>
                       </div>
                         <div className="col-md-8">
                           <div className="card-body bg-transparent">
-                          <Link style={{color:"maroon",fontSize:25,textAlign:"center"}} to={{pathname:`/MariamShalaby11/Talabat-React/Restaurant/${this.state.RestId}`,Resutantid:this.state.RestId.RestaurantId}}>{meals.Mealname}</Link>
+                            <h4>{meals.Mealname}</h4>
 
                             {/* <h5 className="card-title">{meals.Mealname}</h5> */}
                             <p className="card-text">{meals.MealDescription}</p>
