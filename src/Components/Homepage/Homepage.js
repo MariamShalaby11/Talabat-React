@@ -229,7 +229,10 @@ export default class Home extends React.Component{
             {
                  this.state.Resturants.map((Rest)=>{
                 return(
-                <div class="card col-lg-4 col-12 shadow-none cardes">
+                <div class="card col-lg-4 col-12 shadow-none cardes" style={{cursor:'pointer'}} 
+                  onClick={()=>
+                  this.props.history.push({pathname:`/MariamShalaby11/Talabat-React/Restaurant/${Rest.RestaurantId}`,Resutantid:Rest.RestaurantId})
+                  }>
 
                     <img class="card-img-top cardimgs"  src={slide5} alt="Card image cap"/>
                     <div class="card-body bg-transparent">
