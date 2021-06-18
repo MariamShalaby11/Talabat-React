@@ -9,6 +9,8 @@ class Accountinfo extends React.Component {
         
         selectedflag:"tab1",
         customer:{},CustomerId:JSON.parse(localStorage.getItem('Customer')).CustomerId,
+        username:JSON.parse(localStorage.getItem('Customer')).Username,
+
         FirstName:"",LastName:"",Username:"",Email:"",Password:"",CPassword:"",
         SellingArray:[],
         custMeals:[],
@@ -160,7 +162,7 @@ class Accountinfo extends React.Component {
 
           
 
-          let URL=`https://localhost:44327/api/editAcc/`+i
+          let URL=`https://localhost:44327/api/EditCUser/${i}`
 
           axios.post(URL, params, config).then(res=>{
             console.log(res);
@@ -203,10 +205,10 @@ class Accountinfo extends React.Component {
                                  {
                                 
                         <form>
-                        <div class="form-group row">
-                                {/* <label htmlFor="staticEmail" class="col-sm-2 col-form-label thandlabel">ID</label> */}
-                                <div class="col-sm-10 d-none">
-                                <input type="text" className="form-control inputt" id="txtemail" value={this.state.customer.CustomerId|| ''}></input></div>
+                         <div class="form-group row">
+                                <label htmlFor="text" class="col-sm-2 col-form-label thandlabel">UserName</label>
+                                <div class="col-sm-10">
+                                <input type="text" className="form-control inputt"  value={this.state.customer.Username|| ''} onChange={(e)=>this.setusernamestate(e)}  style={{width:350}} disabled></input></div>
                          </div>
                            
                         <div class="form-group row">
@@ -224,11 +226,7 @@ class Accountinfo extends React.Component {
                                 <div class="col-sm-10">
                                 <input type="text" className="form-control inputt" id="txtLname" value={this.state.customer.LastName|| ''} onChange={(e)=>this.setLnamestate(e)}  style={{width:350}}></input></div>
                          </div>
-                         <div class="form-group row">
-                                <label htmlFor="text" class="col-sm-2 col-form-label thandlabel">UserName</label>
-                                <div class="col-sm-10">
-                                <input type="text" className="form-control inputt"  value={this.state.customer.Username|| ''} onChange={(e)=>this.setusernamestate(e)}  style={{width:350}}></input></div>
-                         </div>
+
 
                          <div class="form-group row">
                                 <label htmlFor="Password" class="col-sm-2 col-form-label thandlabel">Password</label>
@@ -241,7 +239,7 @@ class Accountinfo extends React.Component {
                                 <input type="password" className="form-control inputt" value={this.state.customer.CPassword|| ''} onChange={(e)=>this.setcpasswordstate(e)}  style={{width:350}}></input></div>
                          </div>
                          
-                         <input type="button" onClick={() => this.customEdit(this.state.CustomerId)}  class="btn btn-success inputt" value="update"></input>
+                         <input type="button" onClick={() => this.customEdit(this.state.Username)}  class="btn btn-success inputt" value="update"></input>
                         </form>
                         
                     }
