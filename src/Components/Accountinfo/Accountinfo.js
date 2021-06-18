@@ -142,7 +142,7 @@ class Accountinfo extends React.Component {
 
 
 
-      customEdit=(i)=>{
+      customEdit=()=>{
 
         const config = {
             headers: {
@@ -162,7 +162,7 @@ class Accountinfo extends React.Component {
 
           
 
-          let URL=`https://localhost:44327/api/EditCUser/${i}`
+          let URL=`https://localhost:44327/api/EditCUser/${this.state.username}`
 
           axios.post(URL, params, config).then(res=>{
             console.log(res);
@@ -239,7 +239,7 @@ class Accountinfo extends React.Component {
                                 <input type="password" className="form-control inputt" value={this.state.customer.CPassword|| ''} onChange={(e)=>this.setcpasswordstate(e)}  style={{width:350}}></input></div>
                          </div>
                          
-                         <input type="button" onClick={() => this.customEdit(this.state.Username)}  class="btn btn-success inputt" value="update"></input>
+                         <input type="button" onClick={() => this.customEdit()}  class="btn btn-success inputt" value="update"></input>
                         </form>
                         
                     }
