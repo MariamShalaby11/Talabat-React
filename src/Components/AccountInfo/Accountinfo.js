@@ -1,6 +1,7 @@
 import React from 'react';
 import './Accountinfo.css';
 import axios from 'axios';
+import Map from './../Become_a_Bartner/files/map';
 
 class Accountinfo extends React.Component {
 
@@ -9,14 +10,20 @@ class Accountinfo extends React.Component {
         selectedflag:"tab1",
         customer:{},CustomerId:JSON.parse(localStorage.getItem('Customer')).CustomerId,
         FirstName:"",LastName:"",Username:"",Email:"",Password:"",CPassword:"",
-      ordermeal:[],SellingArray:[]
+        SellingArray:[],
+        custMeals:[],
+        orders:[],
+        MealOrders:[],
 
     }
     
     componentDidMount() {
         //this.setState({Rest:this.state.Rest})
         this.customerinfo();
-      this.getorder();
+        this.getCustomerMeals();
+        this.getCustomerOrders();
+        this.getCustomerMealOrders();
+
     }
 
     customerinfo() {
@@ -34,22 +41,43 @@ class Accountinfo extends React.Component {
  
         );
     }
+
+            // getCustomerMeals=(id)=> {
+        //     axios.get(`https://localhost:44327/api/custMeals/${id}`).then(
     
+        //         (res) => {
+        //             this.state.custMeals = res.data
+        //             console.log(this.state.custMeals);
+        //             this.setState({
+        //                 ordermeal: this.state.custMeals
+        //             });
+        //         }    
+        //     );
+        // }
 
-    getorder() {
-        axios.get(`https://localhost:44327/api/custOrders/${1}`).then(
+        getCustomerMeals(){
+            axios.get(`https://localhost:44327/api/custMeals/${this.state.CustomerId}`).then(res=>{
+                this.setState({custMeals:res.data})
+                console.log(res.data);
+            });
+        }
+    
+        getCustomerOrders(){
+            axios.get(`https://localhost:44327/api/customerOrders/${this.state.CustomerId}`).then(res=>{
+                this.setState({orders:res.data})
+                console.log(res.data);
+            });
+        }
+    
+        getCustomerMealOrders(){
+            axios.get(`https://localhost:44327/api/customerMealsOrder/${this.state.CustomerId}`).then(res=>{
+                this.setState({MealOrders:res.data})
+                console.log(res.data);
+            });
+        }
 
-            (res) => {
-                this.state.ordermeal = res.data
-                console.log(this.state.ordermeal);
-                this.setState({
-                    ordermeal: this.state.ordermeal
-                });
-            }
- 
-        );
-    }
 
+    
 
    TabClick = (e,tab) => {
        
@@ -110,26 +138,35 @@ class Accountinfo extends React.Component {
         })
       }
 
+
+
       customEdit=(i)=>{
 
-        axios.post(`https://localhost:44327/api/editAcc/`+i, 
-        {
+        const config = {
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'Accept':'*/*'
+            }
+          }
 
-            CustomerId:this.state.customer.CustomerId,
-            FirstName:this.state.customer.FirstName,
-            LastName:this.state.customer.LastName,
-            Username:this.state.customer.Username,
-            Email:this.state.customer.Email,
-            Password:this.state.customer.Password,
-            CPassword:this.state.customer.CPassword
+          const params = new URLSearchParams()
+          params.append('CustomerId',this.state.customer.CustomerId)
+          params.append('FirstName',this.state.customer.FirstName)
+          params.append('LastName',this.state.customer.LastName)
+          params.append('Username',this.state.customer.Username)
+          params.append('Email',this.state.customer.Email)
+          params.append('Password',this.state.customer.Password)
+          params.append('CPassword',this.state.customer.CPassword)
 
-        }
+          
+
+          let URL=`https://localhost:44327/api/editAcc/`+i
+
+          axios.post(URL, params, config).then(res=>{
+            console.log(res);
+        })
         
-        ).then(res=>{
-  
-            console.log(res)
-
-        }).catch(error=>{
+        .catch(error=>{
 
          console.log(error)
 
@@ -166,9 +203,13 @@ class Accountinfo extends React.Component {
                                  {
                                 
                         <form>
+                        <div class="form-group row">
+                                {/* <label htmlFor="staticEmail" class="col-sm-2 col-form-label thandlabel">ID</label> */}
+                                <div class="col-sm-10 d-none">
+                                <input type="text" className="form-control inputt" id="txtemail" value={this.state.customer.CustomerId|| ''}></input></div>
+                         </div>
                            
                         <div class="form-group row">
-
                                 <label htmlFor="staticEmail" class="col-sm-2 col-form-label thandlabel">Email</label>
                                 <div class="col-sm-10">
                                 <input type="text" className="form-control inputt" id="txtemail" value={this.state.customer.Email|| ''} onChange={(e)=>this.setEmailstate(e)} style={{width:350}}></input></div>
@@ -200,7 +241,7 @@ class Accountinfo extends React.Component {
                                 <input type="password" className="form-control inputt" value={this.state.customer.CPassword|| ''} onChange={(e)=>this.setcpasswordstate(e)}  style={{width:350}}></input></div>
                          </div>
                          
-                         <input type="button" onClick={() => this.customEdit(1)}  class="btn btn-success inputt" value="update"></input>
+                         <input type="button" onClick={() => this.customEdit(this.state.CustomerId)}  class="btn btn-success inputt" value="update"></input>
                         </form>
                         
                     }
@@ -210,46 +251,65 @@ class Accountinfo extends React.Component {
                         this.state.selectedflag=="tab2"&&(<div>
 
                                 <div id="order1">
-                                {this.state.ordermeal.length == 0 && <div>
+                                {this.state.custMeals.length == 0 && <div>
                   <svg xmlns="http://www.w3.org/2000/svg" id="svgProp" width="100" height="100" fill="#CDC6BF" class="bi bi-lock" viewBox="0 0 16 16">
                     <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
                   </svg>
                  <span style={{marginTop:'5'}}> <h6 >There is no Item in card</h6></span>
                 </div>}
-                                     {this.state.ordermeal.length != 0 && <div class="card" >
-                  <div ><span class='h6'>orders</span> </div>
-                                  <table>
-                                      <th className="thandlabel">meal name</th>
-                                        <th  className="thandlabel">meal Describtion</th>
-                                        <th  className="thandlabel">meal price</th>
-                                        <th  className="thandlabel">meal Discont</th>
-                                        
-                                     {
-                 this.state.ordermeal.map((order,i)=>{
-                return(
-                    <tr>
-                    
-                        
-                          <td>{order.Mealname}</td>
-                        
-                      
-                          <td>{order.MealDescription}</td>
-                         
-                         
-                          <td>{order.MealPrice}</td>
-                         
-                          
-                          <td>{order.Discount}</td>
-                         
-                          
-                         </tr>
-                 )
-                })
-                                     }
+                                     {this.state.custMeals.length != 0 && <div class="card" >
+                                <div class="card-body bg-transparent">
+                                  <table class="table table-hover">
+                                  <thead className="thead-light">
+                                      <tr>
+                                      <th scope="col">Meal Name</th>
+                                      <th scope="col">Meal Price</th>
+                                      <th scope="col">Order SubTotal</th>
+                                      <th scope="col">Payment Method</th>
+                                      {/* <th scope="col">Qty</th> */}
+                                      </tr>
+                                  </thead>
+
+                               <tbody>
+
+                            {this.state.custMeals.map((order)=>{
+                                return(
+                            <tr>                                          
+                               <td>{order.Mealname}</td>
+                               <td>{order.MealPrice}</td>  
+
+                               {this.state.orders.map((Custorder)=>{
+                                return(
+                            <>
+                               <td>{Custorder.SubTotal}</td>
+                               <td>{Custorder.PaymentMethod}</td>
+
+                               {/* {this.state.MealOrders.map((Mealorder)=>{
+                               return(
+                              <>                                          
+                              <td>{Mealorder.Quantity}</td>                                                        
+                              </>                             
+                             )
+                             })
+                           
+                             }                                                   */}
+                            </>
+
+                             )
+                            })
+                            }
+                            </tr>                           
+                             )
+                            })
+                            }
+
+
+
+
+                             </tbody> 
                                    </table>
+                                </div>
                        <div class="row">
-                   
-                    
                   </div>
                 </div>            
             }        
