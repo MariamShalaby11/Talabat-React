@@ -280,7 +280,22 @@ class Accountinfo extends React.Component {
                                 return(
                             <>
                                <td>{Custorder.SubTotal}</td>
-                               <td>{Custorder.PaymentMethod}</td>
+                               {(() => {
+                                   switch(Custorder.PaymentMethod){
+                                    case 0:
+                                        return(
+                                            <td>Card</td>
+                                        );
+                                    case 1:
+                                        return(
+                                            <td>Visa</td>
+                                        );
+                                    case 2:
+                                        return(
+                                            <td>Cash</td>
+                                        );
+                                   }
+                                })()}
 
                                {/* {this.state.MealOrders.map((Mealorder)=>{
                                return(
