@@ -1,5 +1,5 @@
 import React from 'react';
-import{BrowserRouter as Router,Route} from 'react-router-dom';
+import{BrowserRouter as Router,Redirect,Route} from 'react-router-dom';
 import Home from './../Homepage/Homepage';
 import Filters from './../Filters/Filter';
 import Header from './../Header';
@@ -17,12 +17,13 @@ import Accountinfo from './../AccountInfo/Accountinfo';
 import Footer from './../Footer';
 import contactus from './../StaticPages/Contactus';
 import login from '../Login/Login'
+import NotFound from './../NotFound';
 export default class AppRouter extends React.Component{
 
     render(){
         const StaticRoute="/MariamShalaby11/Talabat-React/";
         return(
-            
+            <>
             <Router>
                 
                 <Header/>
@@ -42,20 +43,19 @@ export default class AppRouter extends React.Component{
                 <Route component={Offers} path={`${StaticRoute}Offers`} ></Route>
                 <Route component={Register} path={`${StaticRoute}Register`} ></Route>
                 <Route component={Accountinfo} path={`${StaticRoute}Accountinfo`} ></Route>
-                <Route component={contactus}path={`${StaticRoute}contactus`}/>
+                <Route component={contactus}path={`${StaticRoute}contactus`}></Route>
+                <Route component={NotFound}path={`${StaticRoute}404`}></Route>
 
-
-
-
-
-
+                {/* <Redirect from={`${StaticRoute}`} to={`${StaticRoute}Home`}/> */}
+                {/* <Redirect to={`${StaticRoute}404`} /> */}
 
                </switch>
-               <Footer/>
-
-
            
+               <Footer/>          
             </Router>
+
+            </>
+            
             
         )
     }

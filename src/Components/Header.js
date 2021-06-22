@@ -52,6 +52,10 @@ export default class Header extends React.Component{
                   <div class="collapse navbar-collapse" id="navbars-rs-food" style={{textAlign:'center'}}>
 					<ul class="navbar-nav ml-auto" id="items">
 
+                       <li class="nav-item">
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >All Resturants</Link>
+                       </li>
+
 					   <li class="nav-item">
                             <Link class="nav-link" to="/MariamShalaby11/Talabat-React/Offers" id="Navlinks">Offers</Link>
                        </li>
@@ -59,11 +63,6 @@ export default class Header extends React.Component{
                        <li class="nav-item">
                             <Link class="nav-link" to="/MariamShalaby11/Talabat-React/BecomePartner"id="Navlinks" >Become a partner</Link>
                        </li>
-
-						<li class="nav-item">
-                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >All Resturants</Link>
-                       </li>
-
                        <li style={{display:this.state.showMyAccount}}>
                            
                            

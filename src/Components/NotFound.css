@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
+#UperDiv{
+    background-image: url('../images/ErrorPage.jpg');
+    background-repeat: no-repeat;
+    height: 620px;
+}

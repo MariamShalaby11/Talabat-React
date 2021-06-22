@@ -4,27 +4,56 @@ import Loading from '../Registerr/loading'
 import "./Login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faLock,
-  faEnvelope,
+  faLock
 } from "@fortawesome/free-solid-svg-icons";
 import facebook from '../../images/fb.jpeg';
 import axios from 'axios';
-import { FaEyeSlash } from 'react-icons/fa';
+import { FaEyeSlash,FaUser,FaEye } from 'react-icons/fa';
 
 
 class Login extends Component {
     state = {  
-        Email:""
+         Email:""
         ,Password:""
-        ,classMail:"invisible",
+        ,classMail:"invisible"
+        ,classPass:"invisible",
         IsLoaded:false,
-        Customer:""
+        Customer:"",
+        disabled:true,
+        passwordtype:"password",
+        ShowEye:"none",
+        ShowEyeSlash:"block"
+      
     }
-        handleEmailChange = (email)=>{
-            this.setState({Email:email.target.value});
+
+
+
+        handleEmailChange = (e)=>{
+           // this.setState({Email:e.target.value});
+            const validUserName = new RegExp('^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$');
+
+            if(!validUserName.test(e)){
+            this.setState({classMail:"visible",Email:e,disabled:true})
+            }else{
+            this.state.disabled=false
+
+            this.setState({classMail:"invisible",Email:e,disabled:false})
+            
+            }
         }
-        handlePasswordChange = (pass)=>{
-            this.setState({Password:pass.target.value});
+        handlePasswordChange = (e)=>{
+           // this.setState({Password:pass.target.value});
+             const validPassword =  new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
+
+            if(!validPassword.test(e)){
+            this.setState({classPass:"visible",Password:e,disabled:true})
+            }else{
+                this.state.disabled=false
+            this.setState({classPass:"invisible",Password:e,disabled:false})
+            }
+        }
+        handleDisableBtn(){
+
         }
         Login = (props) => {
             this.setState({IsLoaded:true})
@@ -83,6 +112,21 @@ class Login extends Component {
 
            })
        }
+       showPasswordHandler=()=>{
+           if( this.state.passwordtype="password"){
+                this.state.passwordtype="text"
+                this.setState({passwordtype:"text",  ShowEye:"block",
+            ShowEyeSlash:"none"})
+           }
+       }
+       HidePasswordHandler=()=>{
+            if( this.state.passwordtype="text"){
+                this.state.passwordtype="password"
+                this.setState({passwordtype:"password",  ShowEye:"none",
+            ShowEyeSlash:"block"})
+           }
+       }
+       
 
         
     render() {
@@ -113,13 +157,13 @@ class Login extends Component {
                                 <div class="input-group input-group">
                                      <div class="input-group-prepend">
                                          <span class="input-group-text inptxt" id="inputGroup-sizing-sm">
-                                             <FontAwesomeIcon icon={faEnvelope} /></span>
+                                            <FaUser/></span>
                                      </div>
-                                 <input type="email" class="form-control formcntrl" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="email" placeholder="Enter your E-mail"
-                                  pattern="^[a-z A-Z 0-9 ._-]+@[a-z A-Z 0-9 .-]+\.[a-z A-Z]{2,6}$" required 
+                                 <input type="text" class="form-control formcntrl" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="email" placeholder="Enter your Username"
+                                   required 
                                 //    onchange={(Email)=>this.setState({Email})}
-                                    onChange={this.handleEmailChange}/>
-                                    <span style={{color: "red"}} class={this.state.classMail} >invalid Email</span>
+                                    onChange={(e)=>this.handleEmailChange(e.target.value)}/>
+                                    <span style={{color: "red"}} class={this.state.classMail} >invalid Username</span>
                                 </div>
                             </div>
                              <div class="form-group formgrps">
@@ -128,14 +172,18 @@ class Login extends Component {
                                         <span class="input-group-text inptxt" id="inputGroup-sizing-sm">
                                              <FontAwesomeIcon icon={faLock} /></span>
                                     </div>
-                                    <input type="password" class="form-control formcntrl" aria-label="Small"
+                                    <input type={this.state.passwordtype} class="form-control formcntrl" aria-label="Small"
                                         aria-describedby="inputGroup-sizing-sm" placeholder="Password" required
                                         id="pass"
                                         //  onchange={(Password)=>this.setState({Password})}
-                                          onChange={this.handlePasswordChange}/>
+                                        onChange={(e)=>this.handlePasswordChange(e.target.value)}/>
+                                        <span style={{color: "red"}} class={this.state.classPass} >invalid Password</span>
+
                                         <div class="input-group-prepend">
                                             <span class="input-group-text inptxt" id="inputGroup-sizing-sm">  
-                                                <FaEyeSlash style={{cursor: "pointer"}}/>
+                                                <FaEyeSlash onClick={this.showPasswordHandler} style={{display:this.state.ShowEyeSlash,cursor: "pointer"}}/>
+                                                <FaEye onClick={this.HidePasswordHandler} style={{display:this.state.ShowEye,cursor: "pointer"}}/>
+
                                                 </span>
                                         </div>
                                 </div>
@@ -146,8 +194,8 @@ class Login extends Component {
                                  Remember Me
                                 {/* </label>                               */}
                             </div>                           
-                            <button type="button" id="login" class="mybtn btn btn-primary btn-block mt-3 form-control formcntrl"
-                            onClick={()=>this.Login()}>Login</button>
+                            <button  type="button" id="login" class='mybtn btn btn-primary btn-block mt-3 form-control formcntrl'  
+                            onClick={()=>this.Login()} disabled={this.state.disabled} >Login</button>
                         </form>
                     </div>
                      <div class="card-footer text-center"  id="gotoregister">

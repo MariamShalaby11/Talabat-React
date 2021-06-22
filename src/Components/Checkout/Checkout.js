@@ -283,6 +283,9 @@ console.log(params)
                                         <Modal show={this.state.show} onHide={this.handleClose} >
                                                 <Modal.Header>
                                                     <h2> Add New Address</h2> 
+                                                    <button className="close" onClick={this.handleClose} aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
                                                 </Modal.Header>
                                                 <Modal.Body>  
                                                   <form>
