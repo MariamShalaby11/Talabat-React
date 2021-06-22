@@ -111,9 +111,9 @@ export default class BeniftOfBenigPartner extends React.Component{
             <h1 class="mx-auto">Ready to join us?</h1>
             <button class="mx-auto btn col-4 mt-5 mb-5">Join Now</button>
 
-            <Router>
+            {/* <Router>
                 <HashLink class="btn mx-auto btn col-4 mt-5 mb-5"  smooth to='/MariamShalaby11/Talabat-React/BecomePartner/#BecomePartner' > Join Now </HashLink>
-            </Router>
+            </Router> */}
         </div>
     
    </div>
