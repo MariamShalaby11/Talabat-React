@@ -118,7 +118,7 @@ class Restaurant extends Component {
             const promss = new URLSearchParams()
             promss.append('RestaurantId',this.state.RestID)
             promss.append('CustomerId',this.state.CustomerId)
-            promss.append('Rate',this.state.Rate)
+            promss.append('Rate',this.state.Ratee)
             promss.append('Comment',this.state.comment)
       
              
@@ -148,7 +148,7 @@ class Restaurant extends Component {
             const prmss = new URLSearchParams()
             prmss.append('RestaurantId',this.state.RestId)
             prmss.append('CustomerId',this.state.CustomerId)
-            prmss.append('Rate',this.state.Rate)
+            prmss.append('Rate',this.state.Ratee)
             prmss.append('Comment',this.state.comment)
       
              
@@ -177,7 +177,7 @@ class Restaurant extends Component {
               const prms = new URLSearchParams()
               prms.append('RestaurantId',this.state.RestId)
               prms.append('CustomerId',this.state.CustomerId)
-              prms.append('Rate',this.state.Rate)
+              prms.append('Rate',this.state.Ratee)
               prms.append('Comment',this.state.comment)
         
                
