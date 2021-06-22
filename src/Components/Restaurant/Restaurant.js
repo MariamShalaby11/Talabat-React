@@ -29,7 +29,7 @@ class Restaurant extends Component {
     Rate: 0,
     Add: {},
     Customer:[],
-    Cusine:[],CustomerId:"",Ratee:"",comment:""
+    Cusine:[],CustomerId:"",Ratee:0,comment:""
 
     ,lat:"",lang:"",mapResult:"",show:false,showspan:"none",showbtn:"none"
   };
@@ -122,7 +122,7 @@ class Restaurant extends Component {
             promss.append('Comment',this.state.comment)
       
              
-                     let URLLaa=`https://localhost:44327/api//AddRate`
+                     let URLLaa=`https://localhost:44327/api/AddRate`
                      axios.post(URLLaa,promss,configaa).then(res=>{
                          console.log(res)
                   }).catch(error=>{
@@ -152,7 +152,7 @@ class Restaurant extends Component {
             prmss.append('Comment',this.state.comment)
       
              
-                     let URLLa=`https://localhost:44327/api//AddRate`
+                     let URLLa=`https://localhost:44327/api/AddRate`
                      axios.post(URLLa,prmss,configa).then(res=>{
                          console.log(res)
                   }).catch(error=>{
@@ -181,7 +181,7 @@ class Restaurant extends Component {
               prms.append('Comment',this.state.comment)
         
                
-                       let URLL=`https://localhost:44327/api//AddRate`
+                       let URLL=`https://localhost:44327/api/AddRate`
                        axios.post(URLL,prms,config).then(res=>{
                            console.log(res)
                     }).catch(error=>{
@@ -1055,7 +1055,7 @@ class Restaurant extends Component {
                 }
               })()}
               <span>ay hagaa</span>
-              <div>
+              <div> 
                 <span>ممتاز</span>
               </div>
             </div>
