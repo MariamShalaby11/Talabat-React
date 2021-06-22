@@ -166,6 +166,7 @@ class Accountinfo extends React.Component {
 
           axios.post(URL, params, config).then(res=>{
             console.log(res);
+            alert("Data Updated");
         })
         
         .catch(error=>{

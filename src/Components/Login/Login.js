@@ -9,6 +9,7 @@ import {
 import facebook from '../../images/fb.jpeg';
 import axios from 'axios';
 import { FaEyeSlash,FaUser,FaEye } from 'react-icons/fa';
+import { Alert } from 'react-bootstrap';
 
 
 class Login extends Component {
@@ -55,6 +56,28 @@ class Login extends Component {
         handleDisableBtn(){
 
         }
+        HandleExactData = () =>{
+             const config = {
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                  'Accept':'*/*'
+                }
+              }
+              const params1 = new URLSearchParams()
+                params1.append('UserName',this.state.Email)
+                params1.append('Password',this.state.Password)
+
+             let URL1='https://localhost:44327/api/Login'   
+                axios.post(URL1, params1).then(res=>{
+                    console.log(res);
+                    this.Login();
+
+                }).catch(err=>{
+                    alert("Please Enter correct Data");
+                    console.log("invalid Data");                 
+                    console.log(err);
+                })
+        }
         Login = (props) => {
             this.setState({IsLoaded:true})
             const data = {
@@ -78,7 +101,14 @@ class Login extends Component {
                 params.append('username',this.state.Email)
                 params.append('password',this.state.Password)
                 params.append('grant_type', 'password')
+             
+               
               
+
+       
+
+         
+
 
         let URL='https://localhost:44327/Token'
             axios.post(URL, params, config).then(res=>{
@@ -195,7 +225,7 @@ class Login extends Component {
                                 {/* </label>                               */}
                             </div>                           
                             <button  type="button" id="login" class='mybtn btn btn-primary btn-block mt-3 form-control formcntrl'  
-                            onClick={()=>this.Login()} disabled={this.state.disabled} >Login</button>
+                            onClick={()=>this.HandleExactData()} disabled={this.state.disabled} >Login</button>
                         </form>
                     </div>
                      <div class="card-footer text-center"  id="gotoregister">
