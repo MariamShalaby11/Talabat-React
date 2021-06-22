@@ -53,7 +53,7 @@ export default class Header extends React.Component{
 					<ul class="navbar-nav ml-auto" id="items">
 
                        <li class="nav-item">
-                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >All Resturants</Link>
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >All Restaurants</Link>
                        </li>
 
 					   <li class="nav-item">
