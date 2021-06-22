@@ -71,7 +71,7 @@ class Restaurant extends Component {
     return this.state.Rest;
   }
   getCusin(){
-     axios.get(`https://localhost:44327/api/cusine/${this.props.location.Resutantid}`).then(res=>{
+     axios.get(`https://localhost:44327/api/cusine/${this.state.RestID}`).then(res=>{
 
       this.setState({Cusine:res.data})
      console.log(res.data,"hello")  
