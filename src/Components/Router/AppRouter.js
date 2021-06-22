@@ -37,8 +37,8 @@ export default class AppRouter extends React.Component{
                 <Route component={Terms} path={`${StaticRoute}Terms`}></Route>
                 <Route component={AllRestaurants} path={`${StaticRoute}AllResturants`} ></Route>
                 <Route component={partner} path={`${StaticRoute}BecomePartner`}></Route>
-                <Route component={Menue} path={`${StaticRoute}Menu`} ></Route>
-                <Route component={Restaurant} path={`${StaticRoute}Restaurant`} ></Route>
+                <Route component={Menue} path={`${StaticRoute}Menu/:id`} ></Route>
+                <Route component={Restaurant} path={`${StaticRoute}Restaurant/:id`} ></Route>
                 <Route component={Checkout} path={`${StaticRoute}Checkout`} ></Route>
                 <Route component={Offers} path={`${StaticRoute}Offers`} ></Route>
                 <Route component={Register} path={`${StaticRoute}Register`} ></Route>
