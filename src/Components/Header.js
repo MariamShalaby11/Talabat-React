@@ -5,10 +5,6 @@ import {Link} from 'react-router-dom';
 import {  FaShoppingCart, FaSignOutAlt, FaUser} from "react-icons/fa";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Modal from 'react-bootstrap/Modal';
-import facebook from './../images/fb.jpeg';
-import { FaEyeSlash } from 'react-icons/fa';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock,faEnvelope,} from "@fortawesome/free-solid-svg-icons";
 import Login from './Login/Login';
 
 
@@ -81,8 +77,9 @@ export default class Header extends React.Component{
                                 <Dropdown.Item ><Link class="nav-link" to="/MariamShalaby11/Talabat-React/Accountinfo"id="Navlinks" style={{color:"black"}}> <FaShoppingCart style={{color:"#810000"}}/> &nbsp; My Orders</Link> </Dropdown.Item>
                                 <Dropdown.Item onClick={()=>{
                                     localStorage.removeItem('access_token')
+                                    localStorage.removeItem('Customer')
                                     window.location.reload(false);
-                                    // this.props.history.push('Home')
+                                    this.props.history.push('MariamShalaby11/Talabat-React/Home')
                                 }}><FaSignOutAlt style={{color:"#810000"}} /> &nbsp; Log Out</Dropdown.Item>
                             </Dropdown.Menu>
                        </Dropdown>

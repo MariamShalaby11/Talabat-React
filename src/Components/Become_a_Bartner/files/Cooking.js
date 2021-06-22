@@ -7,8 +7,8 @@ export default class Cooking extends React.Component{
     }
     render(){
         return(
-            <>
-            <h1>Cooking in progress..</h1>
+            <div id="cookingbody">
+            <h1 id="cooks">Cooking in progress..</h1>
 <div id="cooking">
   <div class="bubble"></div>
   <div class="bubble"></div>
@@ -24,7 +24,8 @@ export default class Cooking extends React.Component{
       <div id="pastry"></div>
     </div>
   </div>
-</div> </>
+</div>
+ </div>
         )
     }
 }
