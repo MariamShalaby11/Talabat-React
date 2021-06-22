@@ -53,7 +53,7 @@ export default class Partner extends React.Component {
               <div id="joining" class="d-md-flex justify-content-between container">
                   <div id="joinText" class="col-md-5">
                       <h1 class="">Reach new customers, get more sales</h1>
-                      <h2 class="">Join Talabat, the Middle East's largest delivery platform.</h2>
+                      <h2 class="">Join FoodAway, the Middle East's largest delivery platform.</h2>
                   </div>
                    <div id="card" class="d-flex ">
                       <div id="maincard" class="d-flex flex-column mx-auto col-10"  >
