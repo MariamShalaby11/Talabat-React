@@ -53,7 +53,7 @@ export default class Header extends React.Component{
 					<ul class="navbar-nav ml-auto" id="items">
 
                        <li class="nav-item">
-                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >All Resturants</Link>
+                            <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >All Restaurants</Link>
                        </li>
 
 					   <li class="nav-item">
@@ -76,8 +76,9 @@ export default class Header extends React.Component{
                                 <Dropdown.Item ><Link class="nav-link" to="/MariamShalaby11/Talabat-React/Accountinfo"id="Navlinks" style={{color:"black"}}> <FaShoppingCart style={{color:"#810000"}}/> &nbsp; My Orders</Link> </Dropdown.Item>
                                 <Dropdown.Item onClick={()=>{
                                     localStorage.removeItem('access_token')
+                                    localStorage.removeItem('Customer')
                                     window.location.reload(false);
-                                    // this.props.history.push('Home')
+                                    this.props.history.push('MariamShalaby11/Talabat-React/Home')
                                 }}><FaSignOutAlt style={{color:"#810000"}} /> &nbsp; Log Out</Dropdown.Item>
                             </Dropdown.Menu>
                        </Dropdown>

@@ -3,6 +3,7 @@ import "./rest.css";
 import img1 from "../../images/4.png";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import swal from 'sweetalert';
 import {
   faAngleDown,
   faStar,
@@ -23,14 +24,14 @@ import { FaSadCry, FaSadTear } from "react-icons/fa";
 
 class Restaurant extends Component {
   state = {
-    RestID: this.props.location.Resutantid,
+    RestID: this.props.match.params.id,
     Rest: [],
     Rate: 0,
     Add: {},
     Customer:[],
-    Cusine:[]
+    Cusine:[],CustomerId:"",Ratee:"",comment:""
 
-    ,lat:"",lang:"",mapResult:"",show:false,showspan:"none"
+    ,lat:"",lang:"",mapResult:"",show:false,showspan:"none",showbtn:"none"
   };
 
   componentDidMount() {
@@ -38,6 +39,13 @@ class Restaurant extends Component {
     this.getById();
     this.getRate();
     this.getCusin();
+    const tokenStr = localStorage.getItem('access_token')
+    if(tokenStr!=null){
+      this.setState({
+        CustomerId:JSON.parse(localStorage.getItem('Customer')).CustomerId
+        ,showbtn:"block"
+      })
+    }
   }
 
   getById() {
@@ -63,7 +71,7 @@ class Restaurant extends Component {
     return this.state.Rest;
   }
   getCusin(){
-     axios.get(`https://localhost:44327/api/cusine/${this.props.location.Resutantid}`).then(res=>{
+     axios.get(`https://localhost:44327/api/cusine/${this.state.RestID}`).then(res=>{
 
       this.setState({Cusine:res.data})
      console.log(res.data,"hello")  
@@ -71,7 +79,122 @@ class Restaurant extends Component {
   }   
    
  
+  RatingHandler=()=>{
+    swal("Kindly Rate our Services !", {
+        buttons: {
+          catch: {
+            text: "Bad",
+            value: "catch",
+          },
+          defeat: {
+            text: "Good",
+            value: "defeat",
+          },
+          Excellent:{
+            text: "EXcellent",
+            value: "EXcellent",
+          },
+          cancel: "Cancel"
+        },
+      })
+      .then((value) => {
+        switch (value) {
+       
+          case "defeat":
+            swal("You rated us 3 we hope it would be 5 the next time");
+            this.state.Ratee=3
+            this.state.comment="Good but not the best"
+            this.setState({
+                Ratee:this.state.Ratee,
+                comment:this.state.comment
+            })
+            console.log(this.state.Rate)
+            const configaa = {
+                headers: {
+                  'Content-Type':'application/x-www-form-urlencoded',
+                  'Accept':'*/*',
+                }
+              }
+            const promss = new URLSearchParams()
+            promss.append('RestaurantId',this.state.RestID)
+            promss.append('CustomerId',this.state.CustomerId)
+            promss.append('Rate',this.state.Rate)
+            promss.append('Comment',this.state.comment)
+      
+             
+                     let URLLaa=`https://localhost:44327/api//AddRate`
+                     axios.post(URLLaa,promss,configaa).then(res=>{
+                         console.log(res)
+                  }).catch(error=>{
+                      console.log(error)
+                      })
+            break;
+       
+          case "catch":
+            swal("You rated us 1,Ohhh please write to us to see if there is something we can do ");
+            this.state.Ratee=1
+            this.state.comment="Not so good :("
+            this.setState({
+                Ratee:this.state.Ratee,
+                comment:this.state.comment
+            })
+            console.log(this.state.Rate)
+            const configa = {
+                headers: {
+                  'Content-Type':'application/x-www-form-urlencoded',
+                  'Accept':'*/*',
+                }
+              }
+            const prmss = new URLSearchParams()
+            prmss.append('RestaurantId',this.state.RestId)
+            prmss.append('CustomerId',this.state.CustomerId)
+            prmss.append('Rate',this.state.Rate)
+            prmss.append('Comment',this.state.comment)
+      
+             
+                     let URLLa=`https://localhost:44327/api//AddRate`
+                     axios.post(URLLa,prmss,configa).then(res=>{
+                         console.log(res)
+                  }).catch(error=>{
+                      console.log(error)
+                      })
+            break;
+       
+          default:
+            swal("You rated us 5,greaat! Thank you so much");
+            this.state.Ratee=5
+            this.state.comment="Great Service"
+            this.setState({
+                Ratee:this.state.Ratee,
+                comment:this.state.comment
+            })
+            const config = {
+                headers: {
+                  'Content-Type':'application/x-www-form-urlencoded',
+                  'Accept':'*/*',
+                }
+              }
+              const prms = new URLSearchParams()
+              prms.append('RestaurantId',this.state.RestId)
+              prms.append('CustomerId',this.state.CustomerId)
+              prms.append('Rate',this.state.Rate)
+              prms.append('Comment',this.state.comment)
         
+               
+                       let URLL=`https://localhost:44327/api//AddRate`
+                       axios.post(URLL,prms,config).then(res=>{
+                           console.log(res)
+                    }).catch(error=>{
+                        console.log(error)
+                        })
+            console.log(this.state.Rate)
+            break;
+   
+        }
+      });
+     
+}
+
      
 
   getRate() {
@@ -247,6 +370,7 @@ class Restaurant extends Component {
           <div id="Description">
             <h3 className="card-title">
               {this.state.Rest.RestaurantName}
+              <button onClick={this.RatingHandler} className="btn btn-danger" style={{float:"right",display:this.state.showbtn}}>Rate us !</button>
               <span id="flo">
                 <a href="#">
                   <i id="fb" className="fab fa-facebook-square"></i>
