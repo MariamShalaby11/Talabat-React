@@ -12,7 +12,7 @@ class Menue extends React.Component {
 
     state = {
   
-      product: [],isActive:[], SellingArray: [],TotalPrice:0,RestId:this.props.match.params.id
+      product: [],isActive:[], SellingArray: [],TotalPrice:0,RestId:this.props.match.params.id,restname:"",restcus:[],cityname:""
     }
   
 
@@ -35,6 +35,44 @@ class Menue extends React.Component {
                })
           }
       )
+      axios.get(`https://localhost:44327/api/Category/restinfooo?id=${this.state.RestId}`).then(
+
+        (cat)=>{
+           
+            this.state.restname=cat.data.RestaurantName
+           
+            this.setState({
+              restname:this.state.restname
+            })
+            console.log(this.state.restname)
+        }
+    )
+
+    axios.get(`https://localhost:44327/api/Category/cusinfo?id=${this.state.RestId}`).then(
+
+      (cat)=>{
+         
+          this.state.restcus=cat.data
+         
+          this.setState({
+            restcus:this.state.restcus
+          })
+          console.log(this.state.restcus)
+      }
+  )
+
+  axios.get(`https://localhost:44327/api/Category/cityinfo?id=${this.state.RestId}`).then(
+
+    (cat)=>{
+       
+        this.state.cityname=cat.data
+       
+        this.setState({
+          cityname:this.state.cityname
+        })
+        console.log(this.state.cityname)
+    }
+)
 
     }
 
@@ -55,11 +93,28 @@ class Menue extends React.Component {
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
               <h4 class=" media-heading f-400 mb-0">
-                Om Hassan
+                {this.state.restname}
                  </h4>
-              <span id="spanmedia" class="light-text">in Almazah Egypt</span><br />
-              <span id="spanmedia" class="light-text">Grills, Oriental</span><br />
-              <span id="spanmedia" class="light-text">in Almazah Egypt</span><br />
+              <span id="spanmedia" class="light-text">{this.state.cityname}</span><br />
+              <span id="spanmedia" class="light-text">
+
+                {
+                  this.state.restcus.map((cus)=>{
+
+                               return(
+
+                                 <>
+
+                                 {cus.CuisineName},
+
+                                 </>
+
+                               )
+                  }
+
+                  )
+
+                }</span><br />
             </div>
             <div class="col-lg-4 col-md-2 col-sm-0">
             </div>
@@ -212,7 +267,7 @@ class Menue extends React.Component {
                   <h6 id="textnone">There are no Item in cart</h6>
                 </div>}
                 {this.state.SellingArray.length != 0 && <div class="card" id="wraperContainerCard">
-                  <div id='cardContent1'><span class='h6'>Om Hassan</span> - <span>Almaza</span></div>
+                  <div id='cardContent1'><span class='h6'>{this.state.restname}</span> - <span>{this.state.cityname}</span></div>
                   {
                     this.state.SellingArray.map(
   
