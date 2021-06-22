@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Amatic+SC");
-body {
+#cookingbody{
   background-color: #ffde6b;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
 }
 
-h1 {
+#cooks{
   position: relative;
   margin: 0 auto;
   top: 25vh;

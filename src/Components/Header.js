@@ -76,8 +76,9 @@ export default class Header extends React.Component{
                                 <Dropdown.Item ><Link class="nav-link" to="/MariamShalaby11/Talabat-React/Accountinfo"id="Navlinks" style={{color:"black"}}> <FaShoppingCart style={{color:"#810000"}}/> &nbsp; My Orders</Link> </Dropdown.Item>
                                 <Dropdown.Item onClick={()=>{
                                     localStorage.removeItem('access_token')
+                                    localStorage.removeItem('Customer')
                                     window.location.reload(false);
-                                    // this.props.history.push('Home')
+                                    this.props.history.push('MariamShalaby11/Talabat-React/Home')
                                 }}><FaSignOutAlt style={{color:"#810000"}} /> &nbsp; Log Out</Dropdown.Item>
                             </Dropdown.Menu>
                        </Dropdown>

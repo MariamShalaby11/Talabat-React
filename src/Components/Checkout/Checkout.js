@@ -5,17 +5,20 @@ import CreditCardForm from './CreditCardForm';
 import { FaCreditCard, FaMoneyBillWave } from "react-icons/fa";
 import axios from 'axios';
 import Paypal from './Paypal';
+import swal from 'sweetalert';
+
+
 export default class Checkout extends React.Component{
 
     state={
         show:false,floorno:"",Landmark:"",street:"",buildingno:"",City:"",Mobile:"",District:"",paymentmethod:"",
         ShowCard:"none",
-        Subtotal:this.props.location.subTotal,CustomerId:JSON.parse(localStorage.getItem('Customer')).CustomerId,AddressID:"",Orderid:"",
-        RestId:1,
-        meals:[],MealsArray:[this.props.location.selectedArray]
-
+        Subtotal:this.props.location.subTotal,CustomerId:"",AddressID:"",Orderid:"",
+        RestId:this.props.location.RestuarantId,meals:[],Mealsid:[],Ordersids:[],Quantities:[],
+        MealsArray:[this.props.location.selectedArray],Rate:"",comment:""
      
     }
+
     handleClose = () =>{
         this.setState({
           show:false
@@ -32,84 +35,109 @@ export default class Checkout extends React.Component{
         this.setState({
             Mobile:this.state.Mobile
         })
-        console.log(this.state.Mobile)
+      //  console.log(this.state.Mobile)
     }
     handlefloorno=(e)=>{
         this.state.floorno=e.target.value 
         this.setState({
             floorno:this.state.floorno
         })
-        console.log(this.state.floorno)
+       // console.log(this.state.floorno)
     }
     handleLandmark=(e)=>{
         this.state.Landmark=e.target.value
         this.setState({
             Landmark:this.state.Landmark
         })
-        console.log(this.state.Landmark)
+       // console.log(this.state.Landmark)
     }
     handlebuilding=(e)=>{
         this.state.buildingno=e.target.value
         this.setState({
             buildingno:this.state.buildingno
         })
-        console.log(this.state.buildingno)
+       // console.log(this.state.buildingno)
     }
     handlecity=(e)=>{
         this.state.City=e.target.value
         this.setState({
             City:this.state.City
         })
-        console.log(this.state.City)
+       // console.log(this.state.City)
     }
     handleDistrict=(e)=>{
         this.state.District=e.target.value
         this.setState({
         District:this.state.District
         })
-        console.log(this.state.District)
+       // console.log(this.state.District)
     }
     handlestreet=(e)=>{
         this.state.street=e.target.value
         this.setState({
         street:this.state.street
         })
-        console.log(this.state.street)
+       // console.log(this.state.street)
     }
     handleCredit=(e)=>{
         this.state.paymentmethod=e.target.value
         this.setState({
             paymentmethod:this.state.paymentmethod
         })
-        console.log(this.state.paymentmethod)
+       
         this.setState({
             ShowCard:"block"
         })
     }
 
     handleCash=(e)=>{
-
        this.state.paymentmethod=e.target.value
         this.setState({
             paymentmethod:this.state.paymentmethod
         })
-        console.log(this.state.paymentmethod)
+      
         this.setState({
             ShowCard:"none"
         })
     }
-
+  
+    
+    async componentDidMount(){
+        
+        const tokenStr = localStorage.getItem('access_token')
+        if(tokenStr==null){
+            alert("You're not Logined ,Please Login First")
+         this.props.history.push('Login')
+        }else{
+            this.setState({
+                CustomerId:JSON.parse(localStorage.getItem('Customer')).CustomerId
+                
+              })
+        }
+       console.log(this.state.RestId)
+    //    await this.props.location.selectedArray.forEach(element => {
+       
+    //         this.state.meals.push({MealId:element.MealId,Quantity:element.count})
+    //     });
+    //    console.log(this.statemeals)
+    
+    }
+  
     handleAddOrder=()=>{
       
-       
         const config = {
             headers: {
               'Content-Type':'application/x-www-form-urlencoded',
               'Accept':'*/*',
             }
-            
           }
-           ///-----------------------------------------------------------Addresss------------------------------------
+          const configs = {
+            headers: {
+              'Content-Type':'application/json',
+              'Accept':'*/*',
+            }
+          }
+    ///-----------------------------------------------------------Addresss--------------------------------------------
            const paramss = new URLSearchParams()
            paramss.append( 'BuildingNo',this.state.buildingno)
            paramss.append('Street', this.state.street)
@@ -119,15 +147,10 @@ export default class Checkout extends React.Component{
            paramss.append('District', this.state.District)
          
 
-    let URLLl="https://localhost:44327/api/AddAddress"
-    axios.post(URLLl,paramss,config).then(res=>{
-    console.log(res)
+        let URLLl="https://localhost:44327/api/AddAddress"
+        axios.post(URLLl,paramss,config).then(res=>{
+        console.log(res)
 
-        //   this.state.AddressID=res.data
-        //    this.setState({
-        //        AddressID: this.state.AddressID
-
-        //    })
 
  
         const params = new URLSearchParams()
@@ -140,92 +163,85 @@ export default class Checkout extends React.Component{
                     params.append('RestId',this.state.RestId)
                     params.append('Add_Id', res.data)
 
-
+console.log(params)
         let URL="https://localhost:44327/api/Orders"
         axios.post(URL,params,config).then(res=>{
             console.log(res)
-            // this.state.Orderid=res.data
-            // this.setState({
-            //     Orderid: res.data
-            // })
-            const paramz = new URLSearchParams()
-            paramz.append('meals', this.state.meals)
-            ///---------------------------MealOrder--------------------------------
-            let URLL=`https://localhost:44327/api/AddMealOrderr?orderid=${res.data}`
-            axios.post(URLL,paramz,config).then(res=>{
-    
-                console.log(res)
+         
+
+            this.props.location.selectedArray.forEach(element => {
+             console.log(element.MealId)
+             this.state.meals=[...this.state.meals,{"MealId":element.MealId,"OrderId":res.data,"Quantity":element.count}]
+                this.setState({
+                  meals:this.state.meals
+                })
+            }) 
+            console.log(JSON.stringify(this.state.meals))
+            console.log(this.state.meals)
+        //     {
+        //         this.state.meals.map((mel)=>{
+        //             this.state.Mealsid.push(mel.MealId)
+        //             this.state.Ordersids.push(mel.OrderId)
+        //             this.state.Quantities.push(mel.Quantity)
+                    
+        //             this.setState({
+        //                 Mealsid: this.state.Mealsid,
+        //                 Ordersids:this.state.Ordersids,
+        //                 Quantities:this.state.Quantities
+
+        //             })
+                   
+        //        })
+        //        console.log(this.state.Mealsid)
+        //    }   
+           let meal=``;
+           this.state.meals.forEach(element => {
+               console.log(element)
+                let obj=`${element.MealId}.${element.OrderId}.${element.Quantity},`
+                console.log(obj)
+                meal+=obj
                 
-            }).catch(error=>{
-             console.log(error)
-            })
-            console.log(this.state.Orderid)
-        }).catch(error=>{
-         console.log(error)
-        })
+           });
+           
+     ///--------------------------------------------------MealOrder--------------------------------------------------- 
 
-    console.log(this.state.AddressID)
-    }).catch(error=>{
-    console.log(error)
-    })
-        
-        // const params = new URLSearchParams()
-        //             params.append('CustomerId',this.state.CustomerId)
-        //             params.append('OrderTime', '12pm')
-        //             params.append('PaymentMethod', this.state.paymentmethod)
-        //             params.append('EstimatedTime', '12pm')
-        //             params.append('SubTotal',this.state.Subtotal)
-        //             params.append('DeliveryFee', 20)
-        //             params.append('RestId',this.state.RestId)
-        //             params.append('Add_Id', this.state.AddressID)
-
-
-        // let URL="https://localhost:44327/api/Orders"
-        // axios.post(URL,params,config).then(res=>{
-        //     console.log(res)
-        //     // this.state.Orderid=res.data
-        //     this.setState({
-        //         Orderid: res.data
-        //     })
-        //     console.log(this.state.Orderid)
-        // }).catch(error=>{
-        //  console.log(error)
-        // })
-           ///-----------------------------------------------------------Meal Order------------------------------------
-
-        // let URLL=`https://localhost:44327/api/AddMealOrderr?orderid=${this.state.Orderid}`
-        // axios.post(URLL,this.state.Meals,config).then(res=>{
-
-        //     console.log(res)
+           const paramz = new URLSearchParams()
+           paramz.append('meals',JSON.stringify(this.state.meals))
+                    let URLL=`https://localhost:44327/api/AddMealOrderr?orderid=${meal}`
+                    axios.post(URLL,paramz,config).then(res=>{
             
-        // }).catch(error=>{
-        //  console.log(error)
-        // })
-      
-            this.props.history.push('Home')
-            alert("Your Order is in progress")
+                        console.log(res)
+                        
+                    }).catch(error=>{
+                    console.log(error)
+                    })
+                }).catch(error=>{
+                console.log(error)
+                })
+
+            console.log(this.state.AddressID)
+            }).catch(error=>{
+            console.log(error)
+            })
+        
+    swal({
+        title: "Order Placed!",
+        text: "Your Food is in progress....!",
+        icon: "success",
+        button: "Ok!",
+      });
+
+      this.props.history.replace('Home')
+         
 
     }
 
 
-    
-    async componentDidMount(){
-    
-        const tokenStr = localStorage.getItem('access_token')
-        if(tokenStr==null){
-            alert("You're not Logined ,Please Login First")
-         this.props.history.push('Login')
-        }
-       await this.props.location.selectedArray.forEach(element => {
-            this.state.meals.push({MealId:element.MealId,Quantity:element.count})   
-        });
-        console.log(this.state.meals)
-      
-
-    }
+     
 
     render(){
         return(
+
             <div className="container card card-body bg-transparent  " id="paycontainer">
                 <h3 style={{padding:6}} id="down">Checkout process</h3>
                 <div class="card cont">
@@ -316,7 +332,7 @@ export default class Checkout extends React.Component{
                                                         
                                                     </div>
                                                    
-                                                    {/* <button type="submit" class="btn btn-success" onClick={this.handleAddAdress}>Save Address</button> */}
+                                                    {/* <button type="submit" class="btn btn-success"  onClick={this.handleClose}>Save Address</button> */}
                                                </form>
                                     
                                             </Modal.Body>
@@ -410,8 +426,6 @@ export default class Checkout extends React.Component{
                                                <button className="btn btn-success btn-block" onClick={this.handleAddOrder}>Place order</button>
                                             </td>
                                             </tr>
-                                            
-                                            
                                         </tbody>
                                 </table>
                         

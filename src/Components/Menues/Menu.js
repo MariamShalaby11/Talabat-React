@@ -12,7 +12,7 @@ class Menue extends React.Component {
 
     state = {
   
-      product: [],isActive:[], SellingArray: [],TotalPrice:0,RestId:this.props.location.RestID
+      product: [],isActive:[], SellingArray: [],TotalPrice:0,RestId:this.props.match.params.id
     }
   
 
