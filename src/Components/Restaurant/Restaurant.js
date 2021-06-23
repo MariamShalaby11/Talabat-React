@@ -98,8 +98,8 @@ class Restaurant extends Component {
             value: "defeat",
           },
           Excellent:{
-            text: "EXcellent",
-            value: "EXcellent",
+            text: "Excellent",
+            value: "Excellent",
           },
           cancel: "Cancel"
         },
@@ -172,7 +172,7 @@ class Restaurant extends Component {
                       })
             break;
        
-          default:
+          case "Excellent":
             swal("You rated us 5,greaat! Thank you so much");
             this.state.Ratee=5
             this.state.comment="Great Service"
@@ -203,6 +203,7 @@ class Restaurant extends Component {
                         })
             console.log(this.state.Rate)
             break;
+            
    
         }
       });
