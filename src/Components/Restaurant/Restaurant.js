@@ -26,15 +26,19 @@ class Restaurant extends Component {
   state = {
     RestID: this.props.match.params.id,
     Rest: [],
-    Rate: 0,
+    Ratee: "",
     Add: {},
     Customer:[],
-    Cusine:[],CustomerId:"",Ratee:"",comment:""
+    Cusine:[],CustomerId:"",Rate:0,comment:""
 
-    ,lat:"",lang:"",mapResult:"",show:false,showspan:"none",showbtn:"none"
+    ,lat:"",lang:"",mapResult:"",show:false,showspan:"none",
+    showbtn:"none",
+    CustomerNums:""
   };
 
   componentDidMount() {
+    console.log(this.state.RestID);
+    console.log(this.props);
     //this.setState({Rest:this.state.Rest})
     this.getById();
     this.getRate();
@@ -46,6 +50,7 @@ class Restaurant extends Component {
         ,showbtn:"block"
       })
     }
+   
   }
 
   getById() {
@@ -78,7 +83,9 @@ class Restaurant extends Component {
       }) 
   }   
    
- 
+  handleShowRateDiv=()=>{
+
+  }
   RatingHandler=()=>{
     swal("Kindly Rate our Services !", {
         buttons: {
@@ -112,7 +119,7 @@ class Restaurant extends Component {
             const configaa = {
                 headers: {
                   'Content-Type':'application/x-www-form-urlencoded',
-                  'Accept':'*/*',
+                  'Accept':'/',
                 }
               }
             const promss = new URLSearchParams()
@@ -122,9 +129,12 @@ class Restaurant extends Component {
             promss.append('Comment',this.state.comment)
       
              
-                     let URLLaa=`https://localhost:44327/api//AddRate`
+                     let URLLaa=`https://localhost:44327/api/AddRate?id=${this.state.CustomerId}`
                      axios.post(URLLaa,promss,configaa).then(res=>{
                          console.log(res)
+                         window.location.reload(false);
+
+
                   }).catch(error=>{
                       console.log(error)
                       })
@@ -138,23 +148,25 @@ class Restaurant extends Component {
                 Ratee:this.state.Ratee,
                 comment:this.state.comment
             })
-            console.log(this.state.Rate)
+            console.log(this.state.Ratee)
             const configa = {
                 headers: {
                   'Content-Type':'application/x-www-form-urlencoded',
-                  'Accept':'*/*',
+                  'Accept':'/',
                 }
               }
             const prmss = new URLSearchParams()
-            prmss.append('RestaurantId',this.state.RestId)
+            prmss.append('RestaurantId',this.state.RestID)
             prmss.append('CustomerId',this.state.CustomerId)
             prmss.append('Rate',this.state.Ratee)
             prmss.append('Comment',this.state.comment)
       
              
-                     let URLLa=`https://localhost:44327/api//AddRate`
+                     let URLLa=`https://localhost:44327/api/AddRate?id=${this.state.CustomerId}`
                      axios.post(URLLa,prmss,configa).then(res=>{
                          console.log(res)
+                         window.location.reload(false);
+
                   }).catch(error=>{
                       console.log(error)
                       })
@@ -171,19 +183,21 @@ class Restaurant extends Component {
             const config = {
                 headers: {
                   'Content-Type':'application/x-www-form-urlencoded',
-                  'Accept':'*/*',
+                  'Accept':'/',
                 }
               }
               const prms = new URLSearchParams()
-              prms.append('RestaurantId',this.state.RestId)
+              prms.append('RestaurantId',this.state.RestID)
               prms.append('CustomerId',this.state.CustomerId)
               prms.append('Rate',this.state.Ratee)
               prms.append('Comment',this.state.comment)
         
                
-                       let URLL=`https://localhost:44327/api//AddRate`
+                       let URLL=`https://localhost:44327/api/AddRate?id=${this.state.CustomerId}`
                        axios.post(URLL,prms,config).then(res=>{
                            console.log(res)
+                           window.location.reload(false);
+
                     }).catch(error=>{
                         console.log(error)
                         })
@@ -201,6 +215,7 @@ class Restaurant extends Component {
     axios
       .get(`https://localhost:44327/api/Rate/${this.state.RestID}`)
       .then((res) => {
+        
         console.log(res.data);
         console.log(res.data["Rate"]);
         //this.state.Rate = res.data[0].Rate;
@@ -209,9 +224,14 @@ class Restaurant extends Component {
            this.state.Rate =this.state.Rate + element.Rate
           
            // console.log(x);
+            this.setState({Rate:this.state.Rate});
             console.log(res.data.length);
+            this.setState({CustomerNums:res.data.length});
             console.log(this.state.Rate);
+          
         });
+       
+        console.log(this.state.Rate);
         let AvgRate=0
         AvgRate = this.state.Rate/res.data.length
         this.state.Rate = Math.floor(AvgRate) 
@@ -398,13 +418,13 @@ class Restaurant extends Component {
           </div>
         </div>
         {/* // leftshow */}
-        <div className="container row col-12  d-flex align-items-center mt-4">
-          <div class="container" id="part2">
-            <div class="col-md-12 row">
-              <div class="col-12">
+        <div className="container row col-12  d-flex align-items-center mt-4" style={{display:this.state.CustomerNums==0?"none":"block"}}>
+          <div class="container" id="part2" style={{display:this.state.CustomerNums==0?"none":"block"}}>
+            <div class="col-md-12 row" style={{display:this.state.CustomerNums==0?"none":"block"}}>
+              <div class="col-12" style={{display:this.state.CustomerNums==0?"none":"block"}}>
                 {/* <br /> */}
-                <div class="row  ">
-                  <h4> {this.state.Rest.RestaurantName} Reviews (48) </h4>
+                <div class="row " >
+                  <h4> {this.state.Rest.RestaurantName} Reviews ({this.state.CustomerNums}) </h4>
                   <p class="text-right offset-4 col-5 ">
                     {/* <span>4.5</span> */}
 
@@ -626,7 +646,7 @@ class Restaurant extends Component {
                   );
               }
             })()}
-            <div>Order Packaging</div>
+            <div style={{display:this.state.CustomerNums==0?"none":"block"}}>Order Packaging</div>
           </div>
           <div class="col-md-3">
             {/* <span>4.5</span> */}
@@ -732,7 +752,7 @@ class Restaurant extends Component {
                   );
               }
             })()}
-            <div>Value for money</div>
+            <div style={{display:this.state.CustomerNums==0?"none":"block"}}>Value for money</div>
           </div>
           <div class="col-md-3">
             {/* <span>4.5</span> */}
@@ -838,7 +858,7 @@ class Restaurant extends Component {
                   );
               }
             })()}
-            <div>Delivery Time</div>
+            <div style={{display:this.state.CustomerNums==0?"none":"block"}}>Delivery Time</div>
           </div>
           <div class="col-md-3">
             {/* <span>4.5</span> */}
@@ -944,129 +964,13 @@ class Restaurant extends Component {
                   );
               }
             })()}
-            <div>Quality of food</div>
+            <div style={{display:this.state.CustomerNums==0?"none":"block"}}>Quality of food</div>
           </div>
         </div>
         {/* orderPacking Review  */}
         <br />
         <div class="card col-12 reviewCard">
-          <div class="card-body col-12">
-            <div class="col-md-3">
-              {(() => {
-                switch (this.state.Rate) {
-                  case 1:
-                    return (
-                      <div>
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon icon={faStar} />
-                        <FontAwesomeIcon icon={faStar} />
-                        <FontAwesomeIcon icon={faStar} />
-                        <FontAwesomeIcon icon={faStar} />
-                      </div>
-                    );
-
-                  case 2:
-                    return (
-                      <div className="d-inline">
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon icon={faStar} />
-                        <FontAwesomeIcon icon={faStar} />
-                        <FontAwesomeIcon icon={faStar} />
-                      </div>
-                    );
-                  case 3:
-                    return (
-                      <div>
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon icon={faStar} />
-                        <FontAwesomeIcon icon={faStar} />
-                      </div>
-                    );
-
-                  case 4:
-                    return (
-                      <div>
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon icon={faStar} />
-                      </div>
-                    );
-
-                  case 5:
-                    return (
-                      <div>
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                        <FontAwesomeIcon
-                          style={{ color: "orange" }}
-                          icon={faStar}
-                        />
-                      </div>
-                    );
-                }
-              })()}
-              <span>ay hagaa</span>
-              <div>
-                <span>ممتاز</span>
-              </div>
-            </div>
-            <div>
-              <p class="card-text text-right">23 November 2020</p>
-            </div>
-            <br />
-          </div>
-          <br />
-          {/* cardbody  only one review */}
-
+          
           {
               this.state.Customer.map((c)=>{
                   return(
@@ -1196,7 +1100,7 @@ class Restaurant extends Component {
           <br/>
 
 
-
+<h3 style={{display:this.state.CustomerNums==0?"block":"none",textAlign: "center"}} > There Are No Ratings yet</h3>
         
           
         </div>
