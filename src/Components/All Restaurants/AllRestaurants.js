@@ -70,13 +70,13 @@ export default class AllRestaurants extends React.Component{
                                     }>
 
                                     <div className="gallery-single fix">
-                                        <img src={slide1} className="img-fluid" alt="Image" id="RestImage"/>
+                                        <img src={AllRest.Image} className="img-fluid" alt="Image" id="RestImage"/>
                                         <div className="card-title">
                                             <h3 style={{color:'#810000', marginTop:3,fontWeight:"bolder"}}>{AllRest.RestaurantName}</h3>
                                             {AllRest.restaurantCusines.map((c)=>{
                                                 console.log(c);
                                                 
-                                                return( <div>{c.Cuisine.CuisineName}</div>)
+                                                return( <span>{c.Cuisine.CuisineName},</span>)
                                                
                                             })}
                                         </div>
