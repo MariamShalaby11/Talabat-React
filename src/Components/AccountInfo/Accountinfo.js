@@ -1,7 +1,6 @@
 import React from 'react';
 import './Accountinfo.css';
 import axios from 'axios';
-import Map from './../Become_a_Bartner/files/map';
 
 class Accountinfo extends React.Component {
 
