@@ -66,7 +66,7 @@ export default class Offers extends React.Component{
                                     return(
                                 <div className="col-lg-4 col-md-6" onClick={()=>this.GetMealsOffersHandler(Offers.RestaurantId, Offers.RestaurantName)}>
                                     <div className="gallery-single fix">
-                                        <img src={slide1} className="img-fluid" alt="Image" id="RestImage" />
+                                        <img src={Offers.Image} className="img-fluid" alt="Image" id="RestImage" />
                                         <div className="card-title">
                                             <h4 style={{color:'#810000', marginTop:3,fontWeight:"bold"}}>{Offers.RestaurantName}</h4>
                                         </div>
