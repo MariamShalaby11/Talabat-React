@@ -277,7 +277,7 @@ class Restaurant extends Component {
           <div id="backimg" >
             <div id="innerbg" >
               <div id="infoo" >
-                <img src={img1} className="MyImages" />
+                <img src={this.state.Rest.Image} className="MyImages" />
                 <h3>{this.state.Rest.RestaurantName}</h3>
               {
                     this.state.Cusine.map((c)=>{
