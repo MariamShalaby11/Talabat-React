@@ -7,7 +7,8 @@ class Accountinfo extends React.Component {
     state = {
         
         selectedflag:"tab1",
-        customer:{},CustomerId:JSON.parse(localStorage.getItem('Customer')).CustomerId,
+        customer:{},
+        CustomerId:JSON.parse(localStorage.getItem('Customer')).CustomerId,
         username:JSON.parse(localStorage.getItem('Customer')).Username,
 
         FirstName:"",LastName:"",Username:"",Email:"",Password:"",CPassword:"",
@@ -211,11 +212,6 @@ class Accountinfo extends React.Component {
                                 <input type="text" className="form-control inputt"  value={this.state.customer.Username|| ''} onChange={(e)=>this.setusernamestate(e)}  style={{width:350}} disabled></input></div>
                          </div>
                            
-                        <div class="form-group row">
-                                <label htmlFor="staticEmail" class="col-sm-2 col-form-label thandlabel">Email</label>
-                                <div class="col-sm-10">
-                                <input type="text" className="form-control inputt" id="txtemail" value={this.state.customer.Email|| ''} onChange={(e)=>this.setEmailstate(e)} style={{width:350}}></input></div>
-                         </div>
                          <div class="form-group row">
                                 <label htmlFor="firstname" class="col-sm-2 col-form-label thandlabel">First Name</label>
                                 <div class="col-sm-10">
@@ -225,6 +221,11 @@ class Accountinfo extends React.Component {
                                 <label htmlFor="lastname" class="col-sm-2 col-form-label thandlabel">Last Name</label>
                                 <div class="col-sm-10">
                                 <input type="text" className="form-control inputt" id="txtLname" value={this.state.customer.LastName|| ''} onChange={(e)=>this.setLnamestate(e)}  style={{width:350}}></input></div>
+                         </div>
+                         <div class="form-group row">
+                                <label htmlFor="staticEmail" class="col-sm-2 col-form-label thandlabel">Email</label>
+                                <div class="col-sm-10">
+                                <input type="text" className="form-control inputt" id="txtemail" value={this.state.customer.Email|| ''} onChange={(e)=>this.setEmailstate(e)} style={{width:350}}></input></div>
                          </div>
 
 
