@@ -12,7 +12,7 @@ class Menue extends React.Component {
 
     state = {
   
-      product: [],isActive:[], SellingArray: [],TotalPrice:0,RestId:this.props.match.params.id,restname:"",restcus:[],cityname:""
+      product: [],isActive:[], SellingArray: [],TotalPrice:0,RestId:this.props.match.params.id,Restimage:"",restname:"",restcus:[],cityname:""
     }
   
 
@@ -40,9 +40,11 @@ class Menue extends React.Component {
         (cat)=>{
            
             this.state.restname=cat.data.RestaurantName
+            this.state.Restimage=cat.data.Image
            
             this.setState({
-              restname:this.state.restname
+              restname:this.state.restname,
+              Restimage:this.state.Restimage
             })
             console.log(this.state.restname)
         }
@@ -89,7 +91,7 @@ class Menue extends React.Component {
         <div id="divcon" class="container shadow p-3 mb-5 bg-white rounded">
           <div id="divcon1" class="row  shadow-sm p-3 mb-5 bg-white rounded">
             <div class="col-lg-2 col-md-3 col-sm-4">
-              <img id="divcon1im" width="140" height="120" src={im} />
+              <img id="divcon1im" width="140" height="120" src={this.state.Restimage} />
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
               <h4 class=" media-heading f-400 mb-0">
@@ -199,8 +201,8 @@ class Menue extends React.Component {
                                     return (
                                       <>
                                         <div class="row" id="conMargin">
-                                          <div class="col-3"><Popup  trigger={<img width="80" height="80" src={im} />} position="top center" >
-                                         <div class="card" style={{padding:7}}><img src={im} width="100" height="100" /></div>
+                                          <div class="col-3"><Popup  trigger={<img width="80" height="80" src={Mel.Image} />} position="top center" >
+                                         <div class="card" style={{padding:7}}><img src={Mel.Image} width="100" height="100" /></div>
                                             </Popup></div>
                                           <div class="col-5">
                                             <p>{Mel.Mealname}</p>
