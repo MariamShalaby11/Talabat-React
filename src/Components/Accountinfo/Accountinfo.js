@@ -257,71 +257,82 @@ class Accountinfo extends React.Component {
                  <span style={{marginTop:'5'}}> <h6 >There is no Item in card</h6></span>
                 </div>}
                                      {this.state.custMeals.length != 0 && <div class="card" >
-                                <div class="card-body bg-transparent">
-                                  <table class="table table-hover">
-                                  <thead className="thead-light">
-                                      <tr>
+                                <div class="card-body bg-transparent tableContainer">
+
+                                    <div className="col col-md-6 floatLeft">
+                                    <table className="table table-hover">
+                                    <thead className="thead-light">
+                                    <tr>
                                       <th scope="col">Meal Name</th>
                                       <th scope="col">Meal Price</th>
-                                      <th scope="col">Order SubTotal</th>
-                                      <th scope="col">Payment Method</th>
-                                      {/* <th scope="col">Qty</th> */}
                                       </tr>
-                                  </thead>
-
-                               <tbody>
-
-                            {this.state.custMeals.map((order)=>{
-                                return(
-                            <tr>                                          
-                               <td>{order.Mealname}</td>
-                               <td>{order.MealPrice}</td>  
-
-                               {this.state.orders.map((Custorder)=>{
-                                return(
-                            <>
-                               <td>{Custorder.SubTotal}</td>
-                               {(() => {
-                                   switch(Custorder.PaymentMethod){
-                                    case 0:
+                                    </thead> 
+                                    <tbody>
+                                    {this.state.custMeals.map((meals)=>{
                                         return(
-                                            <td>Card</td>
-                                        );
-                                    case 1:
+                                            <tr>
+                                                <td>{meals.Mealname}</td>
+                                                <td>{meals.MealPrice}</td>
+                                            </tr>
+                                        )
+                                    })}
+                                    </tbody>                              
+                                        </table>
+                                    </div>
+                                    <div className=" col col-md-6 floatRight">
+                                    <table className="table table-hover">
+                                    <thead className="thead-light">
+                                                <tr>
+                                                <th scope="col">Order SubTotal</th>
+                                                <th scope="col">Payment Method</th>
+                                                </tr>
+                                    </thead>
+                                    <tbody>                      
+                                    {this.state.orders.map((orders)=>{
                                         return(
-                                            <td>Visa</td>
-                                        );
-                                    case 2:
+                                            <tr>
+                                                <td>{orders.SubTotal}</td>
+                                                {(() => {
+                                            switch(orders.PaymentMethod){
+                                                case 0:
+                                                    return(
+                                                        <td>Card</td>
+                                                    );
+                                                case 1:
+                                                    return(
+                                                        <td>Visa</td>
+                                                    );
+                                                case 2:
+                                                    return(
+                                                        <td>Cash</td>
+                                                    );
+                                            }
+                                            })()}                                
+                                            </tr>
+                                        )
+                                    })}
+                                    </tbody>
+                                    </table>                                    
+                                    </div>
+
+                                    {/* <div className="col col-md-4 floatRight">
+                                    <table className="table table-hover">
+                                    <thead className="thead-light">
+                                                <tr>
+                                                <th scope="col">Qty</th>
+                                                </tr>
+                                    </thead>
+                                    <tbody>                      
+                                    {this.state.MealOrders.map((Mealorder)=>{
                                         return(
-                                            <td>Cash</td>
-                                        );
-                                   }
-                                })()}
-
-                               {/* {this.state.MealOrders.map((Mealorder)=>{
-                               return(
-                              <>                                          
-                              <td>{Mealorder.Quantity}</td>                                                        
-                              </>                             
-                             )
-                             })
-                           
-                             }                                                   */}
-                            </>
-
-                             )
-                            })
-                            }
-                            </tr>                           
-                             )
-                            })
-                            }
-
-
-
-
-                             </tbody> 
-                                   </table>
+                                        <>                                          
+                                        <td>{Mealorder.Quantity}</td>                                                        
+                                        </>                             
+                                        )
+                                        })}
+                                    </tbody>
+                                    </table> 
+                                    </div> */}
                                 </div>
                        <div class="row">
                   </div>

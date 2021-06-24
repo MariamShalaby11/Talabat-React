@@ -41,6 +41,8 @@
                      height: 40px;
           }
         
-        
+          .floatLeft {float: left; }
+          .floatRight {float: right; }
+          .tableContainer{overflow: hidden;}
 
        
