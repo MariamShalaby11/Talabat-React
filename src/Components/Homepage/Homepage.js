@@ -39,6 +39,7 @@ export default class Home extends React.Component{
         this.setState({Resturants:res.data})
        console.log(res.data)
          })
+        
     }
     MapData=(lat,lang)=>{
       this.setState({
@@ -81,7 +82,8 @@ export default class Home extends React.Component{
           <Carousel.Item class="carousel-item active">
                 <img className="d-block w-100 slider " src={slide1} alt="First slide" />
                < Carousel.Caption class="carousel-caption d-md-block carouselword">
-                    <h1 className="m-b-20 headerr"><strong>Welcome <span></span> To FoodAway </strong></h1>
+               {/* <span style={{textTransform:"uppercase",color:"#30526A"}}> {JSON.parse(localStorage.getItem('Customer')).FirstName}</span> */}
+                    <h1 className=" headerr"><strong>Welcome <span style={{textTransform:"uppercase",color:"lightyellow",display:"none"}}>Mariam</span> <br/>To FoodAway </strong></h1>
                     <h6 className="m-b-40  ">Join Us now And Fullfill your cravings !</h6>
                    
                     <p> 
@@ -95,7 +97,7 @@ export default class Home extends React.Component{
           <Carousel.Item class="carousel-item">
             <img class="d-block w-100 slider" src={slide2} alt="Second slide" />
             <Carousel.Caption class="carousel-caption  d-md-block carouselword">
-                <h1 class="m-b-20 headerr"><strong>Welcome To FoodAway </strong></h1>
+                <h1 class="m-b-20 headerr"><strong>Welcome <br/>To FoodAway </strong></h1>
                 <p class="m-b-40">And Enjoy the fastest Delivery For your Favourite food Right to your Door !</p>
                 <Router>
                       <HashLink class="btn btn-lg btn-circle btn-outline-new-white" smooth to='/MariamShalaby11/Talabat-React/Home/#info' > Order </HashLink>
@@ -105,7 +107,7 @@ export default class Home extends React.Component{
           <Carousel.Item class="carousel-item">
             <img class="d-block w-100 slider" src={slide3} alt="Third slide" />
             <Carousel.Caption class="carousel-caption d-md-block carouselword">
-                <h1 class="m-b-20 headerr"><strong>Welcome To FoodAway  </strong></h1>
+                <h1 class="m-b-20 headerr"><strong>Welcome <br/>To FoodAway  </strong></h1>
                 <p class="m-b-40">Become Our partner and Reach New Customers And get more Sales !</p>
                 <Link class="btn btn-lg btn-circle btn-outline-new-white " to={{pathname:"/MariamShalaby11/Talabat-React/BecomePartner"}}>Become a partner</Link>
              
@@ -114,7 +116,7 @@ export default class Home extends React.Component{
           <Carousel.Item class="carousel-item">
                 <img class="d-block w-100 slider" src={slide4}  />
                 <Carousel.Caption class="carousel-caption d-md-block carouselword">
-                <h1 class="m-b-20 headerr"><strong style={{color:"#810000",fontSize:60}}>Welcome To FoodAway  </strong></h1>
+                <h1 class="m-b-20 headerr"><strong style={{color:"#810000",fontSize:60}}>Welcome<br/>  To FoodAway  </strong></h1>
                     <p class="m-b-40">Explore variety of Resturants!</p>
                     
                    <Link class="btn btn-lg btn-circle btn-outline-new-white " to={{pathname:"/MariamShalaby11/Talabat-React/AllResturants"}}>All Resturants</Link>
@@ -234,7 +236,7 @@ export default class Home extends React.Component{
                   this.props.history.push({pathname:`/MariamShalaby11/Talabat-React/Restaurant/${Rest.RestaurantId}`,Resutantid:Rest.RestaurantId})
                   }>
 
-                    <img class="card-img-top cardimgs"  src={slide5} alt="Card image cap"/>
+                    <img class="card-img-top cardimgs"  src={Rest.Image} alt="Card image cap"/>
                     <div class="card-body bg-transparent">
                         <h5 class="card-title bg-transparent">{Rest.RestaurantName}</h5>
                     </div>
