@@ -154,7 +154,6 @@ export default class PartnerDetail extends React.Component{
 
     validatePartnerData=()=>{
   
-      this.MobilePassed(this.state.Mobile)
       this.FirstNamePassed(this.state.FirstName)
       this.LastNamePassed(this.state.LastName)
       this.EmailPassed(this.state.Email)
@@ -164,7 +163,7 @@ export default class PartnerDetail extends React.Component{
 
 
       const {FirstNamePassed,LastNamePassed,Emailpassed,PasswordPassed,CPasswordPassed,UserNamePassed,MobilePassed}=this.state;
-      let x=FirstNamePassed&&LastNamePassed&&MobilePassed&&Emailpassed&&UserNamePassed&&PasswordPassed&&CPasswordPassed;
+      let x=FirstNamePassed&&LastNamePassed&&Emailpassed&&UserNamePassed&&PasswordPassed&&CPasswordPassed;
       
       this.props.ComponentChange(!x,this.state);
     }
@@ -198,33 +197,30 @@ export default class PartnerDetail extends React.Component{
                 </div>
                 <div>
                   <label class="d-inline">UserName</label>
-                  
+                  <span class="required">*</span>
+
                   <input type="text" class="input-group-text text-left bg-transparent input-group-append"
                    placeholder="Type your prefered UserName" onChange={(e)=>{this.UserNameError(this.state.UserNamePassed);this.UserNamePassed(e.target.value);}} value={this.state.UserName}/>
                 {this.state.UserNameError&&<span class="error">UserName Required,with charcter only </span>}
                </div>
                 <div>
                   <label class="d-inline">Password</label>
-                  
-                  <input type="text" class="input-group-text text-left bg-transparent input-group-append"
+                  <span class="required">*</span>
+
+                  <input type="password" class="input-group-text text-left bg-transparent input-group-append"
                    placeholder="Type your Password" onChange={(e)=>{this.PasswordError(this.state.PasswordPassed);this.PasswordPassed(e.target.value);}} value={this.state.Password}/>
                  <i class="fa fa-user icon bg-danger"></i>
                   {this.state.PasswordError&&<span class="error">Password should be character with at least one number </span>}
                </div>
                <div>
                   <label class="d-inline">Confirm Password</label>
-                  
+                  <span class="required">*</span>
+
                   <input type="password" class="input-group-text text-left bg-transparent input-group-append"
                    placeholder="Password Confirmation" onChange={(e)=>{this.CPasswordError(this.state.CPasswordPassed);this.CPasswordPassed(e.target.value);}} value={this.state.CPassword}/>
                 {this.state.CPasswordError&&<span class="error">Password doesn't match</span>}
                </div>
-                <div>
-                  <label class="d-inline">Mobile Number</label>
-                  
-                  <input type="number" class="input-group-text text-left bg-transparent input-group-append"
-                   placeholder="Number Only" onChange={(e)=>{this.MobileError(this.state.MobilePassed);this.MobilePassed(e.target.value);}} value={this.state.Mobile}/>
-                {this.state.MobileError&&<span class="error">Mobile Format should be Like (01-123456789)</span>}
-               </div>
+   
               <div class="d-flex w-100 " >
                <button class="btn mt-5 border w-100" onClick={this.validatePartnerData}>Next</button>
 

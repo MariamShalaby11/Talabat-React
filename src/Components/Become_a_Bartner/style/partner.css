@@ -64,7 +64,7 @@
           #container>div:first-of-type{
               background-image: url(../img//banner2.jpg);
               background-size: cover;
-            height: 1090px;
+            height: 1050px;
             color: white;
           }
           
@@ -79,7 +79,7 @@
               letter-spacing: 3px;
               font-size: 50px;
           }
-          #header div button{
+          #header div a{
             background-color:black;
             color: white;
               height: 50px;
@@ -110,7 +110,7 @@
           #card{
               
               width: 500px;
-              height: 900px;
+              height: 830px;
               background-color: white;
               border-radius:11px ;
           }

@@ -44,7 +44,7 @@
   .success-icon__long {
     width: 4em;
     transform: rotate(-45deg);
-    top: 3.7em;
+    /* top: 3.7em; */
     left: 2.75em;
     -webkit-animation: longInPlace 940ms ease-in-out;
             animation: longInPlace 940ms ease-in-out;
@@ -127,7 +127,7 @@
   #done{
  
     position: absolute;
-    margin-top: 360px;
+    margin-top: 400px;
     margin-left: 134px;
     font-size: 60px;
     color:#2ec620 ;

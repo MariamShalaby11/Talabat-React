@@ -47,7 +47,7 @@ export default class Partner extends React.Component {
                   <div class="ml-md-4">
                      
                   </div>
-                  <div class="pt-3 pr-lg-3  mt-5 "><button class="col-12 mt-3">Vendor Portal</button></div>
+                  <div class="pt-3 pr-lg-3  mt-5 "><a class="col-12 mt-3 btn" target="_blank" href="http://localhost:3001/HanyaHesham/PartnerDashboard/Login">Vendor Portal</a></div>
               </div>
             
               <div id="joining" class="d-md-flex justify-content-between container">
