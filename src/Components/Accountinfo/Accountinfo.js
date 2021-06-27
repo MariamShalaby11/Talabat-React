@@ -1,6 +1,10 @@
 import React from 'react';
 import './Accountinfo.css';
 import axios from 'axios';
+import Modal from 'react-bootstrap/Modal';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
+
 
 class Accountinfo extends React.Component {
 
@@ -16,8 +20,15 @@ class Accountinfo extends React.Component {
         custMeals:[],
         orders:[],
         MealOrders:[],
+        setShow:false,
 
     }
+    handleShow=()=>{
+        this.setState({setShow:true});
+      }
+      handleClose=()=>{
+        this.setState({setShow:false});
+      }
     
     componentDidMount() {
         //this.setState({Rest:this.state.Rest})
@@ -143,11 +154,12 @@ class Accountinfo extends React.Component {
 
 
       customEdit=()=>{
+          this.handleClose();
 
         const config = {
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
-              'Accept':'*/*'
+              'Accept':'/'
             }
           }
 
@@ -166,7 +178,7 @@ class Accountinfo extends React.Component {
 
           axios.post(URL, params, config).then(res=>{
             console.log(res);
-            alert("Data Updated");
+            alert("Data Updated Successfully");
         })
         
         .catch(error=>{
@@ -188,7 +200,7 @@ class Accountinfo extends React.Component {
                 <br></br><br></br> <br></br> <br></br> <br></br><br></br>
 
               
-                <h3>My Account</h3>
+                <h2>My Account</h2>
                 <hr></hr>
                 <div class="row" >
                     
@@ -200,25 +212,45 @@ class Accountinfo extends React.Component {
                        
                         </div>
                        
-                     <div class="col-lg-8 col-md-12">
+                     <div class="col-lg-6 col-md-12" id="InfoContainer">
                          {
                              this.state.selectedflag=="tab1"&&(<div>
-                                 {
                                 
-                        <form>
+                         <h3 style={{color:"#810000", textAlign:'center'}}>{this.state.customer.FirstName} {this.state.customer.LastName}</h3>
+                         <h4 style={{textAlign:'center'}}>Username: {this.state.customer.Username}</h4>
+                         <h4 style={{textAlign:'center'}}>Email: {this.state.customer.Email}</h4>
+                         <button className="btn btn-success col-4 offset-4 mt-5 mb-5" onClick={this.handleShow}> Edit My Account < FontAwesomeIcon icon={faEdit}/></button>
+                         <Modal show={this.state.setShow}
+                                // size="lg"
+                                aria-labelledby="contained-modal-title-vcenter"
+                                centered
+                                >
+                                <Modal.Header>
+                                    <h5 style={{color:'#810000'}}>Edit My Account</h5>
+                                    <button className="close" onClick={this.handleClose} aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </Modal.Header>
+                                    <Modal.Body>
+
+                            {
+                                
+                        <form class="needs-validation" novalidate>
                          <div class="form-group row">
-                                <label htmlFor="text" class="col-sm-2 col-form-label thandlabel">UserName</label>
+                                <label htmlFor="text" class="col-sm-2 col-form-label thandlabel">Username</label>
                                 <div class="col-sm-10">
-                                <input type="text" className="form-control inputt"  value={this.state.customer.Username|| ''} onChange={(e)=>this.setusernamestate(e)}  style={{width:350}} disabled></input></div>
+                                <input type="text" className="form-control inputt"  value={this.state.customer.Username|| ''} onChange={(e)=>this.setusernamestate(e)}  style={{width:350}} disabled></input>
+                                </div>
                          </div>
+
                            
                          <div class="form-group row">
-                                <label htmlFor="firstname" class="col-sm-2 col-form-label thandlabel">First Name</label>
+                                <label htmlFor="firstname" class="col-sm-2 col-form-label thandlabel">FirstName</label>
                                 <div class="col-sm-10">
                                 <input type="text" className="form-control inputt" id="txtFname" value={this.state.customer.FirstName|| ''} onChange={(e)=>this.setFnamestate(e)}  style={{width:350}}></input></div>
                          </div>
                          <div class="form-group row">
-                                <label htmlFor="lastname" class="col-sm-2 col-form-label thandlabel">Last Name</label>
+                                <label htmlFor="lastname" class="col-sm-2 col-form-label thandlabel">LastName</label>
                                 <div class="col-sm-10">
                                 <input type="text" className="form-control inputt" id="txtLname" value={this.state.customer.LastName|| ''} onChange={(e)=>this.setLnamestate(e)}  style={{width:350}}></input></div>
                          </div>
@@ -244,6 +276,8 @@ class Accountinfo extends React.Component {
                         </form>
                         
                     }
+                                </Modal.Body>
+                            </Modal>
                         </div>)}
 
                         {

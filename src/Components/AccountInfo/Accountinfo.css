@@ -45,4 +45,6 @@
           .floatRight {float: right; }
           .tableContainer{overflow: hidden;}
 
-       
+       #InfoContainer{
+           justify-content: center;
+       }
