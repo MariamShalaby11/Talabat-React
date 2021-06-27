@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Loading from '../Registerr/loading'
-
+import {Link} from 'react-router-dom';
 import { FaEnvelope, FaEyeSlash, FaLockOpen, FaUser ,FaEye} from 'react-icons/fa';
 import './Register.css';
 import facebook from '../../images/fb.jpeg';
@@ -363,7 +363,7 @@ export default class Home extends React.Component{
                         <div class="card-footer text-center" style={{background: "transparent", borderTop: "none"}}>
                             <div class="d-flex justify-content-center mt-3">
                                 <h6>Aready have an account?</h6>
-                                <a href="/MariamShalaby11/Talabat-React/Login" class="ml-2" id="signup">Login</a>  
+                                <Link to="/MariamShalaby11/Talabat-React/Login" class="ml-2" id="signup">Sign up now !</Link>  
                             </div>
                         </div>
                     </div>
