@@ -2,7 +2,7 @@ import React from 'react';
 import './HeaderStyle.css';
 import FoodAway from '../images/FoodAway (4).png';
 import {Link} from 'react-router-dom';
-import {  FaShoppingCart, FaSignOutAlt, FaUser} from "react-icons/fa";
+import {  FaShoppingCart, FaSignOutAlt, FaSmile, FaUser} from "react-icons/fa";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Modal from 'react-bootstrap/Modal';
 import Login from './Login/Login';
@@ -11,7 +11,7 @@ import Login from './Login/Login';
 export default class Header extends React.Component{
 
     state={
-        setShow:false,showMyAccount:"none",ShowLogin:"block"
+        setShow:false,showMyAccount:"none",ShowLogin:"block",FName:"",showName:"none",LName:""
     }
 
     handleShow=()=>{
@@ -30,7 +30,10 @@ export default class Header extends React.Component{
         }else{
             this.setState({
                 showMyAccount:"block",
-                ShowLogin:"none"
+                ShowLogin:"none",
+                FName:JSON.parse(localStorage.getItem('Customer')).FirstName,
+                LName:JSON.parse(localStorage.getItem('Customer')).LastName,
+                showName:"block"
 
             })
         }
@@ -52,6 +55,9 @@ export default class Header extends React.Component{
                   <div class="collapse navbar-collapse" id="navbars-rs-food" style={{textAlign:'center'}}>
 					<ul class="navbar-nav ml-auto" id="items">
 
+                       <li class="nav-item">
+                            <Link class="nav-link" id="Navlinks" style={{display:this.state.showName}} >Hello <span>{this.state.FName} {this.state.LName} <FaSmile/> </span></Link>
+                       </li>
                        <li class="nav-item">
                             <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >All Restaurants</Link>
                        </li>
@@ -85,7 +91,7 @@ export default class Header extends React.Component{
                        </li>
 
                        <li class="nav-item" style={{display:this.state.ShowLogin}}>
-                            <button class="btn btn-default" id="Navlinks" onClick={this.handleShow} id="LoginBtn">Login</button>
+                            <Link class="btn btn-default"  to="/MariamShalaby11/Talabat-React/Login" id="Navlinks" id="LoginBtn">Login</Link>
                        </li>
 
 					</ul>
