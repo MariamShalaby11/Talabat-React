@@ -9,6 +9,8 @@
 }
 #card-header-text{
     font-weight: 500 !important;
+    margin-top: 50px;
+    margin-bottom:50px;
 }
 #icon, #signup{
     color: #810000;

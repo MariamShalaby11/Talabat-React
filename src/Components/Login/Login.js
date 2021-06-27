@@ -10,6 +10,8 @@ import facebook from '../../images/fb.jpeg';
 import axios from 'axios';
 import { FaEyeSlash,FaUser,FaEye } from 'react-icons/fa';
 import { Alert } from 'react-bootstrap';
+import {Link} from 'react-router-dom';
+
 
 
 class Login extends Component {
@@ -173,7 +175,7 @@ class Login extends Component {
                 <div class="card shadow-lg border-0 rounded-lg mt-5" id="cardd">
                     <div class="card-body bg-transparent">
                     <div class="card-header " id="card-header">
-                    <h1 class="text-center font-weight-light my-4" id="card-header-text">Login</h1>
+                    <h1 class="text-center font-weight-light" id="card-header-text">Login</h1>
                     </div>
                         <form action="" method="POST" role="form">
                              <button type="button" id="Google" class="mybtn btn btn-block form-control formcntrl">
@@ -231,7 +233,7 @@ class Login extends Component {
                      <div class="card-footer text-center"  id="gotoregister">
                         <div class="d-flex justify-content-center mt-3">
                             <h6>Need an account?</h6>
-                            <a href="/MariamShalaby11/Talabat-React/Register" class="ml-2" id="signup">Sign Up Now!</a>  
+                            <Link to="/MariamShalaby11/Talabat-React/Register" class="ml-2" id="signup">Sign Up Now!</Link>  
                         </div>
                     </div>
 
