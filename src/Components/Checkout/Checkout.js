@@ -105,7 +105,7 @@ export default class Checkout extends React.Component{
     async componentDidMount(){
         
         const tokenStr = localStorage.getItem('access_token')
-        if(tokenStr==null){
+        if(tokenStr===null){
             alert("You're not Logined ,Please Login First")
          this.props.history.push('Login')
         }else{
@@ -115,11 +115,6 @@ export default class Checkout extends React.Component{
               })
         }
        console.log(this.state.RestId)
-    //    await this.props.location.selectedArray.forEach(element => {
-       
-    //         this.state.meals.push({MealId:element.MealId,Quantity:element.count})
-    //     });
-    //    console.log(this.statemeals)
     
     }
   
