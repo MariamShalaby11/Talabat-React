@@ -56,7 +56,7 @@ export default class Header extends React.Component{
 					<ul class="navbar-nav ml-auto" id="items">
 
                        <li class="nav-item">
-                            <Link class="nav-link" id="Navlinks" style={{display:this.state.showName}} >Hello <span>{this.state.FName} {this.state.LName} <FaSmile/> </span></Link>
+                            <Link class="nav-link" id="Navlinks" style={{display:this.state.showName,color:"#D0A772"}} >Hello <span>{this.state.FName} {this.state.LName} <FaSmile/> </span></Link>
                        </li>
                        <li class="nav-item">
                             <Link class="nav-link" to="/MariamShalaby11/Talabat-React/AllResturants"id="Navlinks" >All Restaurants</Link>
