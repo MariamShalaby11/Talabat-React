@@ -282,7 +282,7 @@ class Restaurant extends Component {
               {
                     this.state.Cusine.map((c)=>{
                                       console.log(c);
-                                      return( <h6>{c.Cuisine.CuisineName}</h6>)
+                                      return( <span>{c.Cuisine.CuisineName},</span>)
                                                 })
                                           }
             
